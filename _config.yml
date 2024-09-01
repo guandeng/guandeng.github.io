@@ -1,0 +1,41 @@
+# Hexo Configuration
+## Docs: https://hexo.io/docs/configuration.html
+
+# Site
+title: Guandeng's Blog
+keyword: Guandeng's Blog
+description: Guandeng's Blog，致力于分享一些技术教程和有趣的技术实践。
+author: Guandeng
+language: zh-CN
+
+url: https://guandeng.github.io
+root: /
+permalink: post/:title.html
+
+# 开启博客资源的相对链接 https://hexo.io/zh-cn/docs/asset-folders
+post_asset_folder: true
+
+# Site settings
+header_icon: img/icon.png
+
+theme: geektutu
+
+# Deployment
+## Docs: https://hexo.io/docs/deployment.html
+deploy:
+  type: git
+  repository: https://github.com/guandeng/guandeng.github.io.git
+  branch: coding-pages
+
+feed:
+  enable: true
+  limit: 0
+  type: rss2
+  content: false
+  path: feed.xml
+  icon: img/icon.png
+  
+widgets:
+  mobile_qrcode: false # 开启移动端二维码，扫一扫，手机上阅读
+  caidan: true  # 开启彩蛋，点击屏幕会随机弹出 '点个赞','留个言'等
+  busuanzi: true # 开启不蒜子统计 https://busuanzi.ibruce.info/
