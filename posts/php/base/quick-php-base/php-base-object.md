@@ -13,8 +13,6 @@ keywords:
 image: post/design/colorhunt.jpg
 ---
 
-## 对象赋值在PHP中到底是不是引用
-
 先看个例子
 ```php
 <?php
