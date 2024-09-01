@@ -85,12 +85,12 @@
                 
                 
                 <li class="gkt-cate-name float-left active">
-                    <a class="float-left" href="/post/php-base-version8.2.html">PHP系列 ▾</a>
+                    <a class="float-left" href="/post/php-base.html">PHP系列 ▾</a>
                     
                     <ul class="gkt-sub-cate">
                         
                         <li class="gkt-sub-cate-name active"><a class="float-left"
-                                href="/post/php-base-version8.2.html">PHP基础</a></li>
+                                href="/post/php-base.html">PHP基础</a></li>
                         
                         <li class="gkt-sub-cate-name "><a class="float-left"
                                 href="/post/php-advanced.html">PHP进阶</a></li>
@@ -100,12 +100,22 @@
                 </li>
                 
                 <li class="gkt-cate-name float-left ">
-                    <a class="float-left" href="/post/go-base.html">Go系列</a>
+                    <a class="float-left" href="/post/ai.html">Ai系列</a>
                     
                 </li>
                 
                 <li class="gkt-cate-name float-left ">
-                    <a class="float-left" href="/post/ai.html">Ai系列</a>
+                    <a class="float-left" href="/post/go-base.html">Go系列 ▾</a>
+                    
+                    <ul class="gkt-sub-cate">
+                        
+                        <li class="gkt-sub-cate-name "><a class="float-left"
+                                href="/post/go-base.html">Go基础</a></li>
+                        
+                        <li class="gkt-sub-cate-name "><a class="float-left"
+                                href="/post/go-design-factory.html">Go系列</a></li>
+                        
+                    </ul>
                     
                 </li>
                 
@@ -149,7 +159,7 @@
         <a class="float-left" href="/post/php-base-version8.3.html"><i class="u-arrow-left"></i></a>
         
         
-        <a class="float-right" href="/post/quick-ai.html"><i class="u-arrow-right"></i></a>
+        <a class="float-right" href="/post/php-advanced.html"><i class="u-arrow-right"></i></a>
         
     </div>
     <article class="col-xs-12">
@@ -159,6 +169,11 @@
         <div class="hidden-lg hidden-md series_links">
             <p> <strong> PHP基础系列文章链接：</strong></p>
             <ul>
+                
+                <li>
+                    <a href="/post/php-base.html">PHP基础系列</a>
+                    <span class="post-item-date">(Jan 2, 2023)</span>
+                </li>
                 
                 <li>
                     <a href="/post/php-base-version8.2.html">php8.2新特性</a>
@@ -176,11 +191,6 @@
                 </li>
                 
                 <li>
-                    <a href="/post/php-base.html">PHP基础系列</a>
-                    <span class="post-item-date">(Dec 2, 2023)</span>
-                </li>
-                
-                <li>
                     <a href="/post/php-base-version8.4.html">php8.4新特性</a>
                     <span class="post-item-date">(Aug 1, 2024)</span>
                 </li>
@@ -190,7 +200,7 @@
         
         
         <div class="gkt-article-start"></div>
-        <h2 id="对象赋值在PHP中到底是不是引用"><a href="#对象赋值在PHP中到底是不是引用" class="headerlink" title="对象赋值在PHP中到底是不是引用"></a>对象赋值在PHP中到底是不是引用</h2><p>先看个例子</p>
+        <p>先看个例子</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SimpleClass</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$var</span> = <span class="literal">null</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="variable">$instance</span> = <span class="keyword">new</span> SimpleClass();</span><br><span class="line"></span><br><span class="line"><span class="variable">$assigned</span> = <span class="variable">$instance</span>;</span><br><span class="line"><span class="variable">$reference</span> = &amp;<span class="variable">$instance</span>;</span><br><span class="line"></span><br><span class="line"><span class="variable">$instance</span>-&gt;var = <span class="string">&#x27;$assigned will have this value&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="variable">$instance</span> = <span class="literal">null</span>; <span class="comment">// $instance and $reference become null</span></span><br><span class="line"></span><br><span class="line">var_dump(<span class="variable">$instance</span>);<span class="comment">// null</span></span><br><span class="line">var_dump(<span class="variable">$reference</span>);<span class="comment">// null</span></span><br><span class="line">var_dump(<span class="variable">$assigned</span>);<span class="comment">// object</span></span><br></pre></td></tr></table></figure>
 
 <p>首先，将PHP中的变量看成是一个一个的数据槽。这个数据槽可以保存一个基本类型（int、string、bool等）。创建引用时，这个槽里保存的是内存地址，或者说是指向引用对象的一个指针，引用没有拷贝操作，仅仅是将指针指向了原变量（参考数据结构）。创建普通赋值时，则是拷贝的基本类型。</p>
@@ -219,12 +229,6 @@
             </p>
             <!-- 文章末尾的提示 start -->
             
-            <p>
-                本站永久域名「 <a
-                        href="/post/php-base-object.html">guandeng.github.io</a>
-                    」，也可搜索「 Guandeng 」找到我。
-            </p>
-            
             
                 
             <!-- 文章末尾的提示 end -->
@@ -235,7 +239,7 @@
     <a class="float-left" href="/post/php-base-version8.3.html">上一篇 « php8.3新特性</a>
     
     
-    <a class="float-right" href="/post/quick-ai.html">下一篇 » Ai系列</a>
+    <a class="float-right" href="/post/php-advanced.html">下一篇 » PHP进阶</a>
     
 </p>
     </article>
@@ -403,42 +407,13 @@
                 
                 
             </div>
-            <a href="/post/php-base-version8.4.html" class="title">
-                php8.4新特性
-            </a>
-            <p class="text-gray">
-                <small>
-                    <span>发表于2024-08-01，</span>
-                    <span class="hidden-xs">全文987字，</span>
-                    <span>阅读约4分钟</span>
-                </small>
-            </p>
-        </div>
-    </div>
-</div>
-        
-        <div class="post-preview">
-    <div class="post-img" style="background-image: url('/post/design/colorhunt.jpg')"></div>
-    <div class="post-info">
-        <div class="post-info-center">
-            <div class="hidden-xs">
-                
-                
-                <span>/</span>
-                
-                <a class="text-gray" href="/tags/#PHP"
-                    title="PHP">PHP</a>
-                <span>/</span>
-                
-                
-            </div>
-            <a href="/post/php-base.html" class="title">
-                PHP基础系列
+            <a href="/post/php-advanced.html" class="title">
+                PHP进阶
             </a>
             <p class="text-gray">
                 <small>
                     <span>发表于2023-12-02，</span>
-                    <span class="hidden-xs">全文197字，</span>
+                    <span class="hidden-xs">全文194字，</span>
                     <span>阅读约1分钟</span>
                 </small>
             </p>
@@ -475,6 +450,35 @@
     </div>
 </div>
         
+        <div class="post-preview">
+    <div class="post-img" style="background-image: url('/post/design/colorhunt.jpg')"></div>
+    <div class="post-info">
+        <div class="post-info-center">
+            <div class="hidden-xs">
+                
+                
+                <span>/</span>
+                
+                <a class="text-gray" href="/tags/#PHP"
+                    title="PHP">PHP</a>
+                <span>/</span>
+                
+                
+            </div>
+            <a href="/post/php-base.html" class="title">
+                PHP基础系列
+            </a>
+            <p class="text-gray">
+                <small>
+                    <span>发表于2023-01-02，</span>
+                    <span class="hidden-xs">全文197字，</span>
+                    <span>阅读约1分钟</span>
+                </small>
+            </p>
+        </div>
+    </div>
+</div>
+        
     </div>
     <div class="col-xs-12">
         <!-- 标签列表 -->
@@ -498,11 +502,11 @@
 </style>
 <div id="featured-tag">
     
-    <a class="post-tag-item" href="/tags/#Go工厂模式" title="Go工厂模式"
-        rel="2">#Go工厂模式 (2) </a>
-    
     <a class="post-tag-item" href="/tags/#Ai系列" title="Ai系列"
         rel="2">#Ai系列 (2) </a>
+    
+    <a class="post-tag-item" href="/tags/#Go工厂模式" title="Go工厂模式"
+        rel="2">#Go工厂模式 (2) </a>
     
     <a class="post-tag-item" href="/tags/#Go单例模式" title="Go单例模式"
         rel="1">#Go单例模式 (1) </a>
@@ -659,7 +663,7 @@
             <span class="number">11</span><span>文章</span>
         </a>
         <a href="/series" class="col-xs-4 middle">
-            <span class="number">4</span><span>专题</span>
+            <span class="number">5</span><span>专题</span>
         </a>
         <a href="/tags" class="col-xs-4">
             <span class="number">4</span><span>标签</span>
@@ -681,6 +685,12 @@
             <ul>
                 
                 <li>
+                    <a href="/post/php-base.html"
+                        class="">PHP基础系列</a>
+                    
+                </li>
+                
+                <li>
                     <a href="/post/php-base-version8.2.html"
                         class="">php8.2新特性</a>
                     
@@ -695,7 +705,7 @@
   <!-- TOC  -->
   
   
-  <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%AF%B9%E8%B1%A1%E8%B5%8B%E5%80%BC%E5%9C%A8PHP%E4%B8%AD%E5%88%B0%E5%BA%95%E6%98%AF%E4%B8%8D%E6%98%AF%E5%BC%95%E7%94%A8"><span class="toc-nav-text">对象赋值在PHP中到底是不是引用</span></a></li></ol>
+  
   
 </div>
 
@@ -740,12 +750,6 @@
                 <li>
                     <a href="/post/php-base-version8.3.html"
                         class="">php8.3新特性</a>
-                    
-                </li>
-                
-                <li>
-                    <a href="/post/php-base.html"
-                        class="">PHP基础系列</a>
                     
                 </li>
                 
@@ -949,23 +953,10 @@
         </small>
     </p>
     
-    <p>
-        <small>
-            <span id="busuanzi_container_site_pv">👁<span id="busuanzi_value_site_pv"></span></span> &nbsp;
-            <span id="busuanzi_container_page_pv">📚<span id="busuanzi_value_page_pv"></span></span>
-        </small>
-    </p>
-    
     
 
 </footer>
 
-
-<script>
-    window.addEventListener('load', function () {
-        globalAddScript('//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js');
-    })
-</script>
 
 <!-- Baidu Tongji -->
 
@@ -977,18 +968,6 @@
 </script>
 
 
-
-<!-- baidu auto push for seo -->
-<script>
-    window.addEventListener('load', function () {
-        var src = 'http://push.zhanzhang.baidu.com/push.js'
-        var curProtocol = window.location.protocol.split(':')[0];
-        if (curProtocol === 'https') {
-            src = 'https://zz.bdstatic.com/linksubmit/push.js';
-        }
-        globalAddScript(src);
-    })
-</script>
 
 
 <!-- Global site tag (gtag.js) - Google Analytics -->
