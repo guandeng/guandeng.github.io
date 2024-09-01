@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0"
+  xmlns:atom="http://www.w3.org/2005/Atom"
+  xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Guandeng</title>
+    <link>https://geektutu.com/</link>
+    
+    <image>
+      <url>https://geektutu.com/img/icon.jpg</url>
+      <title>Guandeng</title>
+      <link>https://geektutu.com/</link>
+    </image>
+    
+    <atom:link href="https://geektutu.com/feed.xml" rel="self" type="application/rss+xml"/>
+    
+    <description>Guandeng的博客，致力于分享一些技术教程和有趣的技术实践，包括但不限于 Go 语言/golang, Python</description>
+    <pubDate>Sun, 01 Sep 2024 13:49:39 GMT</pubDate>
+    <generator>http://hexo.io/</generator>
+    
+    <item>
+      <title>PHP系列 - 基础</title>
+      <link>https://geektutu.com/post/php-base-version8.4.html</link>
+      <guid>https://geektutu.com/post/php-base-version8.4.html</guid>
+      <pubDate>Thu, 01 Aug 2024 00:00:00 GMT</pubDate>
+      
+      <description>PHP系列 - php8.4</description>
+      
+      
+      <enclosure url="https://geektutu.com/post/design/colorhunt.jpg" type="image"/>
+      
+      
+      
+      <category domain="https://geektutu.com/categories/%E5%9F%BA%E7%A1%80/">基础</category>
+      
+      
+      <category domain="https://geektutu.com/tags/PHP/">PHP</category>
+      
+      
+      <comments>https://geektutu.com/post/php-base-version8.4.html#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>Ai系列 -</title>
+      <link>https://geektutu.com/post/ai.html</link>
+      <guid>https://geektutu.com/post/ai.html</guid>
+      <pubDate>Mon, 01 Jan 2024 17:00:10 GMT</pubDate>
+      
+      <description>Go系列 - ai</description>
+      
+      
+      <enclosure url="https://geektutu.com/post/design/colorhunt.jpg" type="image"/>
+      
+      
+      
+      <category domain="https://geektutu.com/categories/%E5%B7%A5%E5%85%B7/">工具</category>
+      
+      
+      <category domain="https://geektutu.com/tags/Ai%E7%B3%BB%E5%88%97/">Ai系列</category>
+      
+      
+      <comments>https://geektutu.com/post/ai.html#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>Go系列 - 单例模式</title>
+      <link>https://geektutu.com/post/go-design-singleton.html</link>
+      <guid>https://geektutu.com/post/go-design-singleton.html</guid>
+      <pubDate>Mon, 01 Jan 2024 17:00:10 GMT</pubDate>
+      
+      <description>Go系列 - 单例模式</description>
+      
+      
+      <enclosure url="https://geektutu.com/post/design/colorhunt.jpg" type="image"/>
+      
+      
+      
+      <category domain="https://geektutu.com/categories/%E5%B7%A5%E5%85%B7/">工具</category>
+      
+      
+      <category domain="https://geektutu.com/tags/Go%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/">Go单例模式</category>
+      
+      
+      <comments>https://geektutu.com/post/go-design-singleton.html#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>Go系列 - Go工厂模式</title>
+      <link>https://geektutu.com/post/go-design-factory.html</link>
+      <guid>https://geektutu.com/post/go-design-factory.html</guid>
+      <pubDate>Mon, 01 Jan 2024 17:00:10 GMT</pubDate>
+      
+      <description>Go系列 - 工厂模式</description>
+      
+      
+      <enclosure url="https://geektutu.com/post/design/colorhunt.jpg" type="image"/>
+      
+      
+      
+      <category domain="https://geektutu.com/categories/%E5%B7%A5%E5%85%B7/">工具</category>
+      
+      
+      <category domain="https://geektutu.com/tags/Go%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/">Go工厂模式</category>
+      
+      
+      <comments>https://geektutu.com/post/go-design-factory.html#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>对象赋值是否属于引用 - 基础</title>
+      <link>https://geektutu.com/post/php-base-object.html</link>
+      <guid>https://geektutu.com/post/php-base-object.html</guid>
+      <pubDate>Sat, 02 Dec 2023 00:00:00 GMT</pubDate>
+      
+      <description>PHP系列 - 工厂模式</description>
+      
+      
+      <enclosure url="https://geektutu.com/post/design/colorhunt.jpg" type="image"/>
+      
+      
+      
+      <category domain="https://geektutu.com/categories/%E5%9F%BA%E7%A1%80/">基础</category>
+      
+      
+      <category domain="https://geektutu.com/tags/PHP/">PHP</category>
+      
+      
+      <comments>https://geektutu.com/post/php-base-object.html#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>PHP系列 - 基础</title>
+      <link>https://geektutu.com/post/php-base-version8.3.html</link>
+      <guid>https://geektutu.com/post/php-base-version8.3.html</guid>
+      <pubDate>Sat, 02 Dec 2023 00:00:00 GMT</pubDate>
+      
+      <description>PHP系列 - 工厂模式</description>
+      
+      
+      <enclosure url="https://geektutu.com/post/design/colorhunt.jpg" type="image"/>
+      
+      
+      
+      <category domain="https://geektutu.com/categories/%E5%9F%BA%E7%A1%80/">基础</category>
+      
+      
+      <category domain="https://geektutu.com/tags/PHP/">PHP</category>
+      
+      
+      <comments>https://geektutu.com/post/php-base-version8.3.html#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>PHP系列 - 基础</title>
+      <link>https://geektutu.com/post/php-base-version8.2.html</link>
+      <guid>https://geektutu.com/post/php-base-version8.2.html</guid>
+      <pubDate>Thu, 02 Feb 2023 00:00:00 GMT</pubDate>
+      
+      <description>PHP系列 - php8.2新特性</description>
+      
+      
+      <enclosure url="https://geektutu.com/post/design/colorhunt.jpg" type="image"/>
+      
+      
+      
+      <category domain="https://geektutu.com/categories/%E5%9F%BA%E7%A1%80/">基础</category>
+      
+      
+      <category domain="https://geektutu.com/tags/PHP/">PHP</category>
+      
+      
+      <comments>https://geektutu.com/post/php-base-version8.2.html#disqus_thread</comments>
+      
+    </item>
+    
+  </channel>
+</rss>
