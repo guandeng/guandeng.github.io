@@ -15,11 +15,11 @@
     <atom:link href="https://guandeng.github.io/feed.xml" rel="self" type="application/rss+xml"/>
     
     <description>Guandeng的博客，致力于分享一些技术教程和有趣的技术实践，包括但不限于 Go 语言/golang, Python</description>
-    <pubDate>Sun, 01 Sep 2024 13:49:39 GMT</pubDate>
+    <pubDate>Sun, 01 Sep 2024 14:13:12 GMT</pubDate>
     <generator>http://hexo.io/</generator>
     
     <item>
-      <title>PHP系列 - 基础</title>
+      <title>php8.4新特性</title>
       <link>https://guandeng.github.io/post/php-base-version8.4.html</link>
       <guid>https://guandeng.github.io/post/php-base-version8.4.html</guid>
       <pubDate>Thu, 01 Aug 2024 00:00:00 GMT</pubDate>
@@ -111,6 +111,29 @@
     </item>
     
     <item>
+      <title>php8.2新特性</title>
+      <link>https://guandeng.github.io/post/php-base-version8.3.html</link>
+      <guid>https://guandeng.github.io/post/php-base-version8.3.html</guid>
+      <pubDate>Sat, 02 Dec 2023 00:00:00 GMT</pubDate>
+      
+      <description>PHP系列 - 工厂模式</description>
+      
+      
+      <enclosure url="https://guandeng.github.io/post/design/colorhunt.jpg" type="image"/>
+      
+      
+      
+      <category domain="https://guandeng.github.io/categories/%E5%9F%BA%E7%A1%80/">基础</category>
+      
+      
+      <category domain="https://guandeng.github.io/tags/PHP/">PHP</category>
+      
+      
+      <comments>https://guandeng.github.io/post/php-base-version8.3.html#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
       <title>对象赋值是否属于引用 - 基础</title>
       <link>https://guandeng.github.io/post/php-base-object.html</link>
       <guid>https://guandeng.github.io/post/php-base-object.html</guid>
@@ -134,30 +157,7 @@
     </item>
     
     <item>
-      <title>PHP系列 - 基础</title>
-      <link>https://guandeng.github.io/post/php-base-version8.3.html</link>
-      <guid>https://guandeng.github.io/post/php-base-version8.3.html</guid>
-      <pubDate>Sat, 02 Dec 2023 00:00:00 GMT</pubDate>
-      
-      <description>PHP系列 - 工厂模式</description>
-      
-      
-      <enclosure url="https://guandeng.github.io/post/design/colorhunt.jpg" type="image"/>
-      
-      
-      
-      <category domain="https://guandeng.github.io/categories/%E5%9F%BA%E7%A1%80/">基础</category>
-      
-      
-      <category domain="https://guandeng.github.io/tags/PHP/">PHP</category>
-      
-      
-      <comments>https://guandeng.github.io/post/php-base-version8.3.html#disqus_thread</comments>
-      
-    </item>
-    
-    <item>
-      <title>PHP系列 - 基础</title>
+      <title>php8.2新特性</title>
       <link>https://guandeng.github.io/post/php-base-version8.2.html</link>
       <guid>https://guandeng.github.io/post/php-base-version8.2.html</guid>
       <pubDate>Thu, 02 Feb 2023 00:00:00 GMT</pubDate>
