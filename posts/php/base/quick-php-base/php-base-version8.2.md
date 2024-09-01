@@ -1,18 +1,17 @@
 ---
-title: PHP系列 - 基础
+title: php8.2新特性
 date: 2023-02-02 08:00:00
 description: PHP系列 - php8.2新特性
 tags:
 - PHP
 nav: PHP系列
 categories:
-- 基础
+- PHP基础
 keywords:
 - PHP系列
-- Php新版本、PHP8.3
+- Php新版本、PHP8.2
 image: post/design/colorhunt.jpg
 ---
-
 ## 移除动态属性
 动态特性的一个很好的例子是动态属性。允许在任何对象上设置类中不存在的属性
 ```php

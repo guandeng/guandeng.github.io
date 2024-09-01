@@ -1,12 +1,12 @@
 ---
-title: PHP系列 - 基础
+title: php8.4新特性
 date: 2024-08-01 08:00:00
 description: PHP系列 - php8.4
 tags:
 - PHP
 nav: PHP系列
 categories:
-- 基础
+- PHP基础
 keywords:
 - PHP系列
 - Php新版本、php8.4

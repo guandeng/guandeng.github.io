@@ -1,12 +1,12 @@
 ---
-title: PHP系列 - 基础
+title: php8.3新特性
 date: 2023-12-02 08:00:00
 description: PHP系列 - 工厂模式
 tags:
 - PHP
 nav: PHP系列
 categories:
-- 基础
+- PHP基础
 keywords:
 - PHP系列
 - Php新版本、PHP8.3

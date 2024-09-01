@@ -8,7 +8,7 @@ description: Guandeng的博客，致力于分享一些技术教程和有趣的�
 author: Guandeng
 language: zh-CN
 
-url: https://geektutu.com	
+url: https://guandeng.github.io
 root: /
 permalink: post/:title.html
 
