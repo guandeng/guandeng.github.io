@@ -111,29 +111,6 @@
     </item>
     
     <item>
-      <title>php8.2新特性</title>
-      <link>https://guandeng.github.io/post/php-base-version8.3.html</link>
-      <guid>https://guandeng.github.io/post/php-base-version8.3.html</guid>
-      <pubDate>Sat, 02 Dec 2023 00:00:00 GMT</pubDate>
-      
-      <description>PHP系列 - 工厂模式</description>
-      
-      
-      <enclosure url="https://guandeng.github.io/post/design/colorhunt.jpg" type="image"/>
-      
-      
-      
-      <category domain="https://guandeng.github.io/categories/%E5%9F%BA%E7%A1%80/">基础</category>
-      
-      
-      <category domain="https://guandeng.github.io/tags/PHP/">PHP</category>
-      
-      
-      <comments>https://guandeng.github.io/post/php-base-version8.3.html#disqus_thread</comments>
-      
-    </item>
-    
-    <item>
       <title>对象赋值是否属于引用 - 基础</title>
       <link>https://guandeng.github.io/post/php-base-object.html</link>
       <guid>https://guandeng.github.io/post/php-base-object.html</guid>
@@ -153,6 +130,29 @@
       
       
       <comments>https://guandeng.github.io/post/php-base-object.html#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>php8.2新特性</title>
+      <link>https://guandeng.github.io/post/php-base-version8.3.html</link>
+      <guid>https://guandeng.github.io/post/php-base-version8.3.html</guid>
+      <pubDate>Sat, 02 Dec 2023 00:00:00 GMT</pubDate>
+      
+      <description>PHP系列 - 工厂模式</description>
+      
+      
+      <enclosure url="https://guandeng.github.io/post/design/colorhunt.jpg" type="image"/>
+      
+      
+      
+      <category domain="https://guandeng.github.io/categories/%E5%9F%BA%E7%A1%80/">基础</category>
+      
+      
+      <category domain="https://guandeng.github.io/tags/PHP/">PHP</category>
+      
+      
+      <comments>https://guandeng.github.io/post/php-base-version8.3.html#disqus_thread</comments>
       
     </item>
     
