@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://guandeng.github.io/post/go-base.html</loc>
+    
+    <lastmod>2024-09-01</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://guandeng.github.io/post/php-base-version8.4.html</loc>
     
     <lastmod>2024-09-01</lastmod>
@@ -23,6 +30,34 @@
   </url>
   
   <url>
+    <loc>https://guandeng.github.io/post/php-base-object.html</loc>
+    
+    <lastmod>2024-09-01</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://guandeng.github.io/post/php-base.html</loc>
+    
+    <lastmod>2024-09-01</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://guandeng.github.io/post/php-advanced.html</loc>
+    
+    <lastmod>2024-09-01</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://guandeng.github.io/post/quick-ai.html</loc>
+    
+    <lastmod>2024-09-01</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://guandeng.github.io/series/index.html</loc>
     
     <lastmod>2024-09-01</lastmod>
@@ -38,13 +73,6 @@
   
   <url>
     <loc>https://guandeng.github.io/archives/index.html</loc>
-    
-    <lastmod>2024-09-01</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://guandeng.github.io/post/php-base-object.html</loc>
     
     <lastmod>2024-09-01</lastmod>
     
@@ -95,14 +123,14 @@
 
   
   <url>
-    <loc>https://guandeng.github.io/tags/Ai%E7%B3%BB%E5%88%97/</loc>
+    <loc>https://guandeng.github.io/tags/Go%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/</loc>
     <lastmod>2024-09-01</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://guandeng.github.io/tags/Go%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/</loc>
+    <loc>https://guandeng.github.io/tags/Ai%E7%B3%BB%E5%88%97/</loc>
     <lastmod>2024-09-01</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -125,6 +153,13 @@
 
   
   <url>
+    <loc>https://guandeng.github.io/categories/Go%E5%9F%BA%E7%A1%80/</loc>
+    <lastmod>2024-09-01</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://guandeng.github.io/categories/%E5%B7%A5%E5%85%B7/</loc>
     <lastmod>2024-09-01</lastmod>
     <changefreq>daily</changefreq>
@@ -132,7 +167,14 @@
   </url>
   
   <url>
-    <loc>https://guandeng.github.io/categories/%E5%9F%BA%E7%A1%80/</loc>
+    <loc>https://guandeng.github.io/categories/PHP%E5%9F%BA%E7%A1%80/</loc>
+    <lastmod>2024-09-01</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://guandeng.github.io/categories/PHP%E8%BF%9B%E9%98%B6/</loc>
     <lastmod>2024-09-01</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>

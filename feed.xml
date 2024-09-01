@@ -15,7 +15,7 @@
     <atom:link href="https://guandeng.github.io/feed.xml" rel="self" type="application/rss+xml"/>
     
     <description>Guandeng的博客，致力于分享一些技术教程和有趣的技术实践，包括但不限于 Go 语言/golang, Python</description>
-    <pubDate>Sun, 01 Sep 2024 14:13:12 GMT</pubDate>
+    <pubDate>Sun, 01 Sep 2024 14:48:47 GMT</pubDate>
     <generator>http://hexo.io/</generator>
     
     <item>
@@ -31,13 +31,36 @@
       
       
       
-      <category domain="https://guandeng.github.io/categories/%E5%9F%BA%E7%A1%80/">基础</category>
+      <category domain="https://guandeng.github.io/categories/PHP%E5%9F%BA%E7%A1%80/">PHP基础</category>
       
       
       <category domain="https://guandeng.github.io/tags/PHP/">PHP</category>
       
       
       <comments>https://guandeng.github.io/post/php-base-version8.4.html#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>Go工厂模式-工厂模式</title>
+      <link>https://guandeng.github.io/post/go-base.html</link>
+      <guid>https://guandeng.github.io/post/go-base.html</guid>
+      <pubDate>Mon, 01 Jan 2024 17:00:10 GMT</pubDate>
+      
+      <description>Go系列 - 工厂模式</description>
+      
+      
+      <enclosure url="https://guandeng.github.io/post/design/colorhunt.jpg" type="image"/>
+      
+      
+      
+      <category domain="https://guandeng.github.io/categories/Go%E5%9F%BA%E7%A1%80/">Go基础</category>
+      
+      
+      <category domain="https://guandeng.github.io/tags/Go%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/">Go工厂模式</category>
+      
+      
+      <comments>https://guandeng.github.io/post/go-base.html#disqus_thread</comments>
       
     </item>
     
@@ -111,7 +134,30 @@
     </item>
     
     <item>
-      <title>对象赋值是否属于引用 - 基础</title>
+      <title>Ai系列</title>
+      <link>https://guandeng.github.io/post/quick-ai.html</link>
+      <guid>https://guandeng.github.io/post/quick-ai.html</guid>
+      <pubDate>Mon, 01 Jan 2024 17:00:10 GMT</pubDate>
+      
+      <description>Go系列 - ai</description>
+      
+      
+      <enclosure url="https://guandeng.github.io/post/design/colorhunt.jpg" type="image"/>
+      
+      
+      
+      <category domain="https://guandeng.github.io/categories/%E5%B7%A5%E5%85%B7/">工具</category>
+      
+      
+      <category domain="https://guandeng.github.io/tags/Ai%E7%B3%BB%E5%88%97/">Ai系列</category>
+      
+      
+      <comments>https://guandeng.github.io/post/quick-ai.html#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>对象赋值是否属于引用</title>
       <link>https://guandeng.github.io/post/php-base-object.html</link>
       <guid>https://guandeng.github.io/post/php-base-object.html</guid>
       <pubDate>Sat, 02 Dec 2023 00:00:00 GMT</pubDate>
@@ -123,7 +169,7 @@
       
       
       
-      <category domain="https://guandeng.github.io/categories/%E5%9F%BA%E7%A1%80/">基础</category>
+      <category domain="https://guandeng.github.io/categories/PHP%E5%9F%BA%E7%A1%80/">PHP基础</category>
       
       
       <category domain="https://guandeng.github.io/tags/PHP/">PHP</category>
@@ -134,7 +180,7 @@
     </item>
     
     <item>
-      <title>php8.2新特性</title>
+      <title>php8.3新特性</title>
       <link>https://guandeng.github.io/post/php-base-version8.3.html</link>
       <guid>https://guandeng.github.io/post/php-base-version8.3.html</guid>
       <pubDate>Sat, 02 Dec 2023 00:00:00 GMT</pubDate>
@@ -146,13 +192,59 @@
       
       
       
-      <category domain="https://guandeng.github.io/categories/%E5%9F%BA%E7%A1%80/">基础</category>
+      <category domain="https://guandeng.github.io/categories/PHP%E5%9F%BA%E7%A1%80/">PHP基础</category>
       
       
       <category domain="https://guandeng.github.io/tags/PHP/">PHP</category>
       
       
       <comments>https://guandeng.github.io/post/php-base-version8.3.html#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>PHP基础系列</title>
+      <link>https://guandeng.github.io/post/php-base.html</link>
+      <guid>https://guandeng.github.io/post/php-base.html</guid>
+      <pubDate>Sat, 02 Dec 2023 00:00:00 GMT</pubDate>
+      
+      <description>PHP系列 - 工厂模式</description>
+      
+      
+      <enclosure url="https://guandeng.github.io/post/design/colorhunt.jpg" type="image"/>
+      
+      
+      
+      <category domain="https://guandeng.github.io/categories/PHP%E5%9F%BA%E7%A1%80/">PHP基础</category>
+      
+      
+      <category domain="https://guandeng.github.io/tags/PHP/">PHP</category>
+      
+      
+      <comments>https://guandeng.github.io/post/php-base.html#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>PHP进阶</title>
+      <link>https://guandeng.github.io/post/php-advanced.html</link>
+      <guid>https://guandeng.github.io/post/php-advanced.html</guid>
+      <pubDate>Sat, 02 Dec 2023 00:00:00 GMT</pubDate>
+      
+      <description>PHP系列 - 工厂模式</description>
+      
+      
+      <enclosure url="https://guandeng.github.io/post/design/colorhunt.jpg" type="image"/>
+      
+      
+      
+      <category domain="https://guandeng.github.io/categories/PHP%E8%BF%9B%E9%98%B6/">PHP进阶</category>
+      
+      
+      <category domain="https://guandeng.github.io/tags/PHP/">PHP</category>
+      
+      
+      <comments>https://guandeng.github.io/post/php-advanced.html#disqus_thread</comments>
       
     </item>
     
@@ -169,7 +261,7 @@
       
       
       
-      <category domain="https://guandeng.github.io/categories/%E5%9F%BA%E7%A1%80/">基础</category>
+      <category domain="https://guandeng.github.io/categories/PHP%E5%9F%BA%E7%A1%80/">PHP基础</category>
       
       
       <category domain="https://guandeng.github.io/tags/PHP/">PHP</category>
