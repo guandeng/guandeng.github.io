@@ -2,7 +2,10 @@
 
 # 启动
 # 1. 启动
-> hexo s
+> yarn start
 
 # 2. 生成静态文件
-> hexo g
+> yarn build
+
+# 3. 发布github
+> yarn deploy

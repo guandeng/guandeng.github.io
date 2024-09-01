@@ -1,14 +1,14 @@
 ---
-title: Php系列 - 基础
+title: PHP系列 - 基础
 date: 2023-12-02 08:00:00
-description: Php系列 - 工厂模式
+description: PHP系列 - 工厂模式
 tags:
 - PHP
-nav: Php系列
+nav: PHP系列
 categories:
 - 基础
 keywords:
-- Php系列
+- PHP系列
 - Php新版本、PHP8.3
 image: post/design/colorhunt.jpg
 ---

@@ -1,14 +1,14 @@
 ---
-title: Php系列 - 基础
+title: PHP系列 - 基础
 date: 2024-08-01 08:00:00
-description: Php系列 - php8.4
+description: PHP系列 - php8.4
 tags:
 - PHP
-nav: Php系列
+nav: PHP系列
 categories:
 - 基础
 keywords:
-- Php系列
+- PHP系列
 - Php新版本、php8.4
 image: post/design/colorhunt.jpg
 ---

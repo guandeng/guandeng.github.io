@@ -2,21 +2,33 @@
 ## Docs: https://hexo.io/docs/configuration.html
 
 # Site
-title: Guandeng's Blog
-keyword: Guandeng's Blog
-description: Guandeng's Blog，致力于分享一些技术教程和有趣的技术实践。
+title: Guandeng
+keyword: Php,golang,python
+description: Guandeng的博客，致力于分享一些技术教程和有趣的技术实践，包括但不限于 Go 语言/golang, Python
 author: Guandeng
 language: zh-CN
 
-url: https://guandeng.github.io
+url: https://geektutu.com	
 root: /
 permalink: post/:title.html
 
+# seo优化各个浏览器的验证信息
+beian: 沪ICP备18001798号-1
+seo_title: Guandeng # 子页面的后缀，效果： 关于我 | Guandeng，如果与title一致，则可以不设置
+seo:
+  google_site_verification: X31OY0d2sKImNbS2x8-OpITWRK4nn7nZCcXe3_hA9ew
+  baidu_site_verification: p7Pz3jlx4t
+  ms_site_verification: 7E2AEE3378AC93764DEAB411177A21A1
+  _360_site_verification: 1d1e81a1a48a1ed2e3308d7cb8e548e7 # 不能以数字开头，所以加上了下划线
+
 # 开启博客资源的相对链接 https://hexo.io/zh-cn/docs/asset-folders
-post_asset_folder: true
+post_asset_folder: true 
+skip_render:
+  - tool/comments.json
+  - lab/**/*
 
 # Site settings
-header_icon: img/icon.png
+header_icon: img/icon.jpg
 
 theme: geektutu
 
@@ -27,15 +39,51 @@ deploy:
   repository: https://github.com/guandeng/guandeng.github.io.git
   branch: coding-pages
 
+gitalk:
+  client_id: 'c1fdd456a4caae5f7df0'
+  client_secret: 'b2674451e21feae50520f99337ec15d2aebe7879'
+  accessToken: '513dc2f1e6df8c07a12fbf1547874f54679d9712'
+  repo: 'blog'
+  owner: 'guandeng'
+
+# alipay wechatpay 的二维码转换的网址，不使用二维码图片，提高加载速率。
+reward:
+  alipay: HTTPS://QR.ALIPAY.COM/FKX060337TUXBAX9LIFJE8
+  wechat: wxp://f2f0qgGBlfD1nZXjvBjievxB0z0fc0W2sBq5
+
+related_links:
+- link: https://github.com/guandeng
+  img: img/related_links/github.png
+  name: Github
+
+# 文章末尾配置一些提示信息，可选，默认关闭
+post_tips:
+  find_me: true # 本站永久域名「 xx.domain 」， 也可以通过搜索「 xx 」找到我。
+
+widgets:
+  caidan: false  # 开启彩蛋，点击屏幕会随机弹出 '点个赞','留个言'等
+  busuanzi: true # 开启不蒜子统计 https://busuanzi.ibruce.info/
+
+# 自定义推广链接：宽度250，高度不限。
+# custom_ads:
+# - link: https://s.click.taobao.com/0ZEThqv
+#   img: https://img.alicdn.com/tfs/TB1QJC6dOrpK1RjSZFhXXXSdXXa-300-100.jpg
+# - link: https://url.cn/5bE04oI
+#   img: https://s2.ax1x.com/2020/02/12/1bns2D.jpg
+
+
+ba_auto_push: true # Baidu 自动推送，以下均为可选配置
+ba_track_id: 1a0ec38c52c08db815b0046c2783b1aa # Baidu Analytics
+google_analysis: UA-142641425-1 # Google Analytics
+
 feed:
   enable: true
   limit: 0
   type: rss2
   content: false
   path: feed.xml
-  icon: img/icon.png
-  
-widgets:
-  mobile_qrcode: false # 开启移动端二维码，扫一扫，手机上阅读
-  caidan: true  # 开启彩蛋，点击屏幕会随机弹出 '点个赞','留个言'等
-  busuanzi: true # 开启不蒜子统计 https://busuanzi.ibruce.info/
+  icon: img/icon.jpg
+
+index_rec:
+- link: https://guandeng.com/post/gee.html
+  name: 📘 七天用 Go 从零实现
