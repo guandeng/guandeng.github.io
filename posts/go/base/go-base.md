@@ -1,6 +1,6 @@
 ---
 title: Go工厂模式-工厂模式
-date: 2024-01-02 01:00:10
+date: 2024-01-02
 description: Go系列 - 工厂模式
 tags:
 - Go工厂模式
