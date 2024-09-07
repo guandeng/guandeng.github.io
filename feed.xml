@@ -15,14 +15,37 @@
     <atom:link href="https://guandeng.github.io/feed.xml" rel="self" type="application/rss+xml"/>
     
     <description>Guandeng的博客，致力于分享一些技术教程和有趣的技术实践，包括但不限于 Go 语言/golang, Python</description>
-    <pubDate>Sun, 01 Sep 2024 14:48:47 GMT</pubDate>
+    <pubDate>Sun, 01 Sep 2024 15:17:31 GMT</pubDate>
     <generator>http://hexo.io/</generator>
+    
+    <item>
+      <title>AI进阶系列</title>
+      <link>https://guandeng.github.io/post/advance.html</link>
+      <guid>https://guandeng.github.io/post/advance.html</guid>
+      <pubDate>Fri, 30 Aug 2024 16:00:00 GMT</pubDate>
+      
+      <description>Go系列 - ai</description>
+      
+      
+      <enclosure url="https://guandeng.github.io/post/design/colorhunt.jpg" type="image"/>
+      
+      
+      
+      <category domain="https://guandeng.github.io/categories/AI%E8%BF%9B%E9%98%B6/">AI进阶</category>
+      
+      
+      <category domain="https://guandeng.github.io/tags/Ai%E7%B3%BB%E5%88%97/">Ai系列</category>
+      
+      
+      <comments>https://guandeng.github.io/post/advance.html#disqus_thread</comments>
+      
+    </item>
     
     <item>
       <title>php8.4新特性</title>
       <link>https://guandeng.github.io/post/php-base-version8.4.html</link>
       <guid>https://guandeng.github.io/post/php-base-version8.4.html</guid>
-      <pubDate>Thu, 01 Aug 2024 00:00:00 GMT</pubDate>
+      <pubDate>Wed, 31 Jul 2024 16:00:00 GMT</pubDate>
       
       <description>PHP系列 - php8.4</description>
       
@@ -42,10 +65,10 @@
     </item>
     
     <item>
-      <title>Ai系列 -</title>
-      <link>https://guandeng.github.io/post/ai.html</link>
-      <guid>https://guandeng.github.io/post/ai.html</guid>
-      <pubDate>Mon, 01 Jan 2024 17:00:10 GMT</pubDate>
+      <title>提示词工程</title>
+      <link>https://guandeng.github.io/post/prompt.html</link>
+      <guid>https://guandeng.github.io/post/prompt.html</guid>
+      <pubDate>Wed, 31 Jul 2024 16:00:00 GMT</pubDate>
       
       <description>Go系列 - ai</description>
       
@@ -54,13 +77,36 @@
       
       
       
-      <category domain="https://guandeng.github.io/categories/%E5%B7%A5%E5%85%B7/">工具</category>
+      <category domain="https://guandeng.github.io/categories/AI%E5%9F%BA%E7%A1%80/">AI基础</category>
       
       
       <category domain="https://guandeng.github.io/tags/Ai%E7%B3%BB%E5%88%97/">Ai系列</category>
       
       
-      <comments>https://guandeng.github.io/post/ai.html#disqus_thread</comments>
+      <comments>https://guandeng.github.io/post/prompt.html#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>AI基础</title>
+      <link>https://guandeng.github.io/post/quick-base-ai.html</link>
+      <guid>https://guandeng.github.io/post/quick-base-ai.html</guid>
+      <pubDate>Sun, 09 Jun 2024 16:00:00 GMT</pubDate>
+      
+      <description>Go系列 - ai</description>
+      
+      
+      <enclosure url="https://guandeng.github.io/post/design/colorhunt.jpg" type="image"/>
+      
+      
+      
+      <category domain="https://guandeng.github.io/categories/AI%E5%9F%BA%E7%A1%80/">AI基础</category>
+      
+      
+      <category domain="https://guandeng.github.io/tags/AI%E7%B3%BB%E5%88%97/">AI系列</category>
+      
+      
+      <comments>https://guandeng.github.io/post/quick-base-ai.html#disqus_thread</comments>
       
     </item>
     
@@ -68,7 +114,7 @@
       <title>Go工厂模式-工厂模式</title>
       <link>https://guandeng.github.io/post/go-base.html</link>
       <guid>https://guandeng.github.io/post/go-base.html</guid>
-      <pubDate>Mon, 01 Jan 2024 17:00:10 GMT</pubDate>
+      <pubDate>Mon, 01 Jan 2024 16:00:00 GMT</pubDate>
       
       <description>Go系列 - 工厂模式</description>
       
@@ -91,7 +137,7 @@
       <title>Go系列 - Go工厂模式</title>
       <link>https://guandeng.github.io/post/go-design-factory.html</link>
       <guid>https://guandeng.github.io/post/go-design-factory.html</guid>
-      <pubDate>Mon, 01 Jan 2024 17:00:10 GMT</pubDate>
+      <pubDate>Mon, 01 Jan 2024 16:00:00 GMT</pubDate>
       
       <description>Go系列 - 工厂模式</description>
       
@@ -114,7 +160,7 @@
       <title>Go系列 - 单例模式</title>
       <link>https://guandeng.github.io/post/go-design-singleton.html</link>
       <guid>https://guandeng.github.io/post/go-design-singleton.html</guid>
-      <pubDate>Mon, 01 Jan 2024 17:00:10 GMT</pubDate>
+      <pubDate>Mon, 01 Jan 2024 16:00:00 GMT</pubDate>
       
       <description>Go系列 - 单例模式</description>
       
@@ -123,7 +169,7 @@
       
       
       
-      <category domain="https://guandeng.github.io/categories/%E5%B7%A5%E5%85%B7/">工具</category>
+      <category domain="https://guandeng.github.io/categories/Go%E5%9F%BA%E7%A1%80/">Go基础</category>
       
       
       <category domain="https://guandeng.github.io/tags/Go%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/">Go单例模式</category>
@@ -134,33 +180,10 @@
     </item>
     
     <item>
-      <title>Ai系列</title>
-      <link>https://guandeng.github.io/post/quick-ai.html</link>
-      <guid>https://guandeng.github.io/post/quick-ai.html</guid>
-      <pubDate>Mon, 01 Jan 2024 17:00:10 GMT</pubDate>
-      
-      <description>Go系列 - ai</description>
-      
-      
-      <enclosure url="https://guandeng.github.io/post/design/colorhunt.jpg" type="image"/>
-      
-      
-      
-      <category domain="https://guandeng.github.io/categories/%E5%B7%A5%E5%85%B7/">工具</category>
-      
-      
-      <category domain="https://guandeng.github.io/tags/Ai%E7%B3%BB%E5%88%97/">Ai系列</category>
-      
-      
-      <comments>https://guandeng.github.io/post/quick-ai.html#disqus_thread</comments>
-      
-    </item>
-    
-    <item>
       <title>PHP进阶</title>
       <link>https://guandeng.github.io/post/php-advanced.html</link>
       <guid>https://guandeng.github.io/post/php-advanced.html</guid>
-      <pubDate>Sat, 02 Dec 2023 00:00:00 GMT</pubDate>
+      <pubDate>Fri, 01 Dec 2023 16:00:00 GMT</pubDate>
       
       <description>PHP系列 - 工厂模式</description>
       
@@ -183,7 +206,7 @@
       <title>对象赋值是否属于引用</title>
       <link>https://guandeng.github.io/post/php-base-object.html</link>
       <guid>https://guandeng.github.io/post/php-base-object.html</guid>
-      <pubDate>Sat, 02 Dec 2023 00:00:00 GMT</pubDate>
+      <pubDate>Fri, 01 Dec 2023 16:00:00 GMT</pubDate>
       
       <description>PHP系列 - 工厂模式</description>
       
@@ -206,7 +229,7 @@
       <title>php8.3新特性</title>
       <link>https://guandeng.github.io/post/php-base-version8.3.html</link>
       <guid>https://guandeng.github.io/post/php-base-version8.3.html</guid>
-      <pubDate>Sat, 02 Dec 2023 00:00:00 GMT</pubDate>
+      <pubDate>Fri, 01 Dec 2023 16:00:00 GMT</pubDate>
       
       <description>PHP系列 - 工厂模式</description>
       
@@ -226,10 +249,79 @@
     </item>
     
     <item>
+      <title>Mysql索引</title>
+      <link>https://guandeng.github.io/post/mysql-index.html</link>
+      <guid>https://guandeng.github.io/post/mysql-index.html</guid>
+      <pubDate>Tue, 14 Feb 2023 16:00:00 GMT</pubDate>
+      
+      <description>Mysql索引</description>
+      
+      
+      <enclosure url="https://guandeng.github.io/post/design/colorhunt.jpg" type="image"/>
+      
+      
+      
+      <category domain="https://guandeng.github.io/categories/Mysql%E7%B4%A2%E5%BC%95/">Mysql索引</category>
+      
+      
+      <category domain="https://guandeng.github.io/tags/Mysql/">Mysql</category>
+      
+      
+      <comments>https://guandeng.github.io/post/mysql-index.html#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>从一条select查询语句看Mysql的执行过程</title>
+      <link>https://guandeng.github.io/post/mysql-base-start.html</link>
+      <guid>https://guandeng.github.io/post/mysql-base-start.html</guid>
+      <pubDate>Wed, 01 Feb 2023 16:00:00 GMT</pubDate>
+      
+      <description>Mysql系列</description>
+      
+      
+      <enclosure url="https://guandeng.github.io/post/imgs/mysql%E6%9F%A5%E8%AF%A2%E6%B5%81%E7%A8%8B.png" type="image"/>
+      
+      
+      
+      <category domain="https://guandeng.github.io/categories/Mysql%E5%9F%BA%E7%A1%80/">Mysql基础</category>
+      
+      
+      <category domain="https://guandeng.github.io/tags/Mysql/">Mysql</category>
+      
+      
+      <comments>https://guandeng.github.io/post/mysql-base-start.html#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>Mysql基础系列</title>
+      <link>https://guandeng.github.io/post/mysql-base.html</link>
+      <guid>https://guandeng.github.io/post/mysql-base.html</guid>
+      <pubDate>Wed, 01 Feb 2023 16:00:00 GMT</pubDate>
+      
+      <description>Mysql系列</description>
+      
+      
+      <enclosure url="https://guandeng.github.io/post/design/colorhunt.jpg" type="image"/>
+      
+      
+      
+      <category domain="https://guandeng.github.io/categories/Mysql%E5%9F%BA%E7%A1%80/">Mysql基础</category>
+      
+      
+      <category domain="https://guandeng.github.io/tags/Mysql/">Mysql</category>
+      
+      
+      <comments>https://guandeng.github.io/post/mysql-base.html#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
       <title>php8.2新特性</title>
       <link>https://guandeng.github.io/post/php-base-version8.2.html</link>
       <guid>https://guandeng.github.io/post/php-base-version8.2.html</guid>
-      <pubDate>Thu, 02 Feb 2023 00:00:00 GMT</pubDate>
+      <pubDate>Wed, 01 Feb 2023 16:00:00 GMT</pubDate>
       
       <description>PHP系列 - php8.2新特性</description>
       
@@ -252,7 +344,7 @@
       <title>PHP基础系列</title>
       <link>https://guandeng.github.io/post/php-base.html</link>
       <guid>https://guandeng.github.io/post/php-base.html</guid>
-      <pubDate>Mon, 02 Jan 2023 00:00:00 GMT</pubDate>
+      <pubDate>Sun, 01 Jan 2023 16:00:00 GMT</pubDate>
       
       <description>PHP系列 - 工厂模式</description>
       

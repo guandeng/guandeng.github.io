@@ -15,17 +15,17 @@
   <!-- if page has tags, then add tags to keyword -->
   
   
-  <meta name="keywords" content="Php,golang,python,Ai系列,Ai系列,Ai系列">
+  <meta name="keywords" content="Php,golang,python,Mysql,Mysql系列">
   <!-- page.description has higher priority -->
-  <meta name="description" content="Go系列 - ai">
+  <meta name="description" content="Mysql系列">
   <link rel="shortcut icon" href="/img/icon.jpg">
   <title>
     
-    Ai系列 - | Guandeng
+    从一条select查询语句看Mysql的执行过程 | Guandeng
     
   </title>
 
-  <link rel="canonical" href="https://guandeng.github.io/post/ai.html">
+  <link rel="canonical" href="https://guandeng.github.io/post/mysql-base-start.html">
   
 <link rel="stylesheet" href="/css/geektutu.css">
 
@@ -100,7 +100,17 @@
                 </li>
                 
                 <li class="gkt-cate-name float-left active">
-                    <a class="float-left" href="/post/ai.html">Ai系列</a>
+                    <a class="float-left" href="/post/mysql-base-start.html">Mysql系列 ▾</a>
+                    
+                    <ul class="gkt-sub-cate">
+                        
+                        <li class="gkt-sub-cate-name active"><a class="float-left"
+                                href="/post/mysql-base-start.html">Mysql基础</a></li>
+                        
+                        <li class="gkt-sub-cate-name "><a class="float-left"
+                                href="/post/mysql-index.html">Mysql索引</a></li>
+                        
+                    </ul>
                     
                 </li>
                 
@@ -114,6 +124,21 @@
                         
                         <li class="gkt-sub-cate-name "><a class="float-left"
                                 href="/post/go-design-factory.html">Go系列</a></li>
+                        
+                    </ul>
+                    
+                </li>
+                
+                <li class="gkt-cate-name float-left ">
+                    <a class="float-left" href="/post/quick-base-ai.html">AI系列 ▾</a>
+                    
+                    <ul class="gkt-sub-cate">
+                        
+                        <li class="gkt-sub-cate-name "><a class="float-left"
+                                href="/post/quick-base-ai.html">AI基础</a></li>
+                        
+                        <li class="gkt-sub-cate-name "><a class="float-left"
+                                href="/post/advance.html">AI进阶</a></li>
                         
                     </ul>
                     
@@ -156,33 +181,28 @@
 <div class="float-left post-container box-shadow">
     <div class="u-arrow-wrapper hidden-xs">
         
-        <a class="float-left" href="/post/go-base.html"><i class="u-arrow-left"></i></a>
+        <a class="float-left" href="/post/mysql-base.html"><i class="u-arrow-left"></i></a>
         
         
-        <a class="float-right" href="/post/php-base-version8.4.html"><i class="u-arrow-right"></i></a>
+        <a class="float-right" href="/post/mysql-index.html"><i class="u-arrow-right"></i></a>
         
     </div>
     <article class="col-xs-12">
-        <h1> Ai系列 - </h1>
+        <h1> 从一条select查询语句看Mysql的执行过程 </h1>
         
         
         <div class="hidden-lg hidden-md series_links">
-            <p> <strong> 工具系列文章链接：</strong></p>
+            <p> <strong> Mysql基础系列文章链接：</strong></p>
             <ul>
                 
                 <li>
-                    <a href="/post/ai.html">Ai系列 -</a>
-                    <span class="post-item-date">(Jan 2, 2024)</span>
+                    <a href="/post/mysql-base-start.html">从一条select查询语句看Mysql的执行过程</a>
+                    <span class="post-item-date">(Feb 2, 2023)</span>
                 </li>
                 
                 <li>
-                    <a href="/post/go-design-singleton.html">Go系列 - 单例模式</a>
-                    <span class="post-item-date">(Jan 2, 2024)</span>
-                </li>
-                
-                <li>
-                    <a href="/post/quick-ai.html">Ai系列</a>
-                    <span class="post-item-date">(Jan 2, 2024)</span>
+                    <a href="/post/mysql-base.html">Mysql基础系列</a>
+                    <span class="post-item-date">(Feb 2, 2023)</span>
                 </li>
                 
             </ul>
@@ -190,7 +210,115 @@
         
         
         <div class="gkt-article-start"></div>
-        <h2 id="单例模式"><a href="#单例模式" class="headerlink" title="单例模式"></a>单例模式</h2>
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>作为curd boy，我们每天都要和数据库打交道，相信对下面的sql你一定很熟悉：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from user where id &#x3D; 1;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Mysql的查询流程"><a href="#Mysql的查询流程" class="headerlink" title="Mysql的查询流程"></a>Mysql的查询流程</h2><p><img src="imgs/mysql%E6%9F%A5%E8%AF%A2%E6%B5%81%E7%A8%8B.png" alt="mysql查询流程"></p>
+<p>从上面的流程图可以看出，Mysql的查询过程大致分为以下几个步骤：</p>
+<p>Server层：</p>
+<ul>
+<li>连接器：建立连接</li>
+<li>解析分析器：分析处理sql语句</li>
+<li>执行器：执行SQL语句</li>
+</ul>
+<p>存储引擎层：</p>
+<ul>
+<li>数据存储：支持Innodb、Myisam等存储引擎，InnoDB在最新版本起为默认存储引擎</li>
+<li>数据提取：根据条件遍历索引或数据页提取满足条件的数据（InnoDB引擎默认使用B+树索引）</li>
+</ul>
+<p>根据上面初步认知，我们来一步步分析下Mysql的查询过程。</p>
+<h2 id="第一步：连接器"><a href="#第一步：连接器" class="headerlink" title="第一步：连接器"></a>第一步：连接器</h2><p>这个概念非常容易理解，就是建立连接的过程，例如在终端使用如下。</p>
+<blockquote>
+<p>mysql -h$ip -u$user -p</p>
+</blockquote>
+<p>知识点如下：</p>
+<ul>
+<li>Mysql基于TCP协议进行通信，所以需要先建立TCP连接。</li>
+<li>查看当前客户端连接数，执行命令：<code>show processlist;</code>，同时该命令也可以用来排查前正在执行的sql，根据返回的ID，可以kill掉对应的进程。</li>
+</ul>
+<p>空闲连接是否一致占用</p>
+<ul>
+<li>Mysql控制空闲连接参数<code>wait_timeout</code>，默认是28800秒（8小时），如果超过该时间没有操作，则自动断开连接。</li>
+<li>如果需要长时间连接，可以设置<code>wait_timeout=0</code>，或者使用长连接。</li>
+</ul>
+<p>Mysql的连接数是否有限制</p>
+<ul>
+<li>Mysql控制连接数参数<code>max_connections</code>，默认是151个，超过该值，则拒绝连接，提示<code>Too many connections</code>。</li>
+<li>Mysql也有长连接和短连接的概念，这里推荐使用长连接，可以减少频繁建立连接和断开连接的开销。</li>
+</ul>
+<p>长连接如何解决占用内存问题</p>
+<ul>
+<li>定期释放长连接</li>
+<li>客户端主动断开连接，执行命令：<code>mysql_reset_connection</code>，通过该函数来释放内存效果，过程中不需要重新连接和重新做权限验证，但是会恢复到刚刚创建完时的状态。</li>
+</ul>
+<h2 id="第二步：查询缓存器"><a href="#第二步：查询缓存器" class="headerlink" title="第二步：查询缓存器"></a>第二步：查询缓存器</h2><p>  Mysql8.0之前，查询缓存器是默认开启的，但是从8.0开始，默认关闭了该功能。</p>
+<p>  知识点如下：</p>
+<ul>
+<li>开启查询缓存器，需要设置<code>query_cache_type</code>参数，设置为1或2，1表示开启，2表示开启且对select语句进行缓存。</li>
+<li>查询缓存器会占用一定的内存空间，可以通过<code>query_cache_size</code>参数控制大小。</li>
+<li>查询缓存器只支持select语句，不支持insert、update、delete等操作。 查询缓存器会根据sql语句和参数生成一个key值，如果命中缓</li>
+</ul>
+<h2 id="第三步：解析分析器"><a href="#第三步：解析分析器" class="headerlink" title="第三步：解析分析器"></a>第三步：解析分析器</h2><p>1、词法</p>
+<p>  根据输入字符串分析出关键字，例如<code>select name from user where id = 1</code>，关键字包括selec、from、where等。</p>
+<p>2、语法分析</p>
+<p>构建语法树，方便后续获取SQL类型和表名、列名等。<br><img src="imgs/%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90.png" alt="语法分析"><br>如果sql语句有语法错误，则解析分析器会报错。但是字段不存在或不对，并不是解析器判断，该判断是在预处理器过程中判断。</p>
+<h2 id="第四步：执行器"><a href="#第四步：执行器" class="headerlink" title="第四步：执行器"></a>第四步：执行器</h2><p>执行过程中三个阶段</p>
+<ul>
+<li>prepare: 预处理器，进行语法分析</li>
+<li>optimize: 优化器，根据索引选择最优方案</li>
+<li>execute: 执行器，执行查询</li>
+</ul>
+<h3 id="预处理器"><a href="#预处理器" class="headerlink" title="预处理器"></a>预处理器</h3><p>两件小事</p>
+<ul>
+<li>检查 SQL 查询语句中的表或者字段是否存在；</li>
+<li>将 <code>select *</code> 中的 <code>*</code> 符号，扩展为表上的所有列</li>
+</ul>
+<h3 id="优化器"><a href="#优化器" class="headerlink" title="优化器"></a>优化器</h3><p>优化器：为SQL 查询语句先制定一个执行计划，主要是基于查询成本，选择最优的执行方案，而不是简单用主键索引。</p>
+<p>通过explain命令查看执行计划，例如<code>explain select * from user where id = 1;</code><br><img src="imgs/%E9%80%89%E6%8B%A9%E7%B4%A2%E5%BC%95.png" alt="选择索引"><br>执行过程中使用了普通索引（name），Exta 为 Using index，这就是表明使用了覆盖索引优化（不需要回表），因为查询主键索引B+树成本比二级索引B+树成本大，优化器选择代价小普通索引。</p>
+<h3 id="执行器"><a href="#执行器" class="headerlink" title="执行器"></a>执行器</h3><p>执行器和存储引擎交互过程</p>
+<ul>
+<li>主键索引查询</li>
+<li>全表扫描</li>
+<li>索引下推</li>
+</ul>
+<p>主键索引查询</p>
+<ul>
+<li>访问类型const</li>
+<li>执行器查询的过程是一个 while 循环，所以还会再查一次，但是这次因为不是第一次查询了，所以会调用 read_record 函数指针指向的函数，因为优化器选择的访问类型为 const，这个函数指针被指向为一个永远返回 - 1 的函数，所以当调用该函数的时候，执行器就退出循环，也就是结束查询了。</li>
+</ul>
+<p>全表扫描</p>
+<blockquote>
+<p>select * from product where name = ‘iphone’;</p>
+</blockquote>
+<ul>
+<li>访问类型为all，执行器第一次查询，会调用 read_first_record 函数指针指向的函数，函数指针被指向为 InnoDB 引擎全扫描的接口，让存储引擎读取表中的第一条记录</li>
+<li>执行器会判断读到的这条记录的 name 是不是 iphone，如果不是则跳过；如果是则将记录发给客户的（是的没错，Server 层每从存储引擎读到一条记录就会发送给客户端，之所以客户端显示的时候是直接显示所有记录的，是因为客户端是等查询语句查询完成后，才会显示出所有的记录）。</li>
+<li>执行器查询的过程是一个 while 循环，所以还会再查一次，执行器收到存储引擎报告的查询完毕的信息，退出循环，停止查询。</li>
+</ul>
+<p>索引下推</p>
+<blockquote>
+<p>select * from t_user  where age &gt; 20 and reward = 100000;</p>
+</blockquote>
+<ul>
+<li>联合索引当遇到范围查询 (&gt;、&lt;) 就会停止匹配，也就是 age 字段能用到联合索引，但是 reward 字段则无法利用到索引</li>
+<li>Server 层首先调用存储引擎的接口定位到满足查询条件的第一条二级索引记录，也就是定位到 age &gt; 20 的第一条记录；</li>
+<li>存储引擎定位到二级索引后，先不执行回表操作，而是先判断一下该索引中包含的列（reward列）的条件（reward 是否等于 100000）是否成立。如果条件不成立，则直接跳过该二级索引。如果成立，则执行回表操作，将完成记录返回给 Server 层。</li>
+<li>Server 层在判断其他的查询条件（本次查询没有其他条件）是否成立，如果成立则将其发送给客户端；否则跳过该记录，然后向存储引擎索要下一条记录。</li>
+<li>如此往复，直到存储引擎把表中的所有记录读完。</li>
+</ul>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>Mysql的执行过程</p>
+<ul>
+<li>连接器：建立连接，管理连接、校验用户身份；</li>
+<li>查询缓存：查询语句如果命中查询缓存则直接返回，否则继续往下执行。MySQL 8.0 已删除该模块；</li>
+<li>解析 SQL，通过解析器对 SQL 查询语句进行词法分析、语法分析，然后构建语法树，方便后续模块读取表名、字段、语句类型；</li>
+<li>执行 SQL：执行 SQL 共有三个阶段：<ul>
+<li>预处理阶段：检查表或字段是否存在；将 select * 中的 * 符号扩展为表上的所有列。</li>
+<li>优化阶段：基于查询成本的考虑， 选择查询成本最小的执行计划；</li>
+<li>执行阶段：根据执行计划执行 SQL 查询语句，从存储引擎读取记录，返回给客户端；</li>
+</ul>
+</li>
+</ul>
+
         
 <script src="/js/qrious.min.js"></script>
 
@@ -201,14 +329,14 @@
             <p>
                 <span>专题: </span>
                 
-                <a href="/series/#工具">
-                    <code key="工具" class="post-label">工具</code>
+                <a href="/series/#Mysql基础">
+                    <code key="Mysql基础" class="post-label">Mysql基础</code>
                 </a>
                 
             </p>
             
             <p>
-                <span>本文发表于 2024-01-02，最后修改于 2024-09-01。</span>
+                <span>本文发表于 2023-02-02，最后修改于 2024-09-07。</span>
             </p>
             <!-- 文章末尾的提示 start -->
             
@@ -219,10 +347,10 @@
         <hr />
         <p name="pagination" style="font-size: 1.2em">
     
-    <a class="float-left" href="/post/go-base.html">上一篇 « Go工厂模式-工厂模式</a>
+    <a class="float-left" href="/post/mysql-base.html">上一篇 « Mysql基础系列</a>
     
     
-    <a class="float-right" href="/post/php-base-version8.4.html">下一篇 » php8.4新特性</a>
+    <a class="float-right" href="/post/mysql-index.html">下一篇 » Mysql索引</a>
     
 </p>
     </article>
@@ -390,13 +518,13 @@
                 
                 
             </div>
-            <a href="/post/php-base-object.html" class="title">
-                对象赋值是否属于引用
+            <a href="/post/php-base-version8.4.html" class="title">
+                php8.4新特性
             </a>
             <p class="text-gray">
                 <small>
-                    <span>发表于2023-12-02，</span>
-                    <span class="hidden-xs">全文1048字，</span>
+                    <span>发表于2024-08-01，</span>
+                    <span class="hidden-xs">全文979字，</span>
                     <span>阅读约4分钟</span>
                 </small>
             </p>
@@ -413,19 +541,19 @@
                 
                 <span>/</span>
                 
-                <a class="text-gray" href="/tags/#PHP"
-                    title="PHP">PHP</a>
+                <a class="text-gray" href="/tags/#Go工厂模式"
+                    title="Go工厂模式">Go工厂模式</a>
                 <span>/</span>
                 
                 
             </div>
-            <a href="/post/php-advanced.html" class="title">
-                PHP进阶
+            <a href="/post/go-base.html" class="title">
+                Go工厂模式-工厂模式
             </a>
             <p class="text-gray">
                 <small>
-                    <span>发表于2023-12-02，</span>
-                    <span class="hidden-xs">全文194字，</span>
+                    <span>发表于2024-01-02，</span>
+                    <span class="hidden-xs">全文193字，</span>
                     <span>阅读约1分钟</span>
                 </small>
             </p>
@@ -442,20 +570,20 @@
                 
                 <span>/</span>
                 
-                <a class="text-gray" href="/tags/#PHP"
-                    title="PHP">PHP</a>
+                <a class="text-gray" href="/tags/#Mysql"
+                    title="Mysql">Mysql</a>
                 <span>/</span>
                 
                 
             </div>
-            <a href="/post/php-base-version8.2.html" class="title">
-                php8.2新特性
+            <a href="/post/mysql-base.html" class="title">
+                Mysql基础系列
             </a>
             <p class="text-gray">
                 <small>
                     <span>发表于2023-02-02，</span>
-                    <span class="hidden-xs">全文887字，</span>
-                    <span>阅读约3分钟</span>
+                    <span class="hidden-xs">全文189字，</span>
+                    <span>阅读约1分钟</span>
                 </small>
             </p>
         </div>
@@ -494,8 +622,14 @@
     <a class="post-tag-item" href="/tags/#Go单例模式" title="Go单例模式"
         rel="1">#Go单例模式 (1) </a>
     
+    <a class="post-tag-item" href="/tags/#Mysql" title="Mysql"
+        rel="3">#Mysql (3) </a>
+    
     <a class="post-tag-item" href="/tags/#PHP" title="PHP"
         rel="6">#PHP (6) </a>
+    
+    <a class="post-tag-item" href="/tags/#AI系列" title="AI系列"
+        rel="1">#AI系列 (1) </a>
     
 </div>
     </div>
@@ -643,13 +777,13 @@
 <div class="gkt-summary">
     <nav>
         <a href="/" class="col-xs-4">
-            <span class="number">11</span><span>文章</span>
+            <span class="number">15</span><span>文章</span>
         </a>
         <a href="/series" class="col-xs-4 middle">
-            <span class="number">5</span><span>专题</span>
+            <span class="number">8</span><span>专题</span>
         </a>
         <a href="/tags" class="col-xs-4">
-            <span class="number">4</span><span>标签</span>
+            <span class="number">6</span><span>标签</span>
         </a>
     </nav>
 
@@ -664,19 +798,19 @@
         
         
         <section class="gkt-sidebar-content box-shadow">
-            <strong>工具</strong>
+            <strong>Mysql基础</strong>
             <ul>
                 
                 <li>
-                    <a href="/post/ai.html"
-                        class="gkt-sidebar-active">Ai系列 -</a>
+                    <a href="/post/mysql-base-start.html"
+                        class="gkt-sidebar-active">从一条select查询语句看Mysql的执行过程</a>
                     
                     <!-- Table of Contents -->
 <div id="sidebar-toc">
   <!-- TOC  -->
   
   
-  <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F"><span class="toc-nav-text">单例模式</span></a></li></ol>
+  <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-nav-text">前言</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Mysql%E7%9A%84%E6%9F%A5%E8%AF%A2%E6%B5%81%E7%A8%8B"><span class="toc-nav-text">Mysql的查询流程</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E7%AC%AC%E4%B8%80%E6%AD%A5%EF%BC%9A%E8%BF%9E%E6%8E%A5%E5%99%A8"><span class="toc-nav-text">第一步：连接器</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E7%AC%AC%E4%BA%8C%E6%AD%A5%EF%BC%9A%E6%9F%A5%E8%AF%A2%E7%BC%93%E5%AD%98%E5%99%A8"><span class="toc-nav-text">第二步：查询缓存器</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E7%AC%AC%E4%B8%89%E6%AD%A5%EF%BC%9A%E8%A7%A3%E6%9E%90%E5%88%86%E6%9E%90%E5%99%A8"><span class="toc-nav-text">第三步：解析分析器</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E7%AC%AC%E5%9B%9B%E6%AD%A5%EF%BC%9A%E6%89%A7%E8%A1%8C%E5%99%A8"><span class="toc-nav-text">第四步：执行器</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-nav-text">总结</span></a></li></ol>
   
 </div>
 
@@ -719,14 +853,8 @@
                 </li>
                 
                 <li>
-                    <a href="/post/go-design-singleton.html"
-                        class="">单例模式</a>
-                    
-                </li>
-                
-                <li>
-                    <a href="/post/quick-ai.html"
-                        class="">Ai系列</a>
+                    <a href="/post/mysql-base.html"
+                        class="">Mysql基础系列</a>
                     
                 </li>
                 
@@ -739,15 +867,15 @@
             <ul>
                 
                 <li>
+                    <a href="/post/advance.html">AI进阶系列</a>
+                </li>
+                
+                <li>
+                    <a href="/post/prompt.html">提示词工程</a>
+                </li>
+                
+                <li>
                     <a href="/post/php-base-version8.4.html">php8.4新特性</a>
-                </li>
-                
-                <li>
-                    <a href="/post/quick-ai.html">Ai系列</a>
-                </li>
-                
-                <li>
-                    <a href="/post/go-design-singleton.html">单例模式</a>
                 </li>
                 
             </ul>
