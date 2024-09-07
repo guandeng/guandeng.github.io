@@ -4,7 +4,7 @@ date: 2022-08-15
 description: Mysql索引
 tags:
 - Mysql
-nav: Mysql系列
+nav: 存储系列
 categories:
 - Mysql索引
 keywords:

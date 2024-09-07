@@ -1,16 +1,15 @@
 ---
-title: Mysql日志系列
+title: Redis基础系列
 date: 2023-02-02
 description: 存储系列
 tags:
-- Mysql
+- Redis
 nav: 存储系列
 categories:
-- Mysql日志
+- Redis基础
 keywords:
-- 存储系列
 - 存储系列
 image: post/design/colorhunt.jpg
 ---
 
-## Mysql日志系列
+## Redis基础系列

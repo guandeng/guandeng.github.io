@@ -1,15 +1,15 @@
 ---
 title: Mysql基础系列
 date: 2023-02-02
-description: Mysql系列
+description: 存储系列
 tags:
 - Mysql
-nav: Mysql系列
+nav: 存储系列
 categories:
 - Mysql基础
 keywords:
-- Mysql系列
-- Mysql系列
+- 存储系列
+- 存储系列
 image: post/design/colorhunt.jpg
 ---
 

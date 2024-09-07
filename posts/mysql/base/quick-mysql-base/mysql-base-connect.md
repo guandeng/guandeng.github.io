@@ -1,14 +1,14 @@
 ---
 title: Mysql连接池工作原理
 date: 2022-05-02
-description: Mysql系列
+description: 存储系列
 tags:
 - Mysql
-nav: Mysql系列
+nav: 存储系列
 categories:
 - Mysql基础
 keywords:
-- Mysql系列
+- 存储系列
 image: post/imgs/mysql查询流程.png
 ---
 #### 工作流程

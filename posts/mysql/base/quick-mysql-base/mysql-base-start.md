@@ -1,14 +1,14 @@
 ---
 title: 从一条select查询语句看Mysql的执行过程
 date: 2023-02-02
-description: Mysql系列
+description: 存储系列
 tags:
 - Mysql
-nav: Mysql系列
+nav: 存储系列
 categories:
 - Mysql基础
 keywords:
-- Mysql系列
+- 存储系列
 image: post/imgs/mysql查询流程.png
 ---
 
