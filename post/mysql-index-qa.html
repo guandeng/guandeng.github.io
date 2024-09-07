@@ -15,17 +15,17 @@
   <!-- if page has tags, then add tags to keyword -->
   
   
-  <meta name="keywords" content="Php,golang,python,PHP,PHP系列,Php新版本、PHP8.3">
+  <meta name="keywords" content="Php,golang,python,Mysql,Mysql索引,Mysql索引">
   <!-- page.description has higher priority -->
-  <meta name="description" content="PHP系列 - 工厂模式">
+  <meta name="description" content="Mysql索引">
   <link rel="shortcut icon" href="/img/icon.jpg">
   <title>
     
-    对象赋值是否属于引用 | Guandeng
+    Mysql索引基础问答 | Guandeng
     
   </title>
 
-  <link rel="canonical" href="https://guandeng.github.io/post/php-base-object.html">
+  <link rel="canonical" href="https://guandeng.github.io/post/mysql-index-qa.html">
   
 <link rel="stylesheet" href="/css/geektutu.css">
 
@@ -84,7 +84,7 @@
             <ul>
                 
                 
-                <li class="gkt-cate-name float-left ">
+                <li class="gkt-cate-name float-left active">
                     <a class="float-left" href="/post/mysql-base-type.html">Mysql系列 ▾</a>
                     
                     <ul class="gkt-sub-cate">
@@ -92,7 +92,7 @@
                         <li class="gkt-sub-cate-name "><a class="float-left"
                                 href="/post/mysql-base-type.html">Mysql基础</a></li>
                         
-                        <li class="gkt-sub-cate-name "><a class="float-left"
+                        <li class="gkt-sub-cate-name active"><a class="float-left"
                                 href="/post/mysql-index-explain.html">Mysql索引</a></li>
                         
                         <li class="gkt-sub-cate-name "><a class="float-left"
@@ -102,12 +102,12 @@
                     
                 </li>
                 
-                <li class="gkt-cate-name float-left active">
+                <li class="gkt-cate-name float-left ">
                     <a class="float-left" href="/post/php-base.html">PHP系列 ▾</a>
                     
                     <ul class="gkt-sub-cate">
                         
-                        <li class="gkt-sub-cate-name active"><a class="float-left"
+                        <li class="gkt-sub-cate-name "><a class="float-left"
                                 href="/post/php-base.html">PHP基础</a></li>
                         
                         <li class="gkt-sub-cate-name "><a class="float-left"
@@ -184,43 +184,38 @@
 <div class="float-left post-container box-shadow">
     <div class="u-arrow-wrapper hidden-xs">
         
-        <a class="float-left" href="/post/php-base-version8.3.html"><i class="u-arrow-left"></i></a>
+        <a class="float-left" href="/post/mysql-base-command.html"><i class="u-arrow-left"></i></a>
         
         
-        <a class="float-right" href="/post/php-advanced.html"><i class="u-arrow-right"></i></a>
+        <a class="float-right" href="/post/mysql-index-invalid.html"><i class="u-arrow-right"></i></a>
         
     </div>
     <article class="col-xs-12">
-        <h1> 对象赋值是否属于引用 </h1>
+        <h1> Mysql索引基础问答 </h1>
         
         
         <div class="hidden-lg hidden-md series_links">
-            <p> <strong> PHP基础系列文章链接：</strong></p>
+            <p> <strong> Mysql索引系列文章链接：</strong></p>
             <ul>
                 
                 <li>
-                    <a href="/post/php-base.html">PHP基础系列</a>
-                    <span class="post-item-date">(Jan 2, 2023)</span>
+                    <a href="/post/mysql-index-explain.html">Mysql索引</a>
+                    <span class="post-item-date">(Aug 15, 2022)</span>
                 </li>
                 
                 <li>
-                    <a href="/post/php-base-version8.2.html">php8.2新特性</a>
-                    <span class="post-item-date">(Feb 2, 2023)</span>
+                    <a href="/post/mysql-index-invalid.html">Mysql索引失效</a>
+                    <span class="post-item-date">(Aug 15, 2022)</span>
                 </li>
                 
                 <li>
-                    <a href="/post/php-base-object.html">对象赋值是否属于引用</a>
-                    <span class="post-item-date">(Dec 2, 2023)</span>
+                    <a href="/post/mysql-index-qa.html">Mysql索引基础问答</a>
+                    <span class="post-item-date">(Aug 15, 2022)</span>
                 </li>
                 
                 <li>
-                    <a href="/post/php-base-version8.3.html">php8.3新特性</a>
-                    <span class="post-item-date">(Dec 2, 2023)</span>
-                </li>
-                
-                <li>
-                    <a href="/post/php-base-version8.4.html">php8.4新特性</a>
-                    <span class="post-item-date">(Aug 1, 2024)</span>
+                    <a href="/post/mysql-index.html">Mysql索引</a>
+                    <span class="post-item-date">(Feb 15, 2023)</span>
                 </li>
                 
             </ul>
@@ -228,13 +223,45 @@
         
         
         <div class="gkt-article-start"></div>
-        <p>先看个例子</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SimpleClass</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$var</span> = <span class="literal">null</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="variable">$instance</span> = <span class="keyword">new</span> SimpleClass();</span><br><span class="line"></span><br><span class="line"><span class="variable">$assigned</span> = <span class="variable">$instance</span>;</span><br><span class="line"><span class="variable">$reference</span> = &amp;<span class="variable">$instance</span>;</span><br><span class="line"></span><br><span class="line"><span class="variable">$instance</span>-&gt;var = <span class="string">&#x27;$assigned will have this value&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="variable">$instance</span> = <span class="literal">null</span>; <span class="comment">// $instance and $reference become null</span></span><br><span class="line"></span><br><span class="line">var_dump(<span class="variable">$instance</span>);<span class="comment">// null</span></span><br><span class="line">var_dump(<span class="variable">$reference</span>);<span class="comment">// null</span></span><br><span class="line">var_dump(<span class="variable">$assigned</span>);<span class="comment">// object</span></span><br></pre></td></tr></table></figure>
-
-<p>首先，将PHP中的变量看成是一个一个的数据槽。这个数据槽可以保存一个基本类型（int、string、bool等）。创建引用时，这个槽里保存的是内存地址，或者说是指向引用对象的一个指针，引用没有拷贝操作，仅仅是将指针指向了原变量（参考数据结构）。创建普通赋值时，则是拷贝的基本类型。</p>
-<p>而对象则与基本类型不同，它不能直接保存在数据槽中，而是将对象的“句柄”保存在了数据槽。这个句柄是指向对象特定实例的标识符。虽然句柄不是我们所能直观操作的类型，但它也属于基本类型。</p>
-<p>当你获取一个包含对象句柄的变量，并将其分配给另一个变量时，另一个变量获取的是这个对象的句柄。（注意，不是引用！不是引用！不是引用！！）。通过句柄，两个变量都可以修改同一个对象。但是，这两个变量并没有直接关系，它们是两个独立的变量，其中一个变量修改为其他值时，并不会对另一个变量产生影响。只有该变量在修改对象内部的内容时，另一个变量因为持有相同的句柄，所以它的对象内容也会相应地发生改变。</p>
-<h4 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h4><p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/wKIU83A7u1ENQF32jX5FSQ">对象赋值在PHP中到底是不是引用？</a></p>
+        <h4 id="什么是索引"><a href="#什么是索引" class="headerlink" title="什么是索引"></a>什么是索引</h4><ul>
+<li>索引是帮助Mysql高效获取数据的数据结构，本质是一种数据结构，类似于字典，书籍目录</li>
+<li>索引本身也是很大，内存不够存储，以文件形式存储在磁盘上</li>
+<li>索引也是一张表：保存索引和主键字段，并执行实体表积累了，也需要占用内存</li>
+<li>索引可以提高查询效率，但是insert、update、delete速度就没用那么理想，要调整更新带来的键值前后变化索引信息</li>
+</ul>
+<h4 id="为什么mysql用B-tree索引，不用b-tree"><a href="#为什么mysql用B-tree索引，不用b-tree" class="headerlink" title="为什么mysql用B+tree索引，不用b-tree"></a>为什么mysql用B+tree索引，不用b-tree</h4><p>b+tree和b-tree不同之处</p>
+<ul>
+<li>1、非叶子节点只存储键值信息和指针</li>
+<li>2、所有叶子节点都有一个链指针</li>
+<li>3、数据记录都存放在叶子节点</li>
+<li><img src="https://note.youdao.com/yws/res/60294/WEBRESOURCEdb8dd255cae506e15d98f173a721fec9" alt="企业微信截图_20220602102530.png"></li>
+<li>B+tree有两个头指针，一个指向根节点，一个指向关键字最小叶子节点<br>使用B+tree主要原因</li>
+<li>B+树非叶子节点不存储数据，每一层存储索引数量增加，意味相同高度，B+树存储数量比B树多，可以减少磁盘IO</li>
+<li>B+树在查询效率比B树高，B+树所有存储叶子节点使用双向链表进行关联，查询只需要两个节点进行遍历，而B树需要遍历所有节点</li>
+<li></li>
+</ul>
+<h4 id="为什么不用hash"><a href="#为什么不用hash" class="headerlink" title="为什么不用hash"></a>为什么不用hash</h4><ul>
+<li>1、hash底层是hash表，存在存在hash冲突</li>
+<li>2、hash使用key-value结构存储，数据存储关系没有任何顺序，无法进行区间查询，需要等值查询</li>
+<li>3、B+tree一种多路平衡查询，节点天然有序（左节点小于父节点，父节点小于右节点），查询不需要全表查询</li>
+<li>hash不支持联合索引最左匹配</li>
+</ul>
+<h4 id="B-tree和hash索引区别"><a href="#B-tree和hash索引区别" class="headerlink" title="B+tree和hash索引区别"></a>B+tree和hash索引区别</h4><pre><code>- hash索引是根据hash函数获取键值，B+tree是从根节点往下查找到符合条件的叶子节点上的键值，有可能回表查询数据
+- hash索引更快，无法范围查询
+- hash索引不支持排序
+- hash索引不支持模糊查询，最左前缀匹配也无法使用
+</code></pre>
+<h4 id="什么是最左前缀原则"><a href="#什么是最左前缀原则" class="headerlink" title="什么是最左前缀原则"></a>什么是最左前缀原则</h4><h4 id="什么是索引下推"><a href="#什么是索引下推" class="headerlink" title="什么是索引下推"></a>什么是索引下推</h4><ul>
+<li>非索引下推是查询数据的过程是，服务层调用引擎层，只根where第一个条件去返回所有数据到服务层，再根据第二个，第三个条件去过滤数据</li>
+<li>索引下推则是根据where所有条件到引擎层获取符合条件数据，减少存储引擎层查询基础表的次数，减少服务层从引擎层传输的数据，减少IO,提高效率<br>参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/sinat_29774479/article/details/103470244">https://blog.csdn.net/sinat_29774479/article/details/103470244</a></li>
+</ul>
+<h4 id="如何使sql有效复合索引"><a href="#如何使sql有效复合索引" class="headerlink" title="如何使sql有效复合索引"></a>如何使sql有效复合索引</h4><h4 id="sql优化步骤"><a href="#sql优化步骤" class="headerlink" title="sql优化步骤"></a>sql优化步骤</h4><h4 id="使用mysql索引原则"><a href="#使用mysql索引原则" class="headerlink" title="使用mysql索引原则"></a>使用mysql索引原则</h4><ul>
+<li>最左原则</li>
+<li>避免回表</li>
+<li>索引下推</li>
+<li>覆盖索引</li>
+</ul>
+<h4 id="mysql-组合索引结构是什么"><a href="#mysql-组合索引结构是什么" class="headerlink" title="mysql 组合索引结构是什么"></a>mysql 组合索引结构是什么</h4><p>为什么要用B+树：<a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s?__biz=MzIxMzk3Mjg5MQ==&amp;mid=2247483916&amp;idx=1&amp;sn=bfc33b53f8176e6f4d7e64c087ad36a4&amp;chksm=97afe0f8a0d869eeaa14d8b26eca9d6fa09f9fda4557b40cb22ebe75851aa4dfb67d822233d9&amp;scene=0&amp;subscene=90&amp;sessionid=1539434820&amp;ascene=7&amp;devicetype=andro">https://mp.weixin.qq.com/s?__biz=MzIxMzk3Mjg5MQ==&amp;mid=2247483916&amp;idx=1&amp;sn=bfc33b53f8176e6f4d7e64c087ad36a4&amp;chksm=97afe0f8a0d869eeaa14d8b26eca9d6fa09f9fda4557b40cb22ebe75851aa4dfb67d822233d9&amp;scene=0&amp;subscene=90&amp;sessionid=1539434820&amp;ascene=7&amp;devicetype=andro</a></p>
 
         
 <script src="/js/qrious.min.js"></script>
@@ -246,14 +273,14 @@
             <p>
                 <span>专题: </span>
                 
-                <a href="/series/#PHP基础">
-                    <code key="PHP基础" class="post-label">PHP基础</code>
+                <a href="/series/#Mysql索引">
+                    <code key="Mysql索引" class="post-label">Mysql索引</code>
                 </a>
                 
             </p>
             
             <p>
-                <span>本文发表于 2023-12-02，最后修改于 2024-09-07。</span>
+                <span>本文发表于 2022-08-15，最后修改于 2024-09-07。</span>
             </p>
             <!-- 文章末尾的提示 start -->
             
@@ -264,10 +291,10 @@
         <hr />
         <p name="pagination" style="font-size: 1.2em">
     
-    <a class="float-left" href="/post/php-base-version8.3.html">上一篇 « php8.3新特性</a>
+    <a class="float-left" href="/post/mysql-base-command.html">上一篇 « Mysql常用命令</a>
     
     
-    <a class="float-right" href="/post/php-advanced.html">下一篇 » PHP进阶</a>
+    <a class="float-right" href="/post/mysql-index-invalid.html">下一篇 » Mysql索引失效</a>
     
 </p>
     </article>
@@ -429,19 +456,19 @@
                 
                 <span>/</span>
                 
-                <a class="text-gray" href="/tags/#Go单例模式"
-                    title="Go单例模式">Go单例模式</a>
+                <a class="text-gray" href="/tags/#Go工厂模式"
+                    title="Go工厂模式">Go工厂模式</a>
                 <span>/</span>
                 
                 
             </div>
-            <a href="/post/go-design-singleton.html" class="title">
-                Go系列 - 单例模式
+            <a href="/post/go-base.html" class="title">
+                Go工厂模式-工厂模式
             </a>
             <p class="text-gray">
                 <small>
                     <span>发表于2024-01-02，</span>
-                    <span class="hidden-xs">全文191字，</span>
+                    <span class="hidden-xs">全文193字，</span>
                     <span>阅读约1分钟</span>
                 </small>
             </p>
@@ -458,20 +485,20 @@
                 
                 <span>/</span>
                 
-                <a class="text-gray" href="/tags/#Go工厂模式"
-                    title="Go工厂模式">Go工厂模式</a>
+                <a class="text-gray" href="/tags/#PHP"
+                    title="PHP">PHP</a>
                 <span>/</span>
                 
                 
             </div>
-            <a href="/post/go-design-factory.html" class="title">
-                Go系列 - Go工厂模式
+            <a href="/post/php-base-version8.2.html" class="title">
+                php8.2新特性
             </a>
             <p class="text-gray">
                 <small>
-                    <span>发表于2024-01-02，</span>
-                    <span class="hidden-xs">全文193字，</span>
-                    <span>阅读约1分钟</span>
+                    <span>发表于2023-02-02，</span>
+                    <span class="hidden-xs">全文879字，</span>
+                    <span>阅读约3分钟</span>
                 </small>
             </p>
         </div>
@@ -479,7 +506,7 @@
 </div>
         
         <div class="post-preview">
-    <div class="post-img" style="background-image: url('/post/imgs/mysql查询流程.png')"></div>
+    <div class="post-img" style="background-image: url('/post/design/colorhunt.jpg')"></div>
     <div class="post-info">
         <div class="post-info-center">
             <div class="hidden-xs">
@@ -493,14 +520,14 @@
                 
                 
             </div>
-            <a href="/post/mysql-base-connect.html" class="title">
-                Mysql连接池工作原理
+            <a href="/post/mysql-index-invalid.html" class="title">
+                Mysql索引失效
             </a>
             <p class="text-gray">
                 <small>
-                    <span>发表于2022-05-02，</span>
-                    <span class="hidden-xs">全文1410字，</span>
-                    <span>阅读约5分钟</span>
+                    <span>发表于2022-08-15，</span>
+                    <span class="hidden-xs">全文697字，</span>
+                    <span>阅读约3分钟</span>
                 </small>
             </p>
         </div>
@@ -715,24 +742,24 @@
         
         
         <section class="gkt-sidebar-content box-shadow">
-            <strong>PHP基础</strong>
+            <strong>Mysql索引</strong>
             <ul>
                 
                 <li>
-                    <a href="/post/php-base.html"
-                        class="">PHP基础系列</a>
+                    <a href="/post/mysql-index-explain.html"
+                        class="">Mysql索引</a>
                     
                 </li>
                 
                 <li>
-                    <a href="/post/php-base-version8.2.html"
-                        class="">php8.2新特性</a>
+                    <a href="/post/mysql-index-invalid.html"
+                        class="">Mysql索引失效</a>
                     
                 </li>
                 
                 <li>
-                    <a href="/post/php-base-object.html"
-                        class="gkt-sidebar-active">对象赋值是否属于引用</a>
+                    <a href="/post/mysql-index-qa.html"
+                        class="gkt-sidebar-active">Mysql索引基础问答</a>
                     
                     <!-- Table of Contents -->
 <div id="sidebar-toc">
@@ -782,14 +809,8 @@
                 </li>
                 
                 <li>
-                    <a href="/post/php-base-version8.3.html"
-                        class="">php8.3新特性</a>
-                    
-                </li>
-                
-                <li>
-                    <a href="/post/php-base-version8.4.html"
-                        class="">php8.4新特性</a>
+                    <a href="/post/mysql-index.html"
+                        class="">Mysql索引</a>
                     
                 </li>
                 

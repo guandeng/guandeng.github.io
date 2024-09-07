@@ -15,17 +15,17 @@
   <!-- if page has tags, then add tags to keyword -->
   
   
-  <meta name="keywords" content="Php,golang,python,PHP,PHP系列,Php新版本、PHP8.3">
+  <meta name="keywords" content="Php,golang,python,Mysql,Mysql系列">
   <!-- page.description has higher priority -->
-  <meta name="description" content="PHP系列 - 工厂模式">
+  <meta name="description" content="Mysql系列">
   <link rel="shortcut icon" href="/img/icon.jpg">
   <title>
     
-    对象赋值是否属于引用 | Guandeng
+    Mysql日志大全 | Guandeng
     
   </title>
 
-  <link rel="canonical" href="https://guandeng.github.io/post/php-base-object.html">
+  <link rel="canonical" href="https://guandeng.github.io/post/mysql-log-all.html">
   
 <link rel="stylesheet" href="/css/geektutu.css">
 
@@ -84,7 +84,7 @@
             <ul>
                 
                 
-                <li class="gkt-cate-name float-left ">
+                <li class="gkt-cate-name float-left active">
                     <a class="float-left" href="/post/mysql-base-type.html">Mysql系列 ▾</a>
                     
                     <ul class="gkt-sub-cate">
@@ -95,19 +95,19 @@
                         <li class="gkt-sub-cate-name "><a class="float-left"
                                 href="/post/mysql-index-explain.html">Mysql索引</a></li>
                         
-                        <li class="gkt-sub-cate-name "><a class="float-left"
+                        <li class="gkt-sub-cate-name active"><a class="float-left"
                                 href="/post/mysql-log-all.html">Mysql日志</a></li>
                         
                     </ul>
                     
                 </li>
                 
-                <li class="gkt-cate-name float-left active">
+                <li class="gkt-cate-name float-left ">
                     <a class="float-left" href="/post/php-base.html">PHP系列 ▾</a>
                     
                     <ul class="gkt-sub-cate">
                         
-                        <li class="gkt-sub-cate-name active"><a class="float-left"
+                        <li class="gkt-sub-cate-name "><a class="float-left"
                                 href="/post/php-base.html">PHP基础</a></li>
                         
                         <li class="gkt-sub-cate-name "><a class="float-left"
@@ -184,43 +184,28 @@
 <div class="float-left post-container box-shadow">
     <div class="u-arrow-wrapper hidden-xs">
         
-        <a class="float-left" href="/post/php-base-version8.3.html"><i class="u-arrow-left"></i></a>
+        <a class="float-left" href="/post/mysql-log.html"><i class="u-arrow-left"></i></a>
         
         
-        <a class="float-right" href="/post/php-advanced.html"><i class="u-arrow-right"></i></a>
+        <a class="float-right" href="/post/mysql-base.html"><i class="u-arrow-right"></i></a>
         
     </div>
     <article class="col-xs-12">
-        <h1> 对象赋值是否属于引用 </h1>
+        <h1> Mysql日志大全 </h1>
         
         
         <div class="hidden-lg hidden-md series_links">
-            <p> <strong> PHP基础系列文章链接：</strong></p>
+            <p> <strong> Mysql日志系列文章链接：</strong></p>
             <ul>
                 
                 <li>
-                    <a href="/post/php-base.html">PHP基础系列</a>
-                    <span class="post-item-date">(Jan 2, 2023)</span>
-                </li>
-                
-                <li>
-                    <a href="/post/php-base-version8.2.html">php8.2新特性</a>
+                    <a href="/post/mysql-log-all.html">Mysql日志大全</a>
                     <span class="post-item-date">(Feb 2, 2023)</span>
                 </li>
                 
                 <li>
-                    <a href="/post/php-base-object.html">对象赋值是否属于引用</a>
-                    <span class="post-item-date">(Dec 2, 2023)</span>
-                </li>
-                
-                <li>
-                    <a href="/post/php-base-version8.3.html">php8.3新特性</a>
-                    <span class="post-item-date">(Dec 2, 2023)</span>
-                </li>
-                
-                <li>
-                    <a href="/post/php-base-version8.4.html">php8.4新特性</a>
-                    <span class="post-item-date">(Aug 1, 2024)</span>
+                    <a href="/post/mysql-log.html">Mysql日志系列</a>
+                    <span class="post-item-date">(Feb 2, 2023)</span>
                 </li>
                 
             </ul>
@@ -228,13 +213,42 @@
         
         
         <div class="gkt-article-start"></div>
-        <p>先看个例子</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SimpleClass</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$var</span> = <span class="literal">null</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="variable">$instance</span> = <span class="keyword">new</span> SimpleClass();</span><br><span class="line"></span><br><span class="line"><span class="variable">$assigned</span> = <span class="variable">$instance</span>;</span><br><span class="line"><span class="variable">$reference</span> = &amp;<span class="variable">$instance</span>;</span><br><span class="line"></span><br><span class="line"><span class="variable">$instance</span>-&gt;var = <span class="string">&#x27;$assigned will have this value&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="variable">$instance</span> = <span class="literal">null</span>; <span class="comment">// $instance and $reference become null</span></span><br><span class="line"></span><br><span class="line">var_dump(<span class="variable">$instance</span>);<span class="comment">// null</span></span><br><span class="line">var_dump(<span class="variable">$reference</span>);<span class="comment">// null</span></span><br><span class="line">var_dump(<span class="variable">$assigned</span>);<span class="comment">// object</span></span><br></pre></td></tr></table></figure>
-
-<p>首先，将PHP中的变量看成是一个一个的数据槽。这个数据槽可以保存一个基本类型（int、string、bool等）。创建引用时，这个槽里保存的是内存地址，或者说是指向引用对象的一个指针，引用没有拷贝操作，仅仅是将指针指向了原变量（参考数据结构）。创建普通赋值时，则是拷贝的基本类型。</p>
-<p>而对象则与基本类型不同，它不能直接保存在数据槽中，而是将对象的“句柄”保存在了数据槽。这个句柄是指向对象特定实例的标识符。虽然句柄不是我们所能直观操作的类型，但它也属于基本类型。</p>
-<p>当你获取一个包含对象句柄的变量，并将其分配给另一个变量时，另一个变量获取的是这个对象的句柄。（注意，不是引用！不是引用！不是引用！！）。通过句柄，两个变量都可以修改同一个对象。但是，这两个变量并没有直接关系，它们是两个独立的变量，其中一个变量修改为其他值时，并不会对另一个变量产生影响。只有该变量在修改对象内部的内容时，另一个变量因为持有相同的句柄，所以它的对象内容也会相应地发生改变。</p>
-<h4 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h4><p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/wKIU83A7u1ENQF32jX5FSQ">对象赋值在PHP中到底是不是引用？</a></p>
+        <h2 id="一、redo-log-重做日志"><a href="#一、redo-log-重做日志" class="headerlink" title="一、redo log(重做日志)"></a>一、redo log(重做日志)</h2><p>通过配置<code>innodb_log_files_in_group</code>配置文件数量和<code>innodb_log_file_size</code>每个日志文件大小</p>
+<ul>
+<li>通过重做日志和InnoDB存储引擎日志缓冲实现</li>
+<li>通过循环写方式记录，写到结尾，会回到开头循环写日志</li>
+<li>事务中操作，写入存储引擎日志缓冲，事务提交前，缓冲的日志提前刷新磁盘持久化（日志先行），事务提交后，buffer pool映射数据才刷新到磁盘</li>
+<li>binlog日志和redo log必须保持一致</li>
+</ul>
+<h5 id="为什么还有redo-log"><a href="#为什么还有redo-log" class="headerlink" title="为什么还有redo log"></a>为什么还有redo log</h5><ul>
+<li>redo log大小固定，日志采用循环写，旧日志数据会被覆盖，无法数据回滚/恢复操作</li>
+<li>redo log只有innodb实现，其他引擎层不兼容</li>
+</ul>
+<h5 id="宕机或崩溃恢复"><a href="#宕机或崩溃恢复" class="headerlink" title="宕机或崩溃恢复"></a>宕机或崩溃恢复</h5><ul>
+<li>系统启动，为redo log分配一块连续存储空间，以顺序方式记录redo log,通过顺序IO改善性能</li>
+<li>系统重启，根据redo log记录日志，把数据库恢复到崩溃前状态，未完成事务，可以继续提交，也可以回滚，</li>
+</ul>
+<h2 id="二、undo-log回滚日志"><a href="#二、undo-log回滚日志" class="headerlink" title="二、undo log回滚日志"></a>二、undo log回滚日志</h2><h4 id="场景"><a href="#场景" class="headerlink" title="场景"></a>场景</h4><p>多版本并发控制MVCC下，记录操作数据前的值</p>
+<ul>
+<li>除了记录redo log 还会记录Undo log,undo log记录数据在每个操作前状态，单个事务回滚，只会回滚当前事务操作，并不会影响其他事务操作</li>
+</ul>
+<h2 id="binlog-SQL日志"><a href="#binlog-SQL日志" class="headerlink" title="binlog SQL日志"></a>binlog SQL日志</h2><h4 id="mysql多少种日志"><a href="#mysql多少种日志" class="headerlink" title="mysql多少种日志"></a>mysql多少种日志</h4><ul>
+<li>1、慢查询日志</li>
+<li>2、查询日志</li>
+<li>3、二进制日志</li>
+<li>4、中继日志:slave用来恢复</li>
+<li>5、错误日志</li>
+<li>6、事务日志：重做redo和回滚日志undo</li>
+</ul>
+<h3 id="分布式事务"><a href="#分布式事务" class="headerlink" title="分布式事务"></a>分布式事务</h3><ul>
+<li>1、InnoDB支持原生事务<ul>
+<li>应用程序</li>
+<li>资源管理器</li>
+<li>事务管理器</li>
+</ul>
+</li>
+<li>2、消息队列实现分布式事务一致性</li>
+</ul>
 
         
 <script src="/js/qrious.min.js"></script>
@@ -246,14 +260,14 @@
             <p>
                 <span>专题: </span>
                 
-                <a href="/series/#PHP基础">
-                    <code key="PHP基础" class="post-label">PHP基础</code>
+                <a href="/series/#Mysql日志">
+                    <code key="Mysql日志" class="post-label">Mysql日志</code>
                 </a>
                 
             </p>
             
             <p>
-                <span>本文发表于 2023-12-02，最后修改于 2024-09-07。</span>
+                <span>本文发表于 2023-02-02，最后修改于 2024-09-07。</span>
             </p>
             <!-- 文章末尾的提示 start -->
             
@@ -264,10 +278,10 @@
         <hr />
         <p name="pagination" style="font-size: 1.2em">
     
-    <a class="float-left" href="/post/php-base-version8.3.html">上一篇 « php8.3新特性</a>
+    <a class="float-left" href="/post/mysql-log.html">上一篇 « Mysql日志系列</a>
     
     
-    <a class="float-right" href="/post/php-advanced.html">下一篇 » PHP进阶</a>
+    <a class="float-right" href="/post/mysql-base.html">下一篇 » Mysql基础系列</a>
     
 </p>
     </article>
@@ -429,19 +443,19 @@
                 
                 <span>/</span>
                 
-                <a class="text-gray" href="/tags/#Go单例模式"
-                    title="Go单例模式">Go单例模式</a>
+                <a class="text-gray" href="/tags/#AI系列"
+                    title="AI系列">AI系列</a>
                 <span>/</span>
                 
                 
             </div>
-            <a href="/post/go-design-singleton.html" class="title">
-                Go系列 - 单例模式
+            <a href="/post/quick-base-ai.html" class="title">
+                AI基础
             </a>
             <p class="text-gray">
                 <small>
-                    <span>发表于2024-01-02，</span>
-                    <span class="hidden-xs">全文191字，</span>
+                    <span>发表于2024-06-10，</span>
+                    <span class="hidden-xs">全文165字，</span>
                     <span>阅读约1分钟</span>
                 </small>
             </p>
@@ -458,20 +472,20 @@
                 
                 <span>/</span>
                 
-                <a class="text-gray" href="/tags/#Go工厂模式"
-                    title="Go工厂模式">Go工厂模式</a>
+                <a class="text-gray" href="/tags/#PHP"
+                    title="PHP">PHP</a>
                 <span>/</span>
                 
                 
             </div>
-            <a href="/post/go-design-factory.html" class="title">
-                Go系列 - Go工厂模式
+            <a href="/post/php-base-object.html" class="title">
+                对象赋值是否属于引用
             </a>
             <p class="text-gray">
                 <small>
-                    <span>发表于2024-01-02，</span>
-                    <span class="hidden-xs">全文193字，</span>
-                    <span>阅读约1分钟</span>
+                    <span>发表于2023-12-02，</span>
+                    <span class="hidden-xs">全文1040字，</span>
+                    <span>阅读约4分钟</span>
                 </small>
             </p>
         </div>
@@ -479,7 +493,7 @@
 </div>
         
         <div class="post-preview">
-    <div class="post-img" style="background-image: url('/post/imgs/mysql查询流程.png')"></div>
+    <div class="post-img" style="background-image: url('/post/design/colorhunt.jpg')"></div>
     <div class="post-info">
         <div class="post-info-center">
             <div class="hidden-xs">
@@ -487,20 +501,20 @@
                 
                 <span>/</span>
                 
-                <a class="text-gray" href="/tags/#Mysql"
-                    title="Mysql">Mysql</a>
+                <a class="text-gray" href="/tags/#PHP"
+                    title="PHP">PHP</a>
                 <span>/</span>
                 
                 
             </div>
-            <a href="/post/mysql-base-connect.html" class="title">
-                Mysql连接池工作原理
+            <a href="/post/php-base.html" class="title">
+                PHP基础系列
             </a>
             <p class="text-gray">
                 <small>
-                    <span>发表于2022-05-02，</span>
-                    <span class="hidden-xs">全文1410字，</span>
-                    <span>阅读约5分钟</span>
+                    <span>发表于2023-01-02，</span>
+                    <span class="hidden-xs">全文189字，</span>
+                    <span>阅读约1分钟</span>
                 </small>
             </p>
         </div>
@@ -715,31 +729,19 @@
         
         
         <section class="gkt-sidebar-content box-shadow">
-            <strong>PHP基础</strong>
+            <strong>Mysql日志</strong>
             <ul>
                 
                 <li>
-                    <a href="/post/php-base.html"
-                        class="">PHP基础系列</a>
-                    
-                </li>
-                
-                <li>
-                    <a href="/post/php-base-version8.2.html"
-                        class="">php8.2新特性</a>
-                    
-                </li>
-                
-                <li>
-                    <a href="/post/php-base-object.html"
-                        class="gkt-sidebar-active">对象赋值是否属于引用</a>
+                    <a href="/post/mysql-log-all.html"
+                        class="gkt-sidebar-active">Mysql日志大全</a>
                     
                     <!-- Table of Contents -->
 <div id="sidebar-toc">
   <!-- TOC  -->
   
   
-  
+  <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E4%B8%80%E3%80%81redo-log-%E9%87%8D%E5%81%9A%E6%97%A5%E5%BF%97"><span class="toc-nav-text">一、redo log(重做日志)</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E4%BA%8C%E3%80%81undo-log%E5%9B%9E%E6%BB%9A%E6%97%A5%E5%BF%97"><span class="toc-nav-text">二、undo log回滚日志</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#binlog-SQL%E6%97%A5%E5%BF%97"><span class="toc-nav-text">binlog SQL日志</span></a></li></ol>
   
 </div>
 
@@ -782,14 +784,8 @@
                 </li>
                 
                 <li>
-                    <a href="/post/php-base-version8.3.html"
-                        class="">php8.3新特性</a>
-                    
-                </li>
-                
-                <li>
-                    <a href="/post/php-base-version8.4.html"
-                        class="">php8.4新特性</a>
+                    <a href="/post/mysql-log.html"
+                        class="">Mysql日志系列</a>
                     
                 </li>
                 
