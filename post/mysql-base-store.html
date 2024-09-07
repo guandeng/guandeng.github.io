@@ -15,17 +15,17 @@
   <!-- if page has tags, then add tags to keyword -->
   
   
-  <meta name="keywords" content="Php,golang,python,Go工厂模式,Go单例模式,懒汉模式、饿汉模式、双重检查锁">
+  <meta name="keywords" content="Php,golang,python,Mysql,Mysql系列">
   <!-- page.description has higher priority -->
-  <meta name="description" content="Go系列 - 工厂模式">
+  <meta name="description" content="Mysql系列">
   <link rel="shortcut icon" href="/img/icon.jpg">
   <title>
     
-    Go系列 - Go工厂模式 | Guandeng
+    Mysql的Innodb是如何存储数据 | Guandeng
     
   </title>
 
-  <link rel="canonical" href="https://guandeng.github.io/post/go-design-factory.html">
+  <link rel="canonical" href="https://guandeng.github.io/post/mysql-base-store.html">
   
 <link rel="stylesheet" href="/css/geektutu.css">
 
@@ -99,12 +99,12 @@
                     
                 </li>
                 
-                <li class="gkt-cate-name float-left ">
+                <li class="gkt-cate-name float-left active">
                     <a class="float-left" href="/post/mysql-base-start.html">Mysql系列 ▾</a>
                     
                     <ul class="gkt-sub-cate">
                         
-                        <li class="gkt-sub-cate-name "><a class="float-left"
+                        <li class="gkt-sub-cate-name active"><a class="float-left"
                                 href="/post/mysql-base-start.html">Mysql基础</a></li>
                         
                         <li class="gkt-sub-cate-name "><a class="float-left"
@@ -114,7 +114,7 @@
                     
                 </li>
                 
-                <li class="gkt-cate-name float-left active">
+                <li class="gkt-cate-name float-left ">
                     <a class="float-left" href="/post/go-base.html">Go系列 ▾</a>
                     
                     <ul class="gkt-sub-cate">
@@ -122,7 +122,7 @@
                         <li class="gkt-sub-cate-name "><a class="float-left"
                                 href="/post/go-base.html">Go基础</a></li>
                         
-                        <li class="gkt-sub-cate-name active"><a class="float-left"
+                        <li class="gkt-sub-cate-name "><a class="float-left"
                                 href="/post/go-design-factory.html">Go系列</a></li>
                         
                     </ul>
@@ -181,23 +181,33 @@
 <div class="float-left post-container box-shadow">
     <div class="u-arrow-wrapper hidden-xs">
         
-        <a class="float-left" href="/post/php-advanced.html"><i class="u-arrow-left"></i></a>
+        <a class="float-left" href="/post/mysql-index.html"><i class="u-arrow-left"></i></a>
         
         
-        <a class="float-right" href="/post/go-design-singleton.html"><i class="u-arrow-right"></i></a>
+        <a class="float-right" href="/post/php-base-version8.3.html"><i class="u-arrow-right"></i></a>
         
     </div>
     <article class="col-xs-12">
-        <h1> Go系列 - Go工厂模式 </h1>
+        <h1> Mysql的Innodb是如何存储数据 </h1>
         
         
         <div class="hidden-lg hidden-md series_links">
-            <p> <strong> Go系列系列文章链接：</strong></p>
+            <p> <strong> Mysql基础系列文章链接：</strong></p>
             <ul>
                 
                 <li>
-                    <a href="/post/go-design-factory.html">Go系列 - Go工厂模式</a>
-                    <span class="post-item-date">(Jan 2, 2024)</span>
+                    <a href="/post/mysql-base-start.html">从一条select查询语句看Mysql的执行过程</a>
+                    <span class="post-item-date">(Feb 2, 2023)</span>
+                </li>
+                
+                <li>
+                    <a href="/post/mysql-base.html">Mysql基础系列</a>
+                    <span class="post-item-date">(Feb 2, 2023)</span>
+                </li>
+                
+                <li>
+                    <a href="/post/mysql-base-store.html">Mysql的Innodb是如何存储数据</a>
+                    <span class="post-item-date">(Feb 15, 2023)</span>
                 </li>
                 
             </ul>
@@ -205,7 +215,58 @@
         
         
         <div class="gkt-article-start"></div>
-        <h2 id="工厂模式"><a href="#工厂模式" class="headerlink" title="工厂模式"></a>工厂模式</h2>
+        <h2 id="灵魂拷问"><a href="#灵魂拷问" class="headerlink" title="灵魂拷问"></a>灵魂拷问</h2><ul>
+<li>MySQL 的 NULL 值会占用空间吗？</li>
+<li>MySQL 怎么知道 varchar(n) 实际占用数据的大小？</li>
+<li>varchar(n) 中 n 最大取值为多少？</li>
+<li>行溢出后，MySQL 是怎么处理的？</li>
+</ul>
+<h2 id="Mysql文件放在哪里"><a href="#Mysql文件放在哪里" class="headerlink" title="Mysql文件放在哪里"></a>Mysql文件放在哪里</h2><ul>
+<li>db.opt，用来存储当前数据库的默认字符集和字符校验规则。</li>
+<li>.frm 存储表结构。该文件是用来保存每个表的元数据信息的，主要包含表结构定义。</li>
+<li>idb 存储表数据。表数据既可以存在共享表空间文件（文件名：ibdata1）里，也可以存放在独占表空间文件（文件名：表名字.ibd）。这个行为是由参数 innodb_file_per_table 控制的，若设置了参数 innodb_file_per_table 为 1，则会将存储的数据、索引等信息单独存储在一个独占表空间，从 MySQL 5.6.6 版本开始，它的默认值就是 1 了，因此从这个版本之后， MySQL 中每一张表的数据都存放在一个独立的 .ibd 文件。后面mysql 8 版本，都合并到 ibd中</li>
+</ul>
+<h3 id="表空间结构"><a href="#表空间结构" class="headerlink" title="表空间结构"></a>表空间结构</h3><p><img src="imgs/%E8%A1%A8%E7%A9%BA%E9%97%B4%E7%BB%93%E6%9E%84.png" alt="表空间结构"></p>
+<ul>
+<li>行：数据按行存储，并且有不同的行格式（重点）</li>
+</ul>
+<ul>
+<li>页：数据库按页读取数据，InnoDB 的数据是按「页」为单位来读写的[按行读非常浪费IO]，默认每页16Kb。页是 InnoDB 存储引擎磁盘管理的最小单元，意味着数据库每次读写都是以 16KB 为单位的，一次最少从磁盘中读取 16K 的内容到内存中，一次最少把内存中的 16K 内容刷新到磁盘中。<br>页的类型有很多，常见的有数据页、undo 日志页、溢出页等等。</li>
+</ul>
+<ul>
+<li>区：为了解决B+数各层中要维持双向链表，避免相邻的页间隔大，造成大量的随机Io,就吧相邻的页划为一个区，查询的时候就可以顺序Io<br>在表中数据量大的时候，为某个索引分配空间的时候就不再按照页为单位分配了，而是按照区（extent）为单位分配。每个区的大小为 1MB，对于 16KB 的页来说，连续的 64 个页会被划为一个区，这样就使得链表中相邻的页的物理位置也相邻，就能使用顺序 I/O 了。</li>
+</ul>
+<ul>
+<li><p>段：表空间是由各个段（segment）组成的，段是由多个区（extent）组成的。段一般分为数据段、索引段和回滚段等。</p>
+<ul>
+<li>索引段：存放 B + 树的非叶子节点的区的集合；</li>
+<li>数据段：存放 B + 树的叶子节点的区的集合；</li>
+<li>回滚段：存放的是回滚数据的区的集合，MVCC 借助回滚段实现多版本查询</li>
+</ul>
+</li>
+</ul>
+<h3 id="Innodb行格式"><a href="#Innodb行格式" class="headerlink" title="Innodb行格式"></a>Innodb行格式</h3><p><img src="imgs/COMPACT.png" alt="COMPACT"></p>
+<h3 id="记录的真实数据："><a href="#记录的真实数据：" class="headerlink" title="记录的真实数据："></a>记录的真实数据：</h3><p>三个隐藏字段，分别为：row_id、trx_id、roll_pointer，</p>
+<p>row_id 表中没有主见或者唯一约束列，Innodb会添加row_id列row_id不是必需的，占用 6 个字节。<br>事务id，表示这个数据是由哪个事务生成的。 trx_id是必需的，占用 6 个字节。<br>roll_pointer 这条记录上一个版本的指针。roll_pointer 是必需的，占用 7 个字节。如果你熟悉 MVCC 机制，你应该就清楚 trx_id 和 roll_pointer 的作用了</p>
+<h3 id="varchar（n）-中-n-的最大值是多少"><a href="#varchar（n）-中-n-的最大值是多少" class="headerlink" title="varchar（n） 中 n 的最大值是多少"></a>varchar（n） 中 n 的最大值是多少</h3><p>MySQL 规定除了 TEXT、BLOBs 这种大对象类型之外，其他所有的列（不包括隐藏列和记录头信息）占用的字节长度加起来不能超过 65535 个字节。<br>varchar(n) 字段类型的 n 代表的是最多存储的字符数量，并不是字节大小。所以能n最大值，需要根据不同的字符集判断。<br>一行数据的最大字节数是 65535（不包含 TEXT、BLOBs 这种大对象类型），其中包含了 storage overhead</p>
+<h2 id="行溢出后，mysql如何处理"><a href="#行溢出后，mysql如何处理" class="headerlink" title="行溢出后，mysql如何处理"></a>行溢出后，mysql如何处理</h2><p><img src="imgs/%E8%A1%8C%E6%BA%A2%E5%87%BA.png" alt="行溢出"></p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ul>
+<li>MySQL 的 NULL 值是怎么存放的？<ul>
+<li>Compact 行格式下，NULL 占用一个字节，如果列允许 NULL 值，则该列的记录头信息中会设置一个标记位，表示该列是否为 NULL，当表都定义成NOT NULL 时，行格式就不会有NULL值系列，节省1字节空间</li>
+</ul>
+</li>
+<li>varchar(n) 中 n 最大取值为多少？<ul>
+<li>65535</li>
+</ul>
+</li>
+<li>MySQL 怎么知道 varchar(n) 实际占用数据的大小？<ul>
+<li>用Compact行格式存储，记录头信息中记录了实际存储的字符长度<br>参考</li>
+</ul>
+</li>
+<li></li>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/7097040621210173454">https://juejin.cn/post/7097040621210173454</a></li>
+</ul>
+
         
 <script src="/js/qrious.min.js"></script>
 
@@ -216,14 +277,14 @@
             <p>
                 <span>专题: </span>
                 
-                <a href="/series/#Go系列">
-                    <code key="Go系列" class="post-label">Go系列</code>
+                <a href="/series/#Mysql基础">
+                    <code key="Mysql基础" class="post-label">Mysql基础</code>
                 </a>
                 
             </p>
             
             <p>
-                <span>本文发表于 2024-01-02，最后修改于 2024-09-01。</span>
+                <span>本文发表于 2023-02-15，最后修改于 2024-09-07。</span>
             </p>
             <!-- 文章末尾的提示 start -->
             
@@ -234,10 +295,10 @@
         <hr />
         <p name="pagination" style="font-size: 1.2em">
     
-    <a class="float-left" href="/post/php-advanced.html">上一篇 « PHP进阶</a>
+    <a class="float-left" href="/post/mysql-index.html">上一篇 « Mysql索引</a>
     
     
-    <a class="float-right" href="/post/go-design-singleton.html">下一篇 » Go系列 - 单例模式</a>
+    <a class="float-right" href="/post/php-base-version8.3.html">下一篇 » php8.3新特性</a>
     
 </p>
     </article>
@@ -434,8 +495,8 @@
                 
                 
             </div>
-            <a href="/post/go-design-factory.html" class="title">
-                Go系列 - Go工厂模式
+            <a href="/post/go-base.html" class="title">
+                Go工厂模式-工厂模式
             </a>
             <p class="text-gray">
                 <small>
@@ -449,7 +510,7 @@
 </div>
         
         <div class="post-preview">
-    <div class="post-img" style="background-image: url('/post/design/colorhunt.jpg')"></div>
+    <div class="post-img" style="background-image: url('/post/imgs/mysql查询流程.png')"></div>
     <div class="post-info">
         <div class="post-info-center">
             <div class="hidden-xs">
@@ -463,14 +524,14 @@
                 
                 
             </div>
-            <a href="/post/mysql-index.html" class="title">
-                Mysql索引
+            <a href="/post/mysql-base-start.html" class="title">
+                从一条select查询语句看Mysql的执行过程
             </a>
             <p class="text-gray">
                 <small>
-                    <span>发表于2023-02-15，</span>
-                    <span class="hidden-xs">全文187字，</span>
-                    <span>阅读约1分钟</span>
+                    <span>发表于2023-02-02，</span>
+                    <span class="hidden-xs">全文3390字，</span>
+                    <span>阅读约12分钟</span>
                 </small>
             </p>
         </div>
@@ -685,19 +746,31 @@
         
         
         <section class="gkt-sidebar-content box-shadow">
-            <strong>Go系列</strong>
+            <strong>Mysql基础</strong>
             <ul>
                 
                 <li>
-                    <a href="/post/go-design-factory.html"
-                        class="gkt-sidebar-active">Go工厂模式</a>
+                    <a href="/post/mysql-base-start.html"
+                        class="">从一条select查询语句看Mysql的执行过程</a>
+                    
+                </li>
+                
+                <li>
+                    <a href="/post/mysql-base.html"
+                        class="">Mysql基础系列</a>
+                    
+                </li>
+                
+                <li>
+                    <a href="/post/mysql-base-store.html"
+                        class="gkt-sidebar-active">Mysql的Innodb是如何存储数据</a>
                     
                     <!-- Table of Contents -->
 <div id="sidebar-toc">
   <!-- TOC  -->
   
   
-  <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F"><span class="toc-nav-text">工厂模式</span></a></li></ol>
+  <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E7%81%B5%E9%AD%82%E6%8B%B7%E9%97%AE"><span class="toc-nav-text">灵魂拷问</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Mysql%E6%96%87%E4%BB%B6%E6%94%BE%E5%9C%A8%E5%93%AA%E9%87%8C"><span class="toc-nav-text">Mysql文件放在哪里</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E8%A1%8C%E6%BA%A2%E5%87%BA%E5%90%8E%EF%BC%8Cmysql%E5%A6%82%E4%BD%95%E5%A4%84%E7%90%86"><span class="toc-nav-text">行溢出后，mysql如何处理</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-nav-text">总结</span></a></li></ol>
   
 </div>
 

@@ -205,12 +205,17 @@
                     <span class="post-item-date">(Feb 2, 2023)</span>
                 </li>
                 
+                <li>
+                    <a href="/post/mysql-base-store.html">Mysql的Innodb是如何存储数据</a>
+                    <span class="post-item-date">(Feb 15, 2023)</span>
+                </li>
+                
             </ul>
         </div>
         
         
         <div class="gkt-article-start"></div>
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>作为curd boy，我们每天都要和数据库打交道，相信对下面的sql你一定很熟悉：</p>
+        <h2 id="灵魂拷问"><a href="#灵魂拷问" class="headerlink" title="灵魂拷问"></a>灵魂拷问</h2><p>请你介绍一下这条Sql查询语句的执行过程？</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from user where id &#x3D; 1;</span><br></pre></td></tr></table></figure>
 
 <h2 id="Mysql的查询流程"><a href="#Mysql的查询流程" class="headerlink" title="Mysql的查询流程"></a>Mysql的查询流程</h2><p><img src="imgs/mysql%E6%9F%A5%E8%AF%A2%E6%B5%81%E7%A8%8B.png" alt="mysql查询流程"></p>
@@ -218,7 +223,7 @@
 <p>Server层：</p>
 <ul>
 <li>连接器：建立连接</li>
-<li>解析分析器：分析处理sql语句</li>
+<li>解析分析器：分析处理SQL语句</li>
 <li>执行器：执行SQL语句</li>
 </ul>
 <p>存储引擎层：</p>
@@ -317,6 +322,11 @@
 <li>执行阶段：根据执行计划执行 SQL 查询语句，从存储引擎读取记录，返回给客户端；</li>
 </ul>
 </li>
+</ul>
+<p>参考资料：</p>
+<ul>
+<li>《MySQL 45 讲》</li>
+<li><a target="_blank" rel="noopener" href="https://xiaolincoding.com/mysql/base/how_select.html">https://xiaolincoding.com/mysql/base/how_select.html</a></li>
 </ul>
 
         
@@ -533,36 +543,7 @@
 </div>
         
         <div class="post-preview">
-    <div class="post-img" style="background-image: url('/post/design/colorhunt.jpg')"></div>
-    <div class="post-info">
-        <div class="post-info-center">
-            <div class="hidden-xs">
-                
-                
-                <span>/</span>
-                
-                <a class="text-gray" href="/tags/#Go工厂模式"
-                    title="Go工厂模式">Go工厂模式</a>
-                <span>/</span>
-                
-                
-            </div>
-            <a href="/post/go-base.html" class="title">
-                Go工厂模式-工厂模式
-            </a>
-            <p class="text-gray">
-                <small>
-                    <span>发表于2024-01-02，</span>
-                    <span class="hidden-xs">全文193字，</span>
-                    <span>阅读约1分钟</span>
-                </small>
-            </p>
-        </div>
-    </div>
-</div>
-        
-        <div class="post-preview">
-    <div class="post-img" style="background-image: url('/post/design/colorhunt.jpg')"></div>
+    <div class="post-img" style="background-image: url('/post/imgs/mysql查询流程.png')"></div>
     <div class="post-info">
         <div class="post-info-center">
             <div class="hidden-xs">
@@ -576,14 +557,43 @@
                 
                 
             </div>
-            <a href="/post/mysql-base.html" class="title">
-                Mysql基础系列
+            <a href="/post/mysql-base-store.html" class="title">
+                Mysql的Innodb是如何存储数据
+            </a>
+            <p class="text-gray">
+                <small>
+                    <span>发表于2023-02-15，</span>
+                    <span class="hidden-xs">全文2134字，</span>
+                    <span>阅读约8分钟</span>
+                </small>
+            </p>
+        </div>
+    </div>
+</div>
+        
+        <div class="post-preview">
+    <div class="post-img" style="background-image: url('/post/imgs/mysql查询流程.png')"></div>
+    <div class="post-info">
+        <div class="post-info-center">
+            <div class="hidden-xs">
+                
+                
+                <span>/</span>
+                
+                <a class="text-gray" href="/tags/#Mysql"
+                    title="Mysql">Mysql</a>
+                <span>/</span>
+                
+                
+            </div>
+            <a href="/post/mysql-base-start.html" class="title">
+                从一条select查询语句看Mysql的执行过程
             </a>
             <p class="text-gray">
                 <small>
                     <span>发表于2023-02-02，</span>
-                    <span class="hidden-xs">全文189字，</span>
-                    <span>阅读约1分钟</span>
+                    <span class="hidden-xs">全文3390字，</span>
+                    <span>阅读约12分钟</span>
                 </small>
             </p>
         </div>
@@ -613,17 +623,17 @@
 </style>
 <div id="featured-tag">
     
-    <a class="post-tag-item" href="/tags/#Ai系列" title="Ai系列"
-        rel="2">#Ai系列 (2) </a>
-    
     <a class="post-tag-item" href="/tags/#Go工厂模式" title="Go工厂模式"
         rel="2">#Go工厂模式 (2) </a>
+    
+    <a class="post-tag-item" href="/tags/#Ai系列" title="Ai系列"
+        rel="2">#Ai系列 (2) </a>
     
     <a class="post-tag-item" href="/tags/#Go单例模式" title="Go单例模式"
         rel="1">#Go单例模式 (1) </a>
     
     <a class="post-tag-item" href="/tags/#Mysql" title="Mysql"
-        rel="3">#Mysql (3) </a>
+        rel="4">#Mysql (4) </a>
     
     <a class="post-tag-item" href="/tags/#PHP" title="PHP"
         rel="6">#PHP (6) </a>
@@ -777,7 +787,7 @@
 <div class="gkt-summary">
     <nav>
         <a href="/" class="col-xs-4">
-            <span class="number">15</span><span>文章</span>
+            <span class="number">16</span><span>文章</span>
         </a>
         <a href="/series" class="col-xs-4 middle">
             <span class="number">8</span><span>专题</span>
@@ -810,7 +820,7 @@
   <!-- TOC  -->
   
   
-  <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-nav-text">前言</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Mysql%E7%9A%84%E6%9F%A5%E8%AF%A2%E6%B5%81%E7%A8%8B"><span class="toc-nav-text">Mysql的查询流程</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E7%AC%AC%E4%B8%80%E6%AD%A5%EF%BC%9A%E8%BF%9E%E6%8E%A5%E5%99%A8"><span class="toc-nav-text">第一步：连接器</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E7%AC%AC%E4%BA%8C%E6%AD%A5%EF%BC%9A%E6%9F%A5%E8%AF%A2%E7%BC%93%E5%AD%98%E5%99%A8"><span class="toc-nav-text">第二步：查询缓存器</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E7%AC%AC%E4%B8%89%E6%AD%A5%EF%BC%9A%E8%A7%A3%E6%9E%90%E5%88%86%E6%9E%90%E5%99%A8"><span class="toc-nav-text">第三步：解析分析器</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E7%AC%AC%E5%9B%9B%E6%AD%A5%EF%BC%9A%E6%89%A7%E8%A1%8C%E5%99%A8"><span class="toc-nav-text">第四步：执行器</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-nav-text">总结</span></a></li></ol>
+  <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E7%81%B5%E9%AD%82%E6%8B%B7%E9%97%AE"><span class="toc-nav-text">灵魂拷问</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Mysql%E7%9A%84%E6%9F%A5%E8%AF%A2%E6%B5%81%E7%A8%8B"><span class="toc-nav-text">Mysql的查询流程</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E7%AC%AC%E4%B8%80%E6%AD%A5%EF%BC%9A%E8%BF%9E%E6%8E%A5%E5%99%A8"><span class="toc-nav-text">第一步：连接器</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E7%AC%AC%E4%BA%8C%E6%AD%A5%EF%BC%9A%E6%9F%A5%E8%AF%A2%E7%BC%93%E5%AD%98%E5%99%A8"><span class="toc-nav-text">第二步：查询缓存器</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E7%AC%AC%E4%B8%89%E6%AD%A5%EF%BC%9A%E8%A7%A3%E6%9E%90%E5%88%86%E6%9E%90%E5%99%A8"><span class="toc-nav-text">第三步：解析分析器</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E7%AC%AC%E5%9B%9B%E6%AD%A5%EF%BC%9A%E6%89%A7%E8%A1%8C%E5%99%A8"><span class="toc-nav-text">第四步：执行器</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-nav-text">总结</span></a></li></ol>
   
 </div>
 
@@ -855,6 +865,12 @@
                 <li>
                     <a href="/post/mysql-base.html"
                         class="">Mysql基础系列</a>
+                    
+                </li>
+                
+                <li>
+                    <a href="/post/mysql-base-store.html"
+                        class="">Mysql的Innodb是如何存储数据</a>
                     
                 </li>
                 
