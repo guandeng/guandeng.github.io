@@ -1,6 +1,6 @@
 ---
 title: php8.4新特性
-date: 2024-08-01 08:00:00
+date: 2024-08-01 
 description: PHP系列 - php8.4
 tags:
 - PHP

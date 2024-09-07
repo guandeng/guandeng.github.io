@@ -1,6 +1,6 @@
 ---
 title: PHP进阶
-date: 2023-12-02 08:00:00
+date: 2023-12-02 
 description: PHP系列 - 工厂模式
 tags:
 - PHP

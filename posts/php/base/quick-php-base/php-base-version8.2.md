@@ -1,6 +1,6 @@
 ---
 title: php8.2新特性
-date: 2023-02-02 08:00:00
+date: 2023-02-02 
 description: PHP系列 - php8.2新特性
 tags:
 - PHP
