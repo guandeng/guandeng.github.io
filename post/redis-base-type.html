@@ -15,17 +15,17 @@
   <!-- if page has tags, then add tags to keyword -->
   
   
-  <meta name="keywords" content="Php,golang,python,PHP,PHP系列,Php新版本、PHP8.3">
+  <meta name="keywords" content="Php,golang,python,Redis,存储系列">
   <!-- page.description has higher priority -->
-  <meta name="description" content="PHP系列 - 工厂模式">
+  <meta name="description" content="存储系列">
   <link rel="shortcut icon" href="/img/icon.jpg">
   <title>
     
-    PHP基础系列 | Guandeng
+    缓存系统Redis入门详解 | Guandeng
     
   </title>
 
-  <link rel="canonical" href="https://guandeng.github.io/post/php-base.html">
+  <link rel="canonical" href="https://guandeng.github.io/post/redis-base-type.html">
   
 <link rel="stylesheet" href="/css/geektutu.css">
 
@@ -84,7 +84,7 @@
             <ul>
                 
                 
-                <li class="gkt-cate-name float-left ">
+                <li class="gkt-cate-name float-left active">
                     <a class="float-left" href="/post/mysql-advance-order.html">存储系列 ▾</a>
                     
                     <ul class="gkt-sub-cate">
@@ -95,7 +95,7 @@
                         <li class="gkt-sub-cate-name "><a class="float-left"
                                 href="/post/mysql-base-type.html">Mysql基础</a></li>
                         
-                        <li class="gkt-sub-cate-name "><a class="float-left"
+                        <li class="gkt-sub-cate-name active"><a class="float-left"
                                 href="/post/redis-base-type.html">Redis基础</a></li>
                         
                         <li class="gkt-sub-cate-name "><a class="float-left"
@@ -108,12 +108,12 @@
                     
                 </li>
                 
-                <li class="gkt-cate-name float-left active">
+                <li class="gkt-cate-name float-left ">
                     <a class="float-left" href="/post/php-base.html">PHP系列 ▾</a>
                     
                     <ul class="gkt-sub-cate">
                         
-                        <li class="gkt-sub-cate-name active"><a class="float-left"
+                        <li class="gkt-sub-cate-name "><a class="float-left"
                                 href="/post/php-base.html">PHP基础</a></li>
                         
                         <li class="gkt-sub-cate-name "><a class="float-left"
@@ -195,43 +195,28 @@
 <div class="float-left post-container box-shadow">
     <div class="u-arrow-wrapper hidden-xs">
         
-        <a class="float-left" href="/post/mysql-index-explain.html"><i class="u-arrow-left"></i></a>
+        <a class="float-left" href="/post/mysql-base-slave.html"><i class="u-arrow-left"></i></a>
         
         
-        <a class="float-right" href="/post/redis-base.html"><i class="u-arrow-right"></i></a>
+        <a class="float-right" href="/post/mysql-base-command.html"><i class="u-arrow-right"></i></a>
         
     </div>
     <article class="col-xs-12">
-        <h1> PHP基础系列 </h1>
+        <h1> 缓存系统Redis入门详解 </h1>
         
         
         <div class="hidden-lg hidden-md series_links">
-            <p> <strong> PHP基础系列文章链接：</strong></p>
+            <p> <strong> Redis基础系列文章链接：</strong></p>
             <ul>
                 
                 <li>
-                    <a href="/post/php-base.html">PHP基础系列</a>
-                    <span class="post-item-date">(Jan 2, 2023)</span>
+                    <a href="/post/redis-base-type.html">缓存系统Redis入门详解</a>
+                    <span class="post-item-date">(May 10, 2022)</span>
                 </li>
                 
                 <li>
-                    <a href="/post/php-base-version8.2.html">php8.2新特性</a>
+                    <a href="/post/redis-base.html">Redis基础系列</a>
                     <span class="post-item-date">(Feb 2, 2023)</span>
-                </li>
-                
-                <li>
-                    <a href="/post/php-base-object.html">对象赋值是否属于引用</a>
-                    <span class="post-item-date">(Dec 2, 2023)</span>
-                </li>
-                
-                <li>
-                    <a href="/post/php-base-version8.3.html">php8.3新特性</a>
-                    <span class="post-item-date">(Dec 2, 2023)</span>
-                </li>
-                
-                <li>
-                    <a href="/post/php-base-version8.4.html">php8.4新特性</a>
-                    <span class="post-item-date">(Aug 1, 2024)</span>
                 </li>
                 
             </ul>
@@ -239,7 +224,98 @@
         
         
         <div class="gkt-article-start"></div>
-        <h2 id="PHP基础系列"><a href="#PHP基础系列" class="headerlink" title="PHP基础系列"></a>PHP基础系列</h2>
+        <h3 id="Redis特性"><a href="#Redis特性" class="headerlink" title="Redis特性"></a>Redis特性</h3><ul>
+<li>速度快</li>
+<li>持久化<ul>
+<li>redis所有的数据保存在内存中，对数据的更新将异步地保存到磁盘上</li>
+</ul>
+</li>
+<li>多种数据结构</li>
+<li>支持多种编程语言</li>
+<li>功能丰富<ul>
+<li>发布订阅</li>
+<li>lua脚本</li>
+<li>事务</li>
+<li>pipeline</li>
+</ul>
+</li>
+<li>简单：代码短小精悍</li>
+<li>主从复制</li>
+<li>高可用、分布式<ul>
+<li>redis-sentinel支持高可用</li>
+<li>分布式 redis-cluster支持分布式</li>
+</ul>
+</li>
+</ul>
+<h3 id="为什么用Nosql"><a href="#为什么用Nosql" class="headerlink" title="为什么用Nosql"></a>为什么用Nosql</h3><h3 id="redis安装（mac-amp-linux）"><a href="#redis安装（mac-amp-linux）" class="headerlink" title="redis安装（mac&amp;linux）"></a>redis安装（mac&amp;linux）</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ wget http:&#x2F;&#x2F;download.redis.io&#x2F;releases&#x2F;redis-4.0.8.tar.gz</span><br><span class="line">$ tar xzf redis-4.0.8.tar.gz</span><br><span class="line">$ cd redis-4.0.8</span><br><span class="line">$ make</span><br></pre></td></tr></table></figure>
+<h3 id="查看进程命令"><a href="#查看进程命令" class="headerlink" title="查看进程命令"></a>查看进程命令</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ps aux | grep redis</span><br><span class="line"></span><br><span class="line">客户端查看</span><br><span class="line">redis-cli -h 127.0.0.1 -p 6379 ping </span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>查看配置</p>
+<blockquote>
+<p>redis-server configPath</p>
+</blockquote>
+</li>
+<li><p>动态参数启动</p>
+<blockquote>
+<p>redis-server –port 6380</p>
+</blockquote>
+</li>
+<li><p>redis客户端连接</p>
+<blockquote>
+<p>redis-cli -h 127.0.0.1 -p 6379</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="数据结构和内部编码"><a href="#数据结构和内部编码" class="headerlink" title="数据结构和内部编码"></a>数据结构和内部编码</h3><p><img src="https://cdn.jsdelivr.net/gh/guandeng/cdn/img161c710c4cc06b0d~tplv-t2oaga2asx-watermark.awebp"></p>
+<h3 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h3><h4 id="string类型操作"><a href="#string类型操作" class="headerlink" title="string类型操作"></a>string类型操作</h4><p>赋值 set key value</p>
+<blockquote>
+<p>127.0.0.1:6379&gt; set test 123</p>
+</blockquote>
+<p>取值 get key</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; get test</span><br><span class="line">&quot;123&quot;</span><br></pre></td></tr></table></figure>
+<p>取值并赋值 getset key value</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; getset test 321</span><br><span class="line">&quot;123&quot;</span><br><span class="line">127.0.0.1:6379&gt; get test</span><br><span class="line">&quot;321&quot;</span><br></pre></td></tr></table></figure>
+<p>设置获取多个键值 mset key value [key value…] mget key [key…]</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; mset k1 v1 k2 v2 k3 v3</span><br><span class="line">OK</span><br><span class="line">127.0.0.1:6379&gt; mget k1 k2</span><br><span class="line">1) &quot;v1&quot;</span><br><span class="line">2) &quot;v2&quot;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>删除 del key</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; del test</span><br><span class="line">(integer) 1</span><br></pre></td></tr></table></figure>
+
+<h4 id="Hash-散列类型"><a href="#Hash-散列类型" class="headerlink" title="Hash 散列类型"></a>Hash 散列类型</h4><p>一次只设置一个字段值 语法：hset key field value</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; hset user username zhangsan</span><br><span class="line">(integer) 1</span><br></pre></td></tr></table></figure>
+<p>一次设置多个字段值 语法：hmset key field value [field value…]</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; hmset user age 20 username lisi</span><br><span class="line">OK</span><br></pre></td></tr></table></figure>
+<p>当字段不存在时赋值，类似hset,区别在于如果字段存在，该命令不执行任何操作。 语法：hsetnx key field value</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; hsetnx user age 30</span><br><span class="line">(integer) 0</span><br></pre></td></tr></table></figure>
+<p>一次获取一个字段值 语法：hget key field</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; hget user username</span><br><span class="line">&quot;lisi&quot;</span><br></pre></td></tr></table></figure>
+<p>一次可以获取多个字段值 语法：hmget key field [field…]</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; hmget user age username</span><br><span class="line">1) &quot;20&quot;</span><br><span class="line">2) &quot;lisi&quot;</span><br></pre></td></tr></table></figure>
+<p>获取所有字段值 语法：hgetall key</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; hgetall user</span><br><span class="line">1) &quot;username&quot;</span><br><span class="line">2) &quot;lisi&quot;</span><br><span class="line">3) &quot;age&quot;</span><br><span class="line">4) &quot;20&quot;</span><br></pre></td></tr></table></figure>
+
+<h3 id="List-类型"><a href="#List-类型" class="headerlink" title="List 类型"></a>List 类型</h3><p>向列表左边增加元素 语法：lpush key value [value…]</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; lpush list:1 1 2 3</span><br><span class="line">(integer) 3</span><br></pre></td></tr></table></figure>
+
+<p>向列表右边增加元素 语法：rpush key value [value…]</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; rpush list:1 4 5 6</span><br><span class="line">(integer) 6</span><br></pre></td></tr></table></figure>
+
+<p>lrange key start stop(索引从0开始。索引可以是负数，如：“-1”代表最后边的一个元素)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; lrange list:1 0 2</span><br><span class="line">1) &quot;3&quot;</span><br><span class="line">2) &quot;2&quot;</span><br><span class="line">3) &quot;1&quot;</span><br><span class="line">127.0.0.1:6379&gt; lrange list:1 0 -1</span><br><span class="line">1) &quot;3&quot;</span><br><span class="line">2) &quot;2&quot;</span><br><span class="line">3) &quot;1&quot;</span><br><span class="line">4) &quot;4&quot;</span><br><span class="line">5) &quot;5&quot;</span><br><span class="line">6) &quot;6&quot;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Set-类型"><a href="#Set-类型" class="headerlink" title="Set 类型"></a>Set 类型</h3><p>集合类型：无序、不可重复 列表类型：有序、可重复</p>
+<p>增加/删除元素 语法：sadd key member [member…]</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; sadd set a b c</span><br><span class="line">(integer) 3</span><br><span class="line">127.0.0.1:6379&gt; sadd set a</span><br><span class="line">(integer) 0</span><br></pre></td></tr></table></figure>
+<p>语法：srem key member [member…]</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; srem set c</span><br><span class="line">(integer) 1</span><br></pre></td></tr></table></figure>
+<p>获得集合中的所有元素 语法：smembers key</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; smembers set</span><br><span class="line">1) &quot;b&quot;</span><br><span class="line">2) &quot;a&quot;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Redis集群"><a href="#Redis集群" class="headerlink" title="Redis集群"></a>Redis集群</h3><ul>
+<li>Redis集群实现了对Redis的水平扩容，即启动N个redis节点，将整个数据库分布存储在这N个节点中，每个节点存储总数据的1/N</li>
+<li>Redis集群通过分区(partition)来提供一定程度的可用性(availability):即使集群中有一部分节点失效或者无法进行通讯，集群也可以继续处理命令请求</li>
+</ul>
+
         
 <script src="/js/qrious.min.js"></script>
 
@@ -250,14 +326,14 @@
             <p>
                 <span>专题: </span>
                 
-                <a href="/series/#PHP基础">
-                    <code key="PHP基础" class="post-label">PHP基础</code>
+                <a href="/series/#Redis基础">
+                    <code key="Redis基础" class="post-label">Redis基础</code>
                 </a>
                 
             </p>
             
             <p>
-                <span>本文发表于 2023-01-02，最后修改于 2024-09-07。</span>
+                <span>本文发表于 2022-05-10，最后修改于 2024-09-07。</span>
             </p>
             <!-- 文章末尾的提示 start -->
             
@@ -268,10 +344,10 @@
         <hr />
         <p name="pagination" style="font-size: 1.2em">
     
-    <a class="float-left" href="/post/mysql-index-explain.html">上一篇 « Mysql索引</a>
+    <a class="float-left" href="/post/mysql-base-slave.html">上一篇 « Mysql8.0主从搭建</a>
     
     
-    <a class="float-right" href="/post/redis-base.html">下一篇 » Redis基础系列</a>
+    <a class="float-right" href="/post/mysql-base-command.html">下一篇 » Mysql常用命令</a>
     
 </p>
     </article>
@@ -433,6 +509,64 @@
                 
                 <span>/</span>
                 
+                <a class="text-gray" href="/tags/#Ai系列"
+                    title="Ai系列">Ai系列</a>
+                <span>/</span>
+                
+                
+            </div>
+            <a href="/post/prompt.html" class="title">
+                提示词工程
+            </a>
+            <p class="text-gray">
+                <small>
+                    <span>发表于2024-08-01，</span>
+                    <span class="hidden-xs">全文321952字，</span>
+                    <span>阅读约1074分钟</span>
+                </small>
+            </p>
+        </div>
+    </div>
+</div>
+        
+        <div class="post-preview">
+    <div class="post-img" style="background-image: url('/post/design/colorhunt.jpg')"></div>
+    <div class="post-info">
+        <div class="post-info-center">
+            <div class="hidden-xs">
+                
+                
+                <span>/</span>
+                
+                <a class="text-gray" href="/tags/#思考系列"
+                    title="思考系列">思考系列</a>
+                <span>/</span>
+                
+                
+            </div>
+            <a href="/post/quick-base-think.html" class="title">
+                产品思维
+            </a>
+            <p class="text-gray">
+                <small>
+                    <span>发表于2024-06-10，</span>
+                    <span class="hidden-xs">全文167字，</span>
+                    <span>阅读约1分钟</span>
+                </small>
+            </p>
+        </div>
+    </div>
+</div>
+        
+        <div class="post-preview">
+    <div class="post-img" style="background-image: url('/post/design/colorhunt.jpg')"></div>
+    <div class="post-info">
+        <div class="post-info-center">
+            <div class="hidden-xs">
+                
+                
+                <span>/</span>
+                
                 <a class="text-gray" href="/tags/#Mysql"
                     title="Mysql">Mysql</a>
                 <span>/</span>
@@ -447,64 +581,6 @@
                     <span>发表于2023-02-02，</span>
                     <span class="hidden-xs">全文168字，</span>
                     <span>阅读约1分钟</span>
-                </small>
-            </p>
-        </div>
-    </div>
-</div>
-        
-        <div class="post-preview">
-    <div class="post-img" style="background-image: url('/post/imgs/mysql查询流程.png')"></div>
-    <div class="post-info">
-        <div class="post-info-center">
-            <div class="hidden-xs">
-                
-                
-                <span>/</span>
-                
-                <a class="text-gray" href="/tags/#Mysql"
-                    title="Mysql">Mysql</a>
-                <span>/</span>
-                
-                
-            </div>
-            <a href="/post/mysql-base-command.html" class="title">
-                Mysql常用命令
-            </a>
-            <p class="text-gray">
-                <small>
-                    <span>发表于2022-06-14，</span>
-                    <span class="hidden-xs">全文1226字，</span>
-                    <span>阅读约5分钟</span>
-                </small>
-            </p>
-        </div>
-    </div>
-</div>
-        
-        <div class="post-preview">
-    <div class="post-img" style="background-image: url('/post/imgs/mysql查询流程.png')"></div>
-    <div class="post-info">
-        <div class="post-info-center">
-            <div class="hidden-xs">
-                
-                
-                <span>/</span>
-                
-                <a class="text-gray" href="/tags/#Mysql"
-                    title="Mysql">Mysql</a>
-                <span>/</span>
-                
-                
-            </div>
-            <a href="/post/mysql-base-type.html" class="title">
-                Mysql数据类型
-            </a>
-            <p class="text-gray">
-                <small>
-                    <span>发表于2022-02-14，</span>
-                    <span class="hidden-xs">全文940字，</span>
-                    <span>阅读约4分钟</span>
                 </small>
             </p>
         </div>
@@ -725,19 +801,19 @@
         
         
         <section class="gkt-sidebar-content box-shadow">
-            <strong>PHP基础</strong>
+            <strong>Redis基础</strong>
             <ul>
                 
                 <li>
-                    <a href="/post/php-base.html"
-                        class="gkt-sidebar-active">PHP基础系列</a>
+                    <a href="/post/redis-base-type.html"
+                        class="gkt-sidebar-active">缓存系统Redis入门详解</a>
                     
                     <!-- Table of Contents -->
 <div id="sidebar-toc">
   <!-- TOC  -->
   
   
-  <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#PHP%E5%9F%BA%E7%A1%80%E7%B3%BB%E5%88%97"><span class="toc-nav-text">PHP基础系列</span></a></li></ol>
+  
   
 </div>
 
@@ -780,26 +856,8 @@
                 </li>
                 
                 <li>
-                    <a href="/post/php-base-version8.2.html"
-                        class="">php8.2新特性</a>
-                    
-                </li>
-                
-                <li>
-                    <a href="/post/php-base-object.html"
-                        class="">对象赋值是否属于引用</a>
-                    
-                </li>
-                
-                <li>
-                    <a href="/post/php-base-version8.3.html"
-                        class="">php8.3新特性</a>
-                    
-                </li>
-                
-                <li>
-                    <a href="/post/php-base-version8.4.html"
-                        class="">php8.4新特性</a>
+                    <a href="/post/redis-base.html"
+                        class="">Redis基础系列</a>
                     
                 </li>
                 

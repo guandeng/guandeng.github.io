@@ -15,17 +15,17 @@
   <!-- if page has tags, then add tags to keyword -->
   
   
-  <meta name="keywords" content="Php,golang,python,PHP,PHP系列,Php新版本、PHP8.3">
+  <meta name="keywords" content="Php,golang,python,Mysql,存储系列">
   <!-- page.description has higher priority -->
-  <meta name="description" content="PHP系列 - 工厂模式">
+  <meta name="description" content="存储系列">
   <link rel="shortcut icon" href="/img/icon.jpg">
   <title>
     
-    PHP基础系列 | Guandeng
+    Mysql DELETE同一行记录也会造成死锁 | Guandeng
     
   </title>
 
-  <link rel="canonical" href="https://guandeng.github.io/post/php-base.html">
+  <link rel="canonical" href="https://guandeng.github.io/post/mysql-advance-delete.html">
   
 <link rel="stylesheet" href="/css/geektutu.css">
 
@@ -84,12 +84,12 @@
             <ul>
                 
                 
-                <li class="gkt-cate-name float-left ">
+                <li class="gkt-cate-name float-left active">
                     <a class="float-left" href="/post/mysql-advance-order.html">存储系列 ▾</a>
                     
                     <ul class="gkt-sub-cate">
                         
-                        <li class="gkt-sub-cate-name "><a class="float-left"
+                        <li class="gkt-sub-cate-name active"><a class="float-left"
                                 href="/post/mysql-advance-order.html">Mysql进阶</a></li>
                         
                         <li class="gkt-sub-cate-name "><a class="float-left"
@@ -108,12 +108,12 @@
                     
                 </li>
                 
-                <li class="gkt-cate-name float-left active">
+                <li class="gkt-cate-name float-left ">
                     <a class="float-left" href="/post/php-base.html">PHP系列 ▾</a>
                     
                     <ul class="gkt-sub-cate">
                         
-                        <li class="gkt-sub-cate-name active"><a class="float-left"
+                        <li class="gkt-sub-cate-name "><a class="float-left"
                                 href="/post/php-base.html">PHP基础</a></li>
                         
                         <li class="gkt-sub-cate-name "><a class="float-left"
@@ -195,43 +195,38 @@
 <div class="float-left post-container box-shadow">
     <div class="u-arrow-wrapper hidden-xs">
         
-        <a class="float-left" href="/post/mysql-index-explain.html"><i class="u-arrow-left"></i></a>
+        <a class="float-left" href="/post/quick-base-ai.html"><i class="u-arrow-left"></i></a>
         
         
-        <a class="float-right" href="/post/redis-base.html"><i class="u-arrow-right"></i></a>
+        <a class="float-right" href="/post/prompt.html"><i class="u-arrow-right"></i></a>
         
     </div>
     <article class="col-xs-12">
-        <h1> PHP基础系列 </h1>
+        <h1> Mysql DELETE同一行记录也会造成死锁 </h1>
         
         
         <div class="hidden-lg hidden-md series_links">
-            <p> <strong> PHP基础系列文章链接：</strong></p>
+            <p> <strong> Mysql进阶系列文章链接：</strong></p>
             <ul>
                 
                 <li>
-                    <a href="/post/php-base.html">PHP基础系列</a>
-                    <span class="post-item-date">(Jan 2, 2023)</span>
+                    <a href="/post/mysql-advance-order.html">order by id limit 1导致的故障</a>
+                    <span class="post-item-date">(Aug 14, 2021)</span>
                 </li>
                 
                 <li>
-                    <a href="/post/php-base-version8.2.html">php8.2新特性</a>
+                    <a href="/post/mysql-advance-parameter.html">Mysql 参数调优</a>
+                    <span class="post-item-date">(Aug 14, 2021)</span>
+                </li>
+                
+                <li>
+                    <a href="/post/mysql-advance.html">Mysql经验进阶</a>
                     <span class="post-item-date">(Feb 2, 2023)</span>
                 </li>
                 
                 <li>
-                    <a href="/post/php-base-object.html">对象赋值是否属于引用</a>
-                    <span class="post-item-date">(Dec 2, 2023)</span>
-                </li>
-                
-                <li>
-                    <a href="/post/php-base-version8.3.html">php8.3新特性</a>
-                    <span class="post-item-date">(Dec 2, 2023)</span>
-                </li>
-                
-                <li>
-                    <a href="/post/php-base-version8.4.html">php8.4新特性</a>
-                    <span class="post-item-date">(Aug 1, 2024)</span>
+                    <a href="/post/mysql-advance-delete.html">Mysql DELETE同一行记录也会造成死锁</a>
+                    <span class="post-item-date">(Jul 20, 2024)</span>
                 </li>
                 
             </ul>
@@ -239,7 +234,7 @@
         
         
         <div class="gkt-article-start"></div>
-        <h2 id="PHP基础系列"><a href="#PHP基础系列" class="headerlink" title="PHP基础系列"></a>PHP基础系列</h2>
+        <h4 id="故障现象"><a href="#故障现象" class="headerlink" title="故障现象"></a>故障现象</h4>
         
 <script src="/js/qrious.min.js"></script>
 
@@ -250,14 +245,14 @@
             <p>
                 <span>专题: </span>
                 
-                <a href="/series/#PHP基础">
-                    <code key="PHP基础" class="post-label">PHP基础</code>
+                <a href="/series/#Mysql进阶">
+                    <code key="Mysql进阶" class="post-label">Mysql进阶</code>
                 </a>
                 
             </p>
             
             <p>
-                <span>本文发表于 2023-01-02，最后修改于 2024-09-07。</span>
+                <span>本文发表于 2024-07-20，最后修改于 2024-09-07。</span>
             </p>
             <!-- 文章末尾的提示 start -->
             
@@ -268,10 +263,10 @@
         <hr />
         <p name="pagination" style="font-size: 1.2em">
     
-    <a class="float-left" href="/post/mysql-index-explain.html">上一篇 « Mysql索引</a>
+    <a class="float-left" href="/post/quick-base-ai.html">上一篇 « AI基础</a>
     
     
-    <a class="float-right" href="/post/redis-base.html">下一篇 » Redis基础系列</a>
+    <a class="float-right" href="/post/prompt.html">下一篇 » 提示词工程</a>
     
 </p>
     </article>
@@ -433,19 +428,48 @@
                 
                 <span>/</span>
                 
-                <a class="text-gray" href="/tags/#Mysql"
-                    title="Mysql">Mysql</a>
+                <a class="text-gray" href="/tags/#Ai系列"
+                    title="Ai系列">Ai系列</a>
                 <span>/</span>
                 
                 
             </div>
-            <a href="/post/mysql-advance.html" class="title">
-                Mysql经验进阶
+            <a href="/post/advance.html" class="title">
+                AI进阶系列
             </a>
             <p class="text-gray">
                 <small>
-                    <span>发表于2023-02-02，</span>
-                    <span class="hidden-xs">全文168字，</span>
+                    <span>发表于2024-08-31，</span>
+                    <span class="hidden-xs">全文171字，</span>
+                    <span>阅读约1分钟</span>
+                </small>
+            </p>
+        </div>
+    </div>
+</div>
+        
+        <div class="post-preview">
+    <div class="post-img" style="background-image: url('/post/design/colorhunt.jpg')"></div>
+    <div class="post-info">
+        <div class="post-info-center">
+            <div class="hidden-xs">
+                
+                
+                <span>/</span>
+                
+                <a class="text-gray" href="/tags/#Go单例模式"
+                    title="Go单例模式">Go单例模式</a>
+                <span>/</span>
+                
+                
+            </div>
+            <a href="/post/go-design-singleton.html" class="title">
+                Go系列 - 单例模式
+            </a>
+            <p class="text-gray">
+                <small>
+                    <span>发表于2024-01-02，</span>
+                    <span class="hidden-xs">全文191字，</span>
                     <span>阅读约1分钟</span>
                 </small>
             </p>
@@ -476,35 +500,6 @@
                     <span>发表于2022-06-14，</span>
                     <span class="hidden-xs">全文1226字，</span>
                     <span>阅读约5分钟</span>
-                </small>
-            </p>
-        </div>
-    </div>
-</div>
-        
-        <div class="post-preview">
-    <div class="post-img" style="background-image: url('/post/imgs/mysql查询流程.png')"></div>
-    <div class="post-info">
-        <div class="post-info-center">
-            <div class="hidden-xs">
-                
-                
-                <span>/</span>
-                
-                <a class="text-gray" href="/tags/#Mysql"
-                    title="Mysql">Mysql</a>
-                <span>/</span>
-                
-                
-            </div>
-            <a href="/post/mysql-base-type.html" class="title">
-                Mysql数据类型
-            </a>
-            <p class="text-gray">
-                <small>
-                    <span>发表于2022-02-14，</span>
-                    <span class="hidden-xs">全文940字，</span>
-                    <span>阅读约4分钟</span>
                 </small>
             </p>
         </div>
@@ -725,19 +720,37 @@
         
         
         <section class="gkt-sidebar-content box-shadow">
-            <strong>PHP基础</strong>
+            <strong>Mysql进阶</strong>
             <ul>
                 
                 <li>
-                    <a href="/post/php-base.html"
-                        class="gkt-sidebar-active">PHP基础系列</a>
+                    <a href="/post/mysql-advance-order.html"
+                        class="">order by id limit 1导致的故障</a>
+                    
+                </li>
+                
+                <li>
+                    <a href="/post/mysql-advance-parameter.html"
+                        class="">Mysql 参数调优</a>
+                    
+                </li>
+                
+                <li>
+                    <a href="/post/mysql-advance.html"
+                        class="">Mysql经验进阶</a>
+                    
+                </li>
+                
+                <li>
+                    <a href="/post/mysql-advance-delete.html"
+                        class="gkt-sidebar-active">Mysql DELETE同一行记录也会造成死锁</a>
                     
                     <!-- Table of Contents -->
 <div id="sidebar-toc">
   <!-- TOC  -->
   
   
-  <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#PHP%E5%9F%BA%E7%A1%80%E7%B3%BB%E5%88%97"><span class="toc-nav-text">PHP基础系列</span></a></li></ol>
+  
   
 </div>
 
@@ -776,30 +789,6 @@
     })
   })();
 </script>
-                    
-                </li>
-                
-                <li>
-                    <a href="/post/php-base-version8.2.html"
-                        class="">php8.2新特性</a>
-                    
-                </li>
-                
-                <li>
-                    <a href="/post/php-base-object.html"
-                        class="">对象赋值是否属于引用</a>
-                    
-                </li>
-                
-                <li>
-                    <a href="/post/php-base-version8.3.html"
-                        class="">php8.3新特性</a>
-                    
-                </li>
-                
-                <li>
-                    <a href="/post/php-base-version8.4.html"
-                        class="">php8.4新特性</a>
                     
                 </li>
                 

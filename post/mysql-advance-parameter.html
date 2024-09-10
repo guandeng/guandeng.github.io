@@ -15,17 +15,17 @@
   <!-- if page has tags, then add tags to keyword -->
   
   
-  <meta name="keywords" content="Php,golang,python,PHP,PHP系列,Php新版本、PHP8.3">
+  <meta name="keywords" content="Php,golang,python,Mysql,存储系列">
   <!-- page.description has higher priority -->
-  <meta name="description" content="PHP系列 - 工厂模式">
+  <meta name="description" content="存储系列">
   <link rel="shortcut icon" href="/img/icon.jpg">
   <title>
     
-    PHP基础系列 | Guandeng
+    Mysql 参数调优 | Guandeng
     
   </title>
 
-  <link rel="canonical" href="https://guandeng.github.io/post/php-base.html">
+  <link rel="canonical" href="https://guandeng.github.io/post/mysql-advance-parameter.html">
   
 <link rel="stylesheet" href="/css/geektutu.css">
 
@@ -84,12 +84,12 @@
             <ul>
                 
                 
-                <li class="gkt-cate-name float-left ">
+                <li class="gkt-cate-name float-left active">
                     <a class="float-left" href="/post/mysql-advance-order.html">存储系列 ▾</a>
                     
                     <ul class="gkt-sub-cate">
                         
-                        <li class="gkt-sub-cate-name "><a class="float-left"
+                        <li class="gkt-sub-cate-name active"><a class="float-left"
                                 href="/post/mysql-advance-order.html">Mysql进阶</a></li>
                         
                         <li class="gkt-sub-cate-name "><a class="float-left"
@@ -108,12 +108,12 @@
                     
                 </li>
                 
-                <li class="gkt-cate-name float-left active">
+                <li class="gkt-cate-name float-left ">
                     <a class="float-left" href="/post/php-base.html">PHP系列 ▾</a>
                     
                     <ul class="gkt-sub-cate">
                         
-                        <li class="gkt-sub-cate-name active"><a class="float-left"
+                        <li class="gkt-sub-cate-name "><a class="float-left"
                                 href="/post/php-base.html">PHP基础</a></li>
                         
                         <li class="gkt-sub-cate-name "><a class="float-left"
@@ -195,43 +195,36 @@
 <div class="float-left post-container box-shadow">
     <div class="u-arrow-wrapper hidden-xs">
         
-        <a class="float-left" href="/post/mysql-index-explain.html"><i class="u-arrow-left"></i></a>
         
-        
-        <a class="float-right" href="/post/redis-base.html"><i class="u-arrow-right"></i></a>
+        <a class="float-right" href="/post/mysql-advance-order.html"><i class="u-arrow-right"></i></a>
         
     </div>
     <article class="col-xs-12">
-        <h1> PHP基础系列 </h1>
+        <h1> Mysql 参数调优 </h1>
         
         
         <div class="hidden-lg hidden-md series_links">
-            <p> <strong> PHP基础系列文章链接：</strong></p>
+            <p> <strong> Mysql进阶系列文章链接：</strong></p>
             <ul>
                 
                 <li>
-                    <a href="/post/php-base.html">PHP基础系列</a>
-                    <span class="post-item-date">(Jan 2, 2023)</span>
+                    <a href="/post/mysql-advance-order.html">order by id limit 1导致的故障</a>
+                    <span class="post-item-date">(Aug 14, 2021)</span>
                 </li>
                 
                 <li>
-                    <a href="/post/php-base-version8.2.html">php8.2新特性</a>
+                    <a href="/post/mysql-advance-parameter.html">Mysql 参数调优</a>
+                    <span class="post-item-date">(Aug 14, 2021)</span>
+                </li>
+                
+                <li>
+                    <a href="/post/mysql-advance.html">Mysql经验进阶</a>
                     <span class="post-item-date">(Feb 2, 2023)</span>
                 </li>
                 
                 <li>
-                    <a href="/post/php-base-object.html">对象赋值是否属于引用</a>
-                    <span class="post-item-date">(Dec 2, 2023)</span>
-                </li>
-                
-                <li>
-                    <a href="/post/php-base-version8.3.html">php8.3新特性</a>
-                    <span class="post-item-date">(Dec 2, 2023)</span>
-                </li>
-                
-                <li>
-                    <a href="/post/php-base-version8.4.html">php8.4新特性</a>
-                    <span class="post-item-date">(Aug 1, 2024)</span>
+                    <a href="/post/mysql-advance-delete.html">Mysql DELETE同一行记录也会造成死锁</a>
+                    <span class="post-item-date">(Jul 20, 2024)</span>
                 </li>
                 
             </ul>
@@ -239,7 +232,18 @@
         
         
         <div class="gkt-article-start"></div>
-        <h2 id="PHP基础系列"><a href="#PHP基础系列" class="headerlink" title="PHP基础系列"></a>PHP基础系列</h2>
+        <h1 id="x20-脏页控制策略-x20"><a href="#x20-脏页控制策略-x20" class="headerlink" title="&#x20;脏页控制策略&#x20;"></a>&#x20;脏页控制策略&#x20;</h1><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span>、innodb_io_capacity</span><br><span class="line">	作用：刷新脏页策略</span><br><span class="line">	合理设置：建议设置成磁盘的 IOPS，通过 fio 工具测试</span><br><span class="line"><span class="number">2</span>、innodb_flush_neighbors</span><br><span class="line">	作用：控制数据写入磁盘时临近页刷新行为</span><br><span class="line">	合理设置：ssd 硬盘建议设置为 <span class="number">0</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="事务日志-x20"><a href="#事务日志-x20" class="headerlink" title="事务日志&#x20;"></a>事务日志&#x20;</h1><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span>、innodb_log_file_size</span><br><span class="line">	作用：日志文件大小</span><br><span class="line">	合理建议：</span><br><span class="line"><span class="number">2</span>、sync_binlog</span><br><span class="line">	作用：控制事务提交时，将 binlog 日志写进磁盘策略</span><br><span class="line">	合理设置：不建议设置 为 <span class="number">0</span>，大于 <span class="number">1</span> 表示累计多个事务合并写入磁盘，较大值平衡性能和持久性</span><br><span class="line"><span class="number">3</span>、innodb_flush_log_at_trx_commit</span><br><span class="line">	作用：控制事务日志刷新策略</span><br><span class="line">	合理设置：默认 <span class="number">1</span>，事务提交后立即写日志，<span class="number">0</span>不进行提交，<span class="number">2</span>、设置缓冲区，通过延迟写入和缓冲区提高性能</span><br><span class="line"><span class="number">4</span>、redo log buffer 占用的空间即将达到 占 innodb_log_buffer_size一半的时候， 一 后台线程会主动写盘（只 write，没有 fsync)，并行的事务提交的时候，顺带将这个事务的 另 redo log buffer持久化到磁持盘</span><br><span class="line">	</span><br></pre></td></tr></table></figure>
+
+<h3 id="Buffer-相关"><a href="#Buffer-相关" class="headerlink" title="Buffer 相关"></a>Buffer 相关</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">1、show engine innodb status</span><br><span class="line">	作用：查看buffer pool 命中率</span><br><span class="line">	合理值：99%以上</span><br><span class="line">2、innodb_buffer_pool_size</span><br><span class="line">	作用：控制缓存池大小</span><br><span class="line">	</span><br></pre></td></tr></table></figure>
+
+<h3 id="现在出现了性能瓶颈，而且瓶颈在-现-IO上，可以通过哪些方法来提升性能呢"><a href="#现在出现了性能瓶颈，而且瓶颈在-现-IO上，可以通过哪些方法来提升性能呢" class="headerlink" title="现在出现了性能瓶颈，而且瓶颈在 现 IO上，可以通过哪些方法来提升性能呢"></a>现在出现了性能瓶颈，而且瓶颈在 现 IO上，可以通过哪些方法来提升性能呢</h3><ul>
+<li>  &#x20;1. 设置 binlog_group_commit_sync_delay和 binlog_group_commit_sync_no_delay_count参 数，减少binlog的写盘次数。这个方法是基于“额外的故意等待”来实现的，因此可能会增加 语句的响应时间，但没有丢失数据的风险。&#x20;</li>
+<li>  2. 将sync_binlog 设置为大于1的值（比较常见是100~1000）。这样做的风险是，主机掉电时 会丢binlog日志。&#x20;</li>
+<li>  3. 将innodb_flush_log_at_trx_commit设置为2。这样做的风险是，主机掉电的时候会丢数据。</li>
+</ul>
+
         
 <script src="/js/qrious.min.js"></script>
 
@@ -250,14 +254,14 @@
             <p>
                 <span>专题: </span>
                 
-                <a href="/series/#PHP基础">
-                    <code key="PHP基础" class="post-label">PHP基础</code>
+                <a href="/series/#Mysql进阶">
+                    <code key="Mysql进阶" class="post-label">Mysql进阶</code>
                 </a>
                 
             </p>
             
             <p>
-                <span>本文发表于 2023-01-02，最后修改于 2024-09-07。</span>
+                <span>本文发表于 2021-08-14，最后修改于 2024-09-07。</span>
             </p>
             <!-- 文章末尾的提示 start -->
             
@@ -268,10 +272,8 @@
         <hr />
         <p name="pagination" style="font-size: 1.2em">
     
-    <a class="float-left" href="/post/mysql-index-explain.html">上一篇 « Mysql索引</a>
     
-    
-    <a class="float-right" href="/post/redis-base.html">下一篇 » Redis基础系列</a>
+    <a class="float-right" href="/post/mysql-advance-order.html">下一篇 » order by id limit 1导致的故障</a>
     
 </p>
     </article>
@@ -425,35 +427,6 @@
         <h3>推荐阅读</h3>
         
         <div class="post-preview">
-    <div class="post-img" style="background-image: url('/post/design/colorhunt.jpg')"></div>
-    <div class="post-info">
-        <div class="post-info-center">
-            <div class="hidden-xs">
-                
-                
-                <span>/</span>
-                
-                <a class="text-gray" href="/tags/#Mysql"
-                    title="Mysql">Mysql</a>
-                <span>/</span>
-                
-                
-            </div>
-            <a href="/post/mysql-advance.html" class="title">
-                Mysql经验进阶
-            </a>
-            <p class="text-gray">
-                <small>
-                    <span>发表于2023-02-02，</span>
-                    <span class="hidden-xs">全文168字，</span>
-                    <span>阅读约1分钟</span>
-                </small>
-            </p>
-        </div>
-    </div>
-</div>
-        
-        <div class="post-preview">
     <div class="post-img" style="background-image: url('/post/imgs/mysql查询流程.png')"></div>
     <div class="post-info">
         <div class="post-info-center">
@@ -468,14 +441,43 @@
                 
                 
             </div>
-            <a href="/post/mysql-base-command.html" class="title">
-                Mysql常用命令
+            <a href="/post/mysql-base-store.html" class="title">
+                Mysql的Innodb是如何存储数据
             </a>
             <p class="text-gray">
                 <small>
-                    <span>发表于2022-06-14，</span>
-                    <span class="hidden-xs">全文1226字，</span>
-                    <span>阅读约5分钟</span>
+                    <span>发表于2023-02-15，</span>
+                    <span class="hidden-xs">全文2125字，</span>
+                    <span>阅读约8分钟</span>
+                </small>
+            </p>
+        </div>
+    </div>
+</div>
+        
+        <div class="post-preview">
+    <div class="post-img" style="background-image: url('/post/design/colorhunt.jpg')"></div>
+    <div class="post-info">
+        <div class="post-info-center">
+            <div class="hidden-xs">
+                
+                
+                <span>/</span>
+                
+                <a class="text-gray" href="/tags/#Redis"
+                    title="Redis">Redis</a>
+                <span>/</span>
+                
+                
+            </div>
+            <a href="/post/redis-base.html" class="title">
+                Redis基础系列
+            </a>
+            <p class="text-gray">
+                <small>
+                    <span>发表于2023-02-02，</span>
+                    <span class="hidden-xs">全文170字，</span>
+                    <span>阅读约1分钟</span>
                 </small>
             </p>
         </div>
@@ -725,19 +727,25 @@
         
         
         <section class="gkt-sidebar-content box-shadow">
-            <strong>PHP基础</strong>
+            <strong>Mysql进阶</strong>
             <ul>
                 
                 <li>
-                    <a href="/post/php-base.html"
-                        class="gkt-sidebar-active">PHP基础系列</a>
+                    <a href="/post/mysql-advance-order.html"
+                        class="">order by id limit 1导致的故障</a>
+                    
+                </li>
+                
+                <li>
+                    <a href="/post/mysql-advance-parameter.html"
+                        class="gkt-sidebar-active">Mysql 参数调优</a>
                     
                     <!-- Table of Contents -->
 <div id="sidebar-toc">
   <!-- TOC  -->
   
   
-  <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#PHP%E5%9F%BA%E7%A1%80%E7%B3%BB%E5%88%97"><span class="toc-nav-text">PHP基础系列</span></a></li></ol>
+  <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#x20-%E8%84%8F%E9%A1%B5%E6%8E%A7%E5%88%B6%E7%AD%96%E7%95%A5-x20"><span class="toc-nav-text">&amp;#x20;脏页控制策略&amp;#x20;</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E4%BA%8B%E5%8A%A1%E6%97%A5%E5%BF%97-x20"><span class="toc-nav-text">事务日志&amp;#x20;</span></a></li></ol>
   
 </div>
 
@@ -780,26 +788,14 @@
                 </li>
                 
                 <li>
-                    <a href="/post/php-base-version8.2.html"
-                        class="">php8.2新特性</a>
+                    <a href="/post/mysql-advance.html"
+                        class="">Mysql经验进阶</a>
                     
                 </li>
                 
                 <li>
-                    <a href="/post/php-base-object.html"
-                        class="">对象赋值是否属于引用</a>
-                    
-                </li>
-                
-                <li>
-                    <a href="/post/php-base-version8.3.html"
-                        class="">php8.3新特性</a>
-                    
-                </li>
-                
-                <li>
-                    <a href="/post/php-base-version8.4.html"
-                        class="">php8.4新特性</a>
+                    <a href="/post/mysql-advance-delete.html"
+                        class="">Mysql DELETE同一行记录也会造成死锁</a>
                     
                 </li>
                 
