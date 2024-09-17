@@ -26,26 +26,26 @@ image: post/design/colorhunt.jpg
 # 事务日志&#x20;
 
 ```sql
-1、innodb_log_file_size
+innodb_log_file_size
 	作用：日志文件大小
 	合理建议：
-2、sync_binlog
+sync_binlog
 	作用：控制事务提交时，将 binlog 日志写进磁盘策略
 	合理设置：不建议设置 为 0，大于 1 表示累计多个事务合并写入磁盘，较大值平衡性能和持久性
-3、innodb_flush_log_at_trx_commit
+innodb_flush_log_at_trx_commit
 	作用：控制事务日志刷新策略
 	合理设置：默认 1，事务提交后立即写日志，0不进行提交，2、设置缓冲区，通过延迟写入和缓冲区提高性能
-4、redo log buffer 占用的空间即将达到 占 innodb_log_buffer_size一半的时候， 一 后台线程会主动写盘（只 write，没有 fsync)，并行的事务提交的时候，顺带将这个事务的 另 redo log buffer持久化到磁持盘
+redo log buffer 占用的空间即将达到 占 innodb_log_buffer_size一半的时候， 一 后台线程会主动写盘（只 write，没有 fsync)，并行的事务提交的时候，顺带将这个事务的 另 redo log buffer持久化到磁持盘
 	
 ```
 
 ### Buffer 相关
 
 ```
-1、show engine innodb status
+show engine innodb status
 	作用：查看buffer pool 命中率
 	合理值：99%以上
-2、innodb_buffer_pool_size
+innodb_buffer_pool_size
 	作用：控制缓存池大小
 	
 ```

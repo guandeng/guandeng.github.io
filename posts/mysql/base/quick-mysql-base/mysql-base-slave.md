@@ -45,7 +45,6 @@ mysql> show master status;
 | binlog.000001 | 1304 | db1 | | 
 +---------------+----------+--------------+------------------+ 
 1 row in set (0.00 sec)
-
 ```
 
 从机配置与启动
@@ -88,10 +87,8 @@ log-error=/usr/local/var/www/mysql/3307/error_3307.log
  > ./mysqld_multi --defaults-extra-file=/etc/cluster.conf --user=mysql start 3307
  
  验证是否成功
-
  ```
 mysqld_multi --defaults-extra-file=/etc/cluster.conf report
  
-  mysqld --defaults-file=/etc/my.conf --initialize  --basedir=/usr/local/var/www/mysql  --datadir=/usr/local/var/www/mysql/3307/data
-
+mysqld --defaults-file=/etc/my.conf --initialize  --basedir=/usr/local/var/www/mysql  --datadir=/usr/local/var/www/mysql/3307/data
  ```
