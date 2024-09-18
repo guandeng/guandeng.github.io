@@ -71,7 +71,6 @@ mysql> show profiles;
 | cleaning up          | 0.000033 |
 +----------------------+----------+
 16 rows in set (0.07 sec)
-
 ```
 分析原因：  Sending data 耗时
 
