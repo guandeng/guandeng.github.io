@@ -19,6 +19,13 @@ image: post/design/colorhunt.jpg
 - 索引也是一张表：保存索引和主键字段，并执行实体表积累了，也需要占用内存
 - 索引可以提高查询效率，但是insert、update、delete速度就没用那么理想，要调整更新带来的键值前后变化索引信息
 
+#### 索引的优缺点
+- 优点
+    1、提高查询效率，降低磁盘IO
+    2、降低数据排序的成本，降低CPU的消耗，索引之所以查的快，因为先将数据排序好
+- 缺点
+    1、索引本身是表，需要占用内存和硬盘空间
+    2、对表进行insert、delete操作时，需要同时更新索引，否则指向物理数据可能不对
 
 #### 为什么mysql用B+tree索引，不用b-tree
 b+tree和b-tree不同之处
@@ -65,3 +72,8 @@ b+tree和b-tree不同之处
 #### mysql 组合索引结构是什么
 
 为什么要用B+树：https://mp.weixin.qq.com/s?__biz=MzIxMzk3Mjg5MQ==&mid=2247483916&idx=1&sn=bfc33b53f8176e6f4d7e64c087ad36a4&chksm=97afe0f8a0d869eeaa14d8b26eca9d6fa09f9fda4557b40cb22ebe75851aa4dfb67d822233d9&scene=0&subscene=90&sessionid=1539434820&ascene=7&devicetype=andro
+
+#### 什么时候不用索引
+- 频繁更新的字段不用建索引
+- 大量重复字段的不用建索引
+- 数据量很少的不用建索引
