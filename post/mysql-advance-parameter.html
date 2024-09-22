@@ -104,6 +104,12 @@
                         <li class="gkt-sub-cate-name "><a class="float-left"
                                 href="/post/mysql-log-all.html">Mysql日志</a></li>
                         
+                        <li class="gkt-sub-cate-name "><a class="float-left"
+                                href="/post/mysql-transaction-types.html">Mysql事务</a></li>
+                        
+                        <li class="gkt-sub-cate-name "><a class="float-left"
+                                href="/post/mysql-transaction-phantom.html">Mysql的幻读</a></li>
+                        
                     </ul>
                     
                 </li>
@@ -234,9 +240,9 @@
         <div class="gkt-article-start"></div>
         <h1 id="x20-脏页控制策略-x20"><a href="#x20-脏页控制策略-x20" class="headerlink" title="&#x20;脏页控制策略&#x20;"></a>&#x20;脏页控制策略&#x20;</h1><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span>、innodb_io_capacity</span><br><span class="line">	作用：刷新脏页策略</span><br><span class="line">	合理设置：建议设置成磁盘的 IOPS，通过 fio 工具测试</span><br><span class="line"><span class="number">2</span>、innodb_flush_neighbors</span><br><span class="line">	作用：控制数据写入磁盘时临近页刷新行为</span><br><span class="line">	合理设置：ssd 硬盘建议设置为 <span class="number">0</span></span><br></pre></td></tr></table></figure>
 
-<h1 id="事务日志-x20"><a href="#事务日志-x20" class="headerlink" title="事务日志&#x20;"></a>事务日志&#x20;</h1><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span>、innodb_log_file_size</span><br><span class="line">	作用：日志文件大小</span><br><span class="line">	合理建议：</span><br><span class="line"><span class="number">2</span>、sync_binlog</span><br><span class="line">	作用：控制事务提交时，将 binlog 日志写进磁盘策略</span><br><span class="line">	合理设置：不建议设置 为 <span class="number">0</span>，大于 <span class="number">1</span> 表示累计多个事务合并写入磁盘，较大值平衡性能和持久性</span><br><span class="line"><span class="number">3</span>、innodb_flush_log_at_trx_commit</span><br><span class="line">	作用：控制事务日志刷新策略</span><br><span class="line">	合理设置：默认 <span class="number">1</span>，事务提交后立即写日志，<span class="number">0</span>不进行提交，<span class="number">2</span>、设置缓冲区，通过延迟写入和缓冲区提高性能</span><br><span class="line"><span class="number">4</span>、redo log buffer 占用的空间即将达到 占 innodb_log_buffer_size一半的时候， 一 后台线程会主动写盘（只 write，没有 fsync)，并行的事务提交的时候，顺带将这个事务的 另 redo log buffer持久化到磁持盘</span><br><span class="line">	</span><br></pre></td></tr></table></figure>
+<h1 id="事务日志-x20"><a href="#事务日志-x20" class="headerlink" title="事务日志&#x20;"></a>事务日志&#x20;</h1><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">innodb_log_file_size</span><br><span class="line">	作用：日志文件大小</span><br><span class="line">	合理建议：</span><br><span class="line">sync_binlog</span><br><span class="line">	作用：控制事务提交时，将 binlog 日志写进磁盘策略</span><br><span class="line">	合理设置：不建议设置 为 <span class="number">0</span>，大于 <span class="number">1</span> 表示累计多个事务合并写入磁盘，较大值平衡性能和持久性</span><br><span class="line">innodb_flush_log_at_trx_commit</span><br><span class="line">	作用：控制事务日志刷新策略</span><br><span class="line">	合理设置：默认 <span class="number">1</span>，事务提交后立即写日志，<span class="number">0</span>不进行提交，<span class="number">2</span>、设置缓冲区，通过延迟写入和缓冲区提高性能</span><br><span class="line">redo log buffer 占用的空间即将达到 占 innodb_log_buffer_size一半的时候， 一 后台线程会主动写盘（只 write，没有 fsync)，并行的事务提交的时候，顺带将这个事务的 另 redo log buffer持久化到磁持盘</span><br><span class="line">	</span><br></pre></td></tr></table></figure>
 
-<h3 id="Buffer-相关"><a href="#Buffer-相关" class="headerlink" title="Buffer 相关"></a>Buffer 相关</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">1、show engine innodb status</span><br><span class="line">	作用：查看buffer pool 命中率</span><br><span class="line">	合理值：99%以上</span><br><span class="line">2、innodb_buffer_pool_size</span><br><span class="line">	作用：控制缓存池大小</span><br><span class="line">	</span><br></pre></td></tr></table></figure>
+<h3 id="Buffer-相关"><a href="#Buffer-相关" class="headerlink" title="Buffer 相关"></a>Buffer 相关</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">show engine innodb status</span><br><span class="line">	作用：查看buffer pool 命中率</span><br><span class="line">	合理值：99%以上</span><br><span class="line">innodb_buffer_pool_size</span><br><span class="line">	作用：控制缓存池大小</span><br><span class="line">	</span><br></pre></td></tr></table></figure>
 
 <h3 id="现在出现了性能瓶颈，而且瓶颈在-现-IO上，可以通过哪些方法来提升性能呢"><a href="#现在出现了性能瓶颈，而且瓶颈在-现-IO上，可以通过哪些方法来提升性能呢" class="headerlink" title="现在出现了性能瓶颈，而且瓶颈在 现 IO上，可以通过哪些方法来提升性能呢"></a>现在出现了性能瓶颈，而且瓶颈在 现 IO上，可以通过哪些方法来提升性能呢</h3><ul>
 <li>  &#x20;1. 设置 binlog_group_commit_sync_delay和 binlog_group_commit_sync_no_delay_count参 数，减少binlog的写盘次数。这个方法是基于“额外的故意等待”来实现的，因此可能会增加 语句的响应时间，但没有丢失数据的风险。&#x20;</li>
@@ -261,7 +267,7 @@
             </p>
             
             <p>
-                <span>本文发表于 2021-08-14，最后修改于 2024-09-07。</span>
+                <span>本文发表于 2021-08-14，最后修改于 2024-09-17。</span>
             </p>
             <!-- 文章末尾的提示 start -->
             
@@ -427,7 +433,7 @@
         <h3>推荐阅读</h3>
         
         <div class="post-preview">
-    <div class="post-img" style="background-image: url('/post/imgs/mysql查询流程.png')"></div>
+    <div class="post-img" style="background-image: url('/post/design/colorhunt.jpg')"></div>
     <div class="post-info">
         <div class="post-info-center">
             <div class="hidden-xs">
@@ -435,20 +441,49 @@
                 
                 <span>/</span>
                 
-                <a class="text-gray" href="/tags/#Mysql"
-                    title="Mysql">Mysql</a>
+                <a class="text-gray" href="/tags/#PHP"
+                    title="PHP">PHP</a>
                 <span>/</span>
                 
                 
             </div>
-            <a href="/post/mysql-base-store.html" class="title">
-                Mysql的Innodb是如何存储数据
+            <a href="/post/php-base-object.html" class="title">
+                对象赋值是否属于引用
             </a>
             <p class="text-gray">
                 <small>
-                    <span>发表于2023-02-15，</span>
-                    <span class="hidden-xs">全文2125字，</span>
-                    <span>阅读约8分钟</span>
+                    <span>发表于2023-12-02，</span>
+                    <span class="hidden-xs">全文1040字，</span>
+                    <span>阅读约4分钟</span>
+                </small>
+            </p>
+        </div>
+    </div>
+</div>
+        
+        <div class="post-preview">
+    <div class="post-img" style="background-image: url('/')"></div>
+    <div class="post-info">
+        <div class="post-info-center">
+            <div class="hidden-xs">
+                
+                
+                <span>/</span>
+                
+                <a class="text-gray" href="/tags/#Redis"
+                    title="Redis">Redis</a>
+                <span>/</span>
+                
+                
+            </div>
+            <a href="/post/redis-base-thread.html" class="title">
+                Redis线程模型
+            </a>
+            <p class="text-gray">
+                <small>
+                    <span>发表于2023-09-25，</span>
+                    <span class="hidden-xs">全文890字，</span>
+                    <span>阅读约3分钟</span>
                 </small>
             </p>
         </div>
@@ -464,49 +499,20 @@
                 
                 <span>/</span>
                 
-                <a class="text-gray" href="/tags/#Redis"
-                    title="Redis">Redis</a>
+                <a class="text-gray" href="/tags/#PHP"
+                    title="PHP">PHP</a>
                 <span>/</span>
                 
                 
             </div>
-            <a href="/post/redis-base.html" class="title">
-                Redis基础系列
+            <a href="/post/php-base.html" class="title">
+                PHP基础系列
             </a>
             <p class="text-gray">
                 <small>
-                    <span>发表于2023-02-02，</span>
-                    <span class="hidden-xs">全文170字，</span>
+                    <span>发表于2023-01-02，</span>
+                    <span class="hidden-xs">全文189字，</span>
                     <span>阅读约1分钟</span>
-                </small>
-            </p>
-        </div>
-    </div>
-</div>
-        
-        <div class="post-preview">
-    <div class="post-img" style="background-image: url('/post/imgs/mysql查询流程.png')"></div>
-    <div class="post-info">
-        <div class="post-info-center">
-            <div class="hidden-xs">
-                
-                
-                <span>/</span>
-                
-                <a class="text-gray" href="/tags/#Mysql"
-                    title="Mysql">Mysql</a>
-                <span>/</span>
-                
-                
-            </div>
-            <a href="/post/mysql-base-type.html" class="title">
-                Mysql数据类型
-            </a>
-            <p class="text-gray">
-                <small>
-                    <span>发表于2022-02-14，</span>
-                    <span class="hidden-xs">全文940字，</span>
-                    <span>阅读约4分钟</span>
                 </small>
             </p>
         </div>
@@ -536,17 +542,26 @@
 </style>
 <div id="featured-tag">
     
-    <a class="post-tag-item" href="/tags/#Go工厂模式" title="Go工厂模式"
-        rel="2">#Go工厂模式 (2) </a>
-    
     <a class="post-tag-item" href="/tags/#Ai系列" title="Ai系列"
         rel="2">#Ai系列 (2) </a>
+    
+    <a class="post-tag-item" href="/tags/#Go工厂模式" title="Go工厂模式"
+        rel="2">#Go工厂模式 (2) </a>
     
     <a class="post-tag-item" href="/tags/#Go单例模式" title="Go单例模式"
         rel="1">#Go单例模式 (1) </a>
     
     <a class="post-tag-item" href="/tags/#Mysql" title="Mysql"
-        rel="18">#Mysql (18) </a>
+        rel="20">#Mysql (20) </a>
+    
+    <a class="post-tag-item" href="/tags/#Mysql的幻读" title="Mysql的幻读"
+        rel="1">#Mysql的幻读 (1) </a>
+    
+    <a class="post-tag-item" href="/tags/#Mysql事务" title="Mysql事务"
+        rel="1">#Mysql事务 (1) </a>
+    
+    <a class="post-tag-item" href="/tags/#Mysql隔离级别" title="Mysql隔离级别"
+        rel="1">#Mysql隔离级别 (1) </a>
     
     <a class="post-tag-item" href="/tags/#PHP" title="PHP"
         rel="6">#PHP (6) </a>
@@ -558,7 +573,7 @@
         rel="1">#思考系列 (1) </a>
     
     <a class="post-tag-item" href="/tags/#Redis" title="Redis"
-        rel="2">#Redis (2) </a>
+        rel="3">#Redis (3) </a>
     
 </div>
     </div>
@@ -706,13 +721,13 @@
 <div class="gkt-summary">
     <nav>
         <a href="/" class="col-xs-4">
-            <span class="number">33</span><span>文章</span>
+            <span class="number">38</span><span>文章</span>
         </a>
         <a href="/series" class="col-xs-4 middle">
-            <span class="number">12</span><span>专题</span>
+            <span class="number">14</span><span>专题</span>
         </a>
         <a href="/tags" class="col-xs-4">
-            <span class="number">8</span><span>标签</span>
+            <span class="number">11</span><span>标签</span>
         </a>
     </nav>
 

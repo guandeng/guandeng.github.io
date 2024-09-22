@@ -180,6 +180,96 @@
     </item>
     
     <item>
+      <title>Mysql的幻读</title>
+      <link>https://guandeng.github.io/post/mysql-transaction-phantom.html</link>
+      <guid>https://guandeng.github.io/post/mysql-transaction-phantom.html</guid>
+      <pubDate>Thu, 18 Jan 2024 16:00:00 GMT</pubDate>
+      
+      <description>Mysql的幻读</description>
+      
+      
+      
+      
+      <category domain="https://guandeng.github.io/categories/Mysql%E7%9A%84%E5%B9%BB%E8%AF%BB/">Mysql的幻读</category>
+      
+      
+      <category domain="https://guandeng.github.io/tags/Mysql%E7%9A%84%E5%B9%BB%E8%AF%BB/">Mysql的幻读</category>
+      
+      
+      <comments>https://guandeng.github.io/post/mysql-transaction-phantom.html#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>Mysql为什么选择B树做索引</title>
+      <link>https://guandeng.github.io/post/mysql-index-btree.html</link>
+      <guid>https://guandeng.github.io/post/mysql-index-btree.html</guid>
+      <pubDate>Sun, 14 Jan 2024 16:00:00 GMT</pubDate>
+      
+      <description>Mysql索引</description>
+      
+      
+      <enclosure url="https://guandeng.github.io/post/design/colorhunt.jpg" type="image"/>
+      
+      
+      
+      <category domain="https://guandeng.github.io/categories/Mysql%E7%B4%A2%E5%BC%95/">Mysql索引</category>
+      
+      
+      <category domain="https://guandeng.github.io/tags/Mysql/">Mysql</category>
+      
+      
+      <comments>https://guandeng.github.io/post/mysql-index-btree.html#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>Mysql事务隔离级别</title>
+      <link>https://guandeng.github.io/post/mysql-transaction-types.html</link>
+      <guid>https://guandeng.github.io/post/mysql-transaction-types.html</guid>
+      <pubDate>Sun, 14 Jan 2024 16:00:00 GMT</pubDate>
+      
+      <description>Mysql事务隔离级别</description>
+      
+      
+      
+      
+      <category domain="https://guandeng.github.io/categories/Mysql%E4%BA%8B%E5%8A%A1/">Mysql事务</category>
+      
+      
+      <category domain="https://guandeng.github.io/tags/Mysql%E4%BA%8B%E5%8A%A1/">Mysql事务</category>
+      
+      <category domain="https://guandeng.github.io/tags/Mysql%E9%9A%94%E7%A6%BB%E7%BA%A7%E5%88%AB/">Mysql隔离级别</category>
+      
+      
+      <comments>https://guandeng.github.io/post/mysql-transaction-types.html#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>Mysql事务</title>
+      <link>https://guandeng.github.io/post/mysql-transaction.html</link>
+      <guid>https://guandeng.github.io/post/mysql-transaction.html</guid>
+      <pubDate>Sun, 14 Jan 2024 16:00:00 GMT</pubDate>
+      
+      <description>Mysql事务</description>
+      
+      
+      <enclosure url="https://guandeng.github.io/post/design/colorhunt.jpg" type="image"/>
+      
+      
+      
+      <category domain="https://guandeng.github.io/categories/Mysql%E4%BA%8B%E5%8A%A1/">Mysql事务</category>
+      
+      
+      <category domain="https://guandeng.github.io/tags/Mysql/">Mysql</category>
+      
+      
+      <comments>https://guandeng.github.io/post/mysql-transaction.html#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
       <title>Go工厂模式-工厂模式</title>
       <link>https://guandeng.github.io/post/go-base.html</link>
       <guid>https://guandeng.github.io/post/go-base.html</guid>
@@ -203,29 +293,6 @@
     </item>
     
     <item>
-      <title>Go系列 - 单例模式</title>
-      <link>https://guandeng.github.io/post/go-design-singleton.html</link>
-      <guid>https://guandeng.github.io/post/go-design-singleton.html</guid>
-      <pubDate>Mon, 01 Jan 2024 16:00:00 GMT</pubDate>
-      
-      <description>Go系列 - 单例模式</description>
-      
-      
-      <enclosure url="https://guandeng.github.io/post/design/colorhunt.jpg" type="image"/>
-      
-      
-      
-      <category domain="https://guandeng.github.io/categories/Go%E5%9F%BA%E7%A1%80/">Go基础</category>
-      
-      
-      <category domain="https://guandeng.github.io/tags/Go%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/">Go单例模式</category>
-      
-      
-      <comments>https://guandeng.github.io/post/go-design-singleton.html#disqus_thread</comments>
-      
-    </item>
-    
-    <item>
       <title>Go系列 - Go工厂模式</title>
       <link>https://guandeng.github.io/post/go-design-factory.html</link>
       <guid>https://guandeng.github.io/post/go-design-factory.html</guid>
@@ -245,6 +312,29 @@
       
       
       <comments>https://guandeng.github.io/post/go-design-factory.html#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>Go系列 - 单例模式</title>
+      <link>https://guandeng.github.io/post/go-design-singleton.html</link>
+      <guid>https://guandeng.github.io/post/go-design-singleton.html</guid>
+      <pubDate>Mon, 01 Jan 2024 16:00:00 GMT</pubDate>
+      
+      <description>Go系列 - 单例模式</description>
+      
+      
+      <enclosure url="https://guandeng.github.io/post/design/colorhunt.jpg" type="image"/>
+      
+      
+      
+      <category domain="https://guandeng.github.io/categories/Go%E5%9F%BA%E7%A1%80/">Go基础</category>
+      
+      
+      <category domain="https://guandeng.github.io/tags/Go%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/">Go单例模式</category>
+      
+      
+      <comments>https://guandeng.github.io/post/go-design-singleton.html#disqus_thread</comments>
       
     </item>
     
@@ -314,6 +404,27 @@
       
       
       <comments>https://guandeng.github.io/post/php-base-version8.3.html#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>Redis线程模型</title>
+      <link>https://guandeng.github.io/post/redis-base-thread.html</link>
+      <guid>https://guandeng.github.io/post/redis-base-thread.html</guid>
+      <pubDate>Sun, 24 Sep 2023 16:00:00 GMT</pubDate>
+      
+      <description>存储系列</description>
+      
+      
+      
+      
+      <category domain="https://guandeng.github.io/categories/Redis%E5%9F%BA%E7%A1%80/">Redis基础</category>
+      
+      
+      <category domain="https://guandeng.github.io/tags/Redis/">Redis</category>
+      
+      
+      <comments>https://guandeng.github.io/post/redis-base-thread.html#disqus_thread</comments>
       
     </item>
     
@@ -571,29 +682,6 @@
     </item>
     
     <item>
-      <title>Mysql索引失效</title>
-      <link>https://guandeng.github.io/post/mysql-index-invalid.html</link>
-      <guid>https://guandeng.github.io/post/mysql-index-invalid.html</guid>
-      <pubDate>Sun, 14 Aug 2022 16:00:00 GMT</pubDate>
-      
-      <description>Mysql索引</description>
-      
-      
-      <enclosure url="https://guandeng.github.io/post/design/colorhunt.jpg" type="image"/>
-      
-      
-      
-      <category domain="https://guandeng.github.io/categories/Mysql%E7%B4%A2%E5%BC%95/">Mysql索引</category>
-      
-      
-      <category domain="https://guandeng.github.io/tags/Mysql/">Mysql</category>
-      
-      
-      <comments>https://guandeng.github.io/post/mysql-index-invalid.html#disqus_thread</comments>
-      
-    </item>
-    
-    <item>
       <title>Mysql索引基础问答</title>
       <link>https://guandeng.github.io/post/mysql-index-qa.html</link>
       <guid>https://guandeng.github.io/post/mysql-index-qa.html</guid>
@@ -613,6 +701,29 @@
       
       
       <comments>https://guandeng.github.io/post/mysql-index-qa.html#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>Mysql索引失效</title>
+      <link>https://guandeng.github.io/post/mysql-index-invalid.html</link>
+      <guid>https://guandeng.github.io/post/mysql-index-invalid.html</guid>
+      <pubDate>Sun, 14 Aug 2022 16:00:00 GMT</pubDate>
+      
+      <description>Mysql索引</description>
+      
+      
+      <enclosure url="https://guandeng.github.io/post/design/colorhunt.jpg" type="image"/>
+      
+      
+      
+      <category domain="https://guandeng.github.io/categories/Mysql%E7%B4%A2%E5%BC%95/">Mysql索引</category>
+      
+      
+      <category domain="https://guandeng.github.io/tags/Mysql/">Mysql</category>
+      
+      
+      <comments>https://guandeng.github.io/post/mysql-index-invalid.html#disqus_thread</comments>
       
     </item>
     
@@ -640,29 +751,6 @@
     </item>
     
     <item>
-      <title>缓存系统Redis入门详解</title>
-      <link>https://guandeng.github.io/post/redis-base-type.html</link>
-      <guid>https://guandeng.github.io/post/redis-base-type.html</guid>
-      <pubDate>Mon, 09 May 2022 16:00:00 GMT</pubDate>
-      
-      <description>存储系列</description>
-      
-      
-      <enclosure url="https://guandeng.github.io/post/imgs/mysql%E6%9F%A5%E8%AF%A2%E6%B5%81%E7%A8%8B.png" type="image"/>
-      
-      
-      
-      <category domain="https://guandeng.github.io/categories/Redis%E5%9F%BA%E7%A1%80/">Redis基础</category>
-      
-      
-      <category domain="https://guandeng.github.io/tags/Redis/">Redis</category>
-      
-      
-      <comments>https://guandeng.github.io/post/redis-base-type.html#disqus_thread</comments>
-      
-    </item>
-    
-    <item>
       <title>Mysql8.0主从搭建</title>
       <link>https://guandeng.github.io/post/mysql-base-slave.html</link>
       <guid>https://guandeng.github.io/post/mysql-base-slave.html</guid>
@@ -682,6 +770,29 @@
       
       
       <comments>https://guandeng.github.io/post/mysql-base-slave.html#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>缓存系统Redis入门详解</title>
+      <link>https://guandeng.github.io/post/redis-base-type.html</link>
+      <guid>https://guandeng.github.io/post/redis-base-type.html</guid>
+      <pubDate>Mon, 09 May 2022 16:00:00 GMT</pubDate>
+      
+      <description>存储系列</description>
+      
+      
+      <enclosure url="https://guandeng.github.io/post/imgs/mysql%E6%9F%A5%E8%AF%A2%E6%B5%81%E7%A8%8B.png" type="image"/>
+      
+      
+      
+      <category domain="https://guandeng.github.io/categories/Redis%E5%9F%BA%E7%A1%80/">Redis基础</category>
+      
+      
+      <category domain="https://guandeng.github.io/tags/Redis/">Redis</category>
+      
+      
+      <comments>https://guandeng.github.io/post/redis-base-type.html#disqus_thread</comments>
       
     </item>
     

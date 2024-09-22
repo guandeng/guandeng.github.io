@@ -2,9 +2,72 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://guandeng.github.io/post/mysql-transaction-phantom.html</loc>
+    
+    <lastmod>2024-09-22</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://guandeng.github.io/post/mysql-transaction-types.html</loc>
+    
+    <lastmod>2024-09-21</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://guandeng.github.io/post/mysql-transaction.html</loc>
+    
+    <lastmod>2024-09-21</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://guandeng.github.io/post/mysql-index-qa.html</loc>
+    
+    <lastmod>2024-09-19</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://guandeng.github.io/post/mysql-index-btree.html</loc>
+    
+    <lastmod>2024-09-18</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://guandeng.github.io/post/mysql-index-explain.html</loc>
+    
+    <lastmod>2024-09-18</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://guandeng.github.io/post/mysql-base-type.html</loc>
+    
+    <lastmod>2024-09-17</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://guandeng.github.io/post/mysql-advance-parameter.html</loc>
+    
+    <lastmod>2024-09-17</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://guandeng.github.io/post/mysql-base-slave.html</loc>
     
-    <lastmod>2024-09-10</lastmod>
+    <lastmod>2024-09-17</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://guandeng.github.io/post/redis-base-thread.html</loc>
+    
+    <lastmod>2024-09-16</lastmod>
     
   </url>
   
@@ -44,13 +107,6 @@
   </url>
   
   <url>
-    <loc>https://guandeng.github.io/post/mysql-advance-parameter.html</loc>
-    
-    <lastmod>2024-09-07</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://guandeng.github.io/post/mysql-advance-order.html</loc>
     
     <lastmod>2024-09-07</lastmod>
@@ -72,13 +128,6 @@
   </url>
   
   <url>
-    <loc>https://guandeng.github.io/post/mysql-index-qa.html</loc>
-    
-    <lastmod>2024-09-07</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://guandeng.github.io/post/mysql-log-all.html</loc>
     
     <lastmod>2024-09-07</lastmod>
@@ -93,13 +142,6 @@
   </url>
   
   <url>
-    <loc>https://guandeng.github.io/post/mysql-base-connect.html</loc>
-    
-    <lastmod>2024-09-07</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://guandeng.github.io/post/mysql-base-command.html</loc>
     
     <lastmod>2024-09-07</lastmod>
@@ -107,21 +149,14 @@
   </url>
   
   <url>
+    <loc>https://guandeng.github.io/post/mysql-base-connect.html</loc>
+    
+    <lastmod>2024-09-07</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://guandeng.github.io/post/mysql-base-store.html</loc>
-    
-    <lastmod>2024-09-07</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://guandeng.github.io/post/mysql-base-type.html</loc>
-    
-    <lastmod>2024-09-07</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://guandeng.github.io/post/mysql-index-explain.html</loc>
     
     <lastmod>2024-09-07</lastmod>
     
@@ -270,64 +305,85 @@
 
   <url>
     <loc>https://guandeng.github.io/</loc>
-    <lastmod>2024-09-10</lastmod>
+    <lastmod>2024-09-22</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
 
   
   <url>
-    <loc>https://guandeng.github.io/tags/Go%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/</loc>
-    <lastmod>2024-09-10</lastmod>
+    <loc>https://guandeng.github.io/tags/Ai%E7%B3%BB%E5%88%97/</loc>
+    <lastmod>2024-09-22</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://guandeng.github.io/tags/Ai%E7%B3%BB%E5%88%97/</loc>
-    <lastmod>2024-09-10</lastmod>
+    <loc>https://guandeng.github.io/tags/Go%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/</loc>
+    <lastmod>2024-09-22</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://guandeng.github.io/tags/Go%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/</loc>
-    <lastmod>2024-09-10</lastmod>
+    <lastmod>2024-09-22</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://guandeng.github.io/tags/Mysql/</loc>
-    <lastmod>2024-09-10</lastmod>
+    <lastmod>2024-09-22</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://guandeng.github.io/tags/Mysql%E7%9A%84%E5%B9%BB%E8%AF%BB/</loc>
+    <lastmod>2024-09-22</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://guandeng.github.io/tags/Mysql%E4%BA%8B%E5%8A%A1/</loc>
+    <lastmod>2024-09-22</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://guandeng.github.io/tags/Mysql%E9%9A%94%E7%A6%BB%E7%BA%A7%E5%88%AB/</loc>
+    <lastmod>2024-09-22</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://guandeng.github.io/tags/PHP/</loc>
-    <lastmod>2024-09-10</lastmod>
+    <lastmod>2024-09-22</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://guandeng.github.io/tags/AI%E7%B3%BB%E5%88%97/</loc>
-    <lastmod>2024-09-10</lastmod>
+    <lastmod>2024-09-22</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://guandeng.github.io/tags/%E6%80%9D%E8%80%83%E7%B3%BB%E5%88%97/</loc>
-    <lastmod>2024-09-10</lastmod>
+    <lastmod>2024-09-22</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://guandeng.github.io/tags/Redis/</loc>
-    <lastmod>2024-09-10</lastmod>
+    <lastmod>2024-09-22</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
@@ -335,85 +391,99 @@
 
   
   <url>
-    <loc>https://guandeng.github.io/categories/Go%E5%9F%BA%E7%A1%80/</loc>
-    <lastmod>2024-09-10</lastmod>
+    <loc>https://guandeng.github.io/categories/AI%E8%BF%9B%E9%98%B6/</loc>
+    <lastmod>2024-09-22</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://guandeng.github.io/categories/AI%E8%BF%9B%E9%98%B6/</loc>
-    <lastmod>2024-09-10</lastmod>
+    <loc>https://guandeng.github.io/categories/Go%E5%9F%BA%E7%A1%80/</loc>
+    <lastmod>2024-09-22</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://guandeng.github.io/categories/Go%E7%B3%BB%E5%88%97/</loc>
-    <lastmod>2024-09-10</lastmod>
+    <lastmod>2024-09-22</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://guandeng.github.io/categories/Mysql%E8%BF%9B%E9%98%B6/</loc>
-    <lastmod>2024-09-10</lastmod>
+    <lastmod>2024-09-22</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://guandeng.github.io/categories/Mysql%E5%9F%BA%E7%A1%80/</loc>
-    <lastmod>2024-09-10</lastmod>
+    <lastmod>2024-09-22</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://guandeng.github.io/categories/Mysql%E7%B4%A2%E5%BC%95/</loc>
-    <lastmod>2024-09-10</lastmod>
+    <lastmod>2024-09-22</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://guandeng.github.io/categories/Mysql%E6%97%A5%E5%BF%97/</loc>
-    <lastmod>2024-09-10</lastmod>
+    <lastmod>2024-09-22</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://guandeng.github.io/categories/Mysql%E7%9A%84%E5%B9%BB%E8%AF%BB/</loc>
+    <lastmod>2024-09-22</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://guandeng.github.io/categories/Mysql%E4%BA%8B%E5%8A%A1/</loc>
+    <lastmod>2024-09-22</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://guandeng.github.io/categories/PHP%E8%BF%9B%E9%98%B6/</loc>
-    <lastmod>2024-09-10</lastmod>
+    <lastmod>2024-09-22</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://guandeng.github.io/categories/PHP%E5%9F%BA%E7%A1%80/</loc>
-    <lastmod>2024-09-10</lastmod>
+    <lastmod>2024-09-22</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://guandeng.github.io/categories/AI%E5%9F%BA%E7%A1%80/</loc>
-    <lastmod>2024-09-10</lastmod>
+    <lastmod>2024-09-22</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://guandeng.github.io/categories/%E4%BA%A7%E5%93%81%E6%80%9D%E7%BB%B4/</loc>
-    <lastmod>2024-09-10</lastmod>
+    <lastmod>2024-09-22</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://guandeng.github.io/categories/Redis%E5%9F%BA%E7%A1%80/</loc>
-    <lastmod>2024-09-10</lastmod>
+    <lastmod>2024-09-22</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>

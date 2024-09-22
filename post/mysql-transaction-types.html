@@ -15,17 +15,17 @@
   <!-- if page has tags, then add tags to keyword -->
   
   
-  <meta name="keywords" content="Php,golang,python,Mysql,Mysql索引,Mysql索引">
+  <meta name="keywords" content="Php,golang,python,Mysql事务,Mysql隔离级别,Mysql事务">
   <!-- page.description has higher priority -->
-  <meta name="description" content="Mysql索引">
+  <meta name="description" content="Mysql事务隔离级别">
   <link rel="shortcut icon" href="/img/icon.jpg">
   <title>
     
-    Mysql索引 | Guandeng
+    Mysql事务隔离级别 | Guandeng
     
   </title>
 
-  <link rel="canonical" href="https://guandeng.github.io/post/mysql-">
+  <link rel="canonical" href="https://guandeng.github.io/post/mysql-transaction-types.html">
   
 <link rel="stylesheet" href="/css/geektutu.css">
 
@@ -98,13 +98,13 @@
                         <li class="gkt-sub-cate-name "><a class="float-left"
                                 href="/post/redis-base-type.html">Redis基础</a></li>
                         
-                        <li class="gkt-sub-cate-name active"><a class="float-left"
+                        <li class="gkt-sub-cate-name "><a class="float-left"
                                 href="/post/mysql-index-explain.html">Mysql索引</a></li>
                         
                         <li class="gkt-sub-cate-name "><a class="float-left"
                                 href="/post/mysql-log-all.html">Mysql日志</a></li>
                         
-                        <li class="gkt-sub-cate-name "><a class="float-left"
+                        <li class="gkt-sub-cate-name active"><a class="float-left"
                                 href="/post/mysql-transaction-types.html">Mysql事务</a></li>
                         
                         <li class="gkt-sub-cate-name "><a class="float-left"
@@ -201,42 +201,27 @@
 <div class="float-left post-container box-shadow">
     <div class="u-arrow-wrapper hidden-xs">
         
-        <a class="float-left" href="/post/mysql-advance.html"><i class="u-arrow-left"></i></a>
+        <a class="float-left" href="/post/mysql-transaction.html"><i class="u-arrow-left"></i></a>
         
         
-        <a class="float-right" href="/post/mysql-base-store.html"><i class="u-arrow-right"></i></a>
+        <a class="float-right" href="/post/mysql-index-btree.html"><i class="u-arrow-right"></i></a>
         
     </div>
     <article class="col-xs-12">
-        <h1> Mysql索引 </h1>
+        <h1> Mysql事务隔离级别 </h1>
         
         
         <div class="hidden-lg hidden-md series_links">
-            <p> <strong> Mysql索引系列文章链接：</strong></p>
+            <p> <strong> Mysql事务系列文章链接：</strong></p>
             <ul>
                 
                 <li>
-                    <a href="/post/mysql-index-explain.html">Mysql索引</a>
-                    <span class="post-item-date">(Aug 15, 2022)</span>
+                    <a href="/post/mysql-transaction-types.html">Mysql事务隔离级别</a>
+                    <span class="post-item-date">(Jan 15, 2024)</span>
                 </li>
                 
                 <li>
-                    <a href="/post/mysql-index-qa.html">Mysql索引基础问答</a>
-                    <span class="post-item-date">(Aug 15, 2022)</span>
-                </li>
-                
-                <li>
-                    <a href="/post/mysql-index-invalid.html">Mysql索引失效</a>
-                    <span class="post-item-date">(Aug 15, 2022)</span>
-                </li>
-                
-                <li>
-                    <a href="/post/mysql-index.html">Mysql索引</a>
-                    <span class="post-item-date">(Feb 15, 2023)</span>
-                </li>
-                
-                <li>
-                    <a href="/post/mysql-index-btree.html">Mysql为什么选择B树做索引</a>
+                    <a href="/post/mysql-transaction.html">Mysql事务</a>
                     <span class="post-item-date">(Jan 15, 2024)</span>
                 </li>
                 
@@ -245,7 +230,70 @@
         
         
         <div class="gkt-article-start"></div>
-        <h2 id="Mysql索引系列"><a href="#Mysql索引系列" class="headerlink" title="Mysql索引系列"></a>Mysql索引系列</h2>
+        <h2 id="事务的特性"><a href="#事务的特性" class="headerlink" title="事务的特性"></a>事务的特性</h2><p>事务的ACID四个特性</p>
+<ul>
+<li>原子性（Atomicity）：事务是一个不可分割的整体，要么全部成功，要么全部失败</li>
+<li>一致性（Consistency）：事务开始时和结束时，数据库的数据完整性不会被破坏</li>
+<li>隔离性（Isolation）：在并发操作中，每个事务相互隔离，不会相互影响</li>
+<li>持久性（Durability）：事务完成后，该事务对数据操作保存在数据库中，不会被回滚</li>
+</ul>
+<p>InnoDB引擎是如何保障事务的ACID特性？</p>
+<ul>
+<li>持久性通过redo log（重做日志）保证</li>
+<li>原子性通过undo log（回滚日志）保证</li>
+<li>隔离性通过MVCC（多版本并发控制）保证</li>
+<li>一致性通过持久性和隔离性和原子性保证</li>
+</ul>
+<h2 id="并发事务带来的问题"><a href="#并发事务带来的问题" class="headerlink" title="并发事务带来的问题"></a>并发事务带来的问题</h2><p>1、脏读(读取未提交数据)<br>脏读指的是读到了其他事务未提交的数据，未提交意味着这些数据可能会回滚，也就是可能最终不会存到数据库中，也就是不存在的数据。读到了并一定最终存在的数据，这就是脏读</p>
+<p>2、不可重复读(前后多次读取，数据内容不一致)<br>一个事务内两个相同的查询却返回了不同数据。这是由于查询时系统中其他事务修改的提交而引起的。</p>
+<p>3、幻读(前后多次读取，数据总量不一致)<br>在一个事务内多次查询某个符合查询条件的「记录数量」，如果出现前后两次查询到的记录数量不一样的情况，就意味着发生了「幻读」现象。</p>
+<h2 id="事务隔离级别"><a href="#事务隔离级别" class="headerlink" title="事务隔离级别"></a>事务隔离级别</h2><p>（1）read uncommitted（ 读取尚未提交的数据 ：不解决脏读，允许脏读，其他事务只要修改了数据未提交也能读取），即使未提交，本事务也能看到修改后的数据值。也就是可能读取到其他会话中未提交事务修改的数据。</p>
+<ul>
+<li>安全性最差   但性能最好 （不使用）</li>
+<li>三种并发问题都没解决。</li>
+</ul>
+<p>（2）read committed（提交读）：读取已经提交的数据 ：可以解决脏读</p>
+<p>只能读取到已经提交的数据。<br>Oracle等多数数据库默认都是该级别〈不重复读)。<br>安全性较差  性能较好  （oracle 数据库 默认就是这种）</p>
+<p>（3）repeatable read（可重复度）：重读读取：可以解决脏读 和 不可重复读</p>
+<p>mysql默认的可重复读。<br>无论其他事务是否修改并提交了数据，在这个事务中看到的数据值始终不受其他事务影响<br>安全性较高，性能较差 （mysql 默认的就是这种）</p>
+<p>（4）serializable：串行化：可以解决脏读、不可重复读和虚读</p>
+<p>相当于锁表<br>完全串行化的读，每次读都需要获得表级共享锁，读写相互都会阻塞。<br>安全性高  、性能差 （ 不使用）</p>
+<p>读已提交和可重复读隔离级别的事务来说，它们是通过 Read view 来实现的，它们的区别在于创建 Read View 的时机不同，大家可以把 Read View 理解成一个数据快照，就像相机拍照那样定格某一时刻的风景。「读提交」隔离级别是在「每个语句执行前」都会重新生成一个 Read View,而「可重复读」隔离级别是「启动事务时」生成一个 Read View，然后整个事务期间都在用这个 ReadView.</p>
+<h2 id="Read-View是如何工作"><a href="#Read-View是如何工作" class="headerlink" title="Read View是如何工作"></a>Read View是如何工作</h2><p>Read View 记录了当前系统中存在哪些快照数据，以及这些快照数据何时生效的。<br><img src="./imgs/ReadView.png"><br>Read View 有四个重要的字段</p>
+<ul>
+<li>m_ids:指的是在创建 Read View 时，当前数据库中「活跃事务」的事务 id 列表，注意是一个列表，“活跃事务”指的就是，启动了但还没提交的事务,</li>
+<li>min_trx_id:指的是在创建 Read View 时，当前数据库中「活跃事务」中事务 id 最小的事务，也就是m ids 的最小值。</li>
+<li>max_trx _id : 这个并不是 m_ids 的最大值，而是创建 Read View 时当前数据库中应该给下一个事务的id 值，也就是全局事务中最大的事务 id 值 +1:</li>
+<li>creator trx id : 指的是创建该 Read View 的事务的事务 id</li>
+</ul>
+<p>除了这四个字段之外，Read View 还有两个属性：<br><img src="./imgs/roll_pointer.png"></p>
+<ul>
+<li>trx_id:当事务对某个数据进行更改时，会把该数据行的 trx_id 设置为当前事务的 id 值</li>
+<li>roll_pointer：每次对某条聚簇索引记录进行改动时，都会把旧版本的记录写入到 undo 日志中，然后这个隐藏列是个指针，指向每一个旧版本记录，于是就可以通过它找到修改前的记录。</li>
+</ul>
+<p>创建trx_id三种情况<br><img src="./imgs/ReadView2.png"></p>
+<p>对于当前事务的启动瞬间来说，读取的一个数据版本的trx_id，有以下几种可能：</p>
+<ul>
+<li>如果被访问版本的trx_id属性值与ReadView中的 creator_trx_id 值相同，意味着当前事务在访问它自己修改过的记录，所以该版本可以被当前事务访问。</li>
+<li>如果落在绿色部分，表示这个版本是已提交的事务或者是当前事务自己生成的，这个数据是可见的；</li>
+<li>如果落在红色部分，表示这个版本是由将来启动的事务生成的，是肯定不可见的；<br>如果落在黄色部分，那就包括两种情况</li>
+<li>若 数据的trx_id在trx_ids数组中，表示这个版本是由还没提交的事务生成的，不可见, 去读取这条数据的历史版本，这条数据的历史版本中都包含了事务id信息，去查找第一个不在活跃事务数组的版本记录。</li>
+<li>若 数据的trx_id不在trx_ids数组中，表示这个版本是已经提交了的事务生成的，可见。<br>这种通过版本链 + 一致性视图 来控制并发事务访问同一个记录时的行为就叫 MVCC（多版本并发控制）</li>
+</ul>
+<h2 id="读已提交是如何工作"><a href="#读已提交是如何工作" class="headerlink" title="读已提交是如何工作"></a>读已提交是如何工作</h2><p><img src="./imgs/RC.png"><br>我们来分析下为什么事务 B第二次读数据时，读不到事务 A(还未提交事务)修改的数据?</p>
+<p>事务B在找到小林这条记录时，会看这条记录的 trx id 是 51，在事务B的 Read View的 min_trx id 和max trx id 之间，接下来雲要判断 trx id 值是否在 m ids 范围内，判断的结果是在的，那么说明这条记录是被还未提交的事务修改的，这时事务 B并不会读取这个版本的记录。而是，沿着 undo log 链条往下找旧版本的记录，直到找到 trx id 「小于」事务B的 Read View 中的 min_trx_id 值的第一条记录，所以事务 B 能读取到的是 trx id 为 50 的记录，也就是小林余额是 100 万的这条记录。<br>我们来分析下为什么事务 A 提交后，事务 B 就可以读到事务 A 修改的数据?</p>
+<p>在事务 A 提交后，由于隔离级别是「读提交」，所以事务 B在每次读数据的时候，令会重新创建 Readview，此时事务 B第三次读取数据时创建的 Read View 如下:<br><img src="./imgs/RC2.png"><br>事务 B在找到小林这条记录时，会发现这条记录的 trx id 是 51，比事务B的 Read View 中的min trx id 值(52)还小，这意味着修改这条记录的事务早就在创建 Read View 前提交过了，所以该版本的记录对事务 B 是可见的。</p>
+<p>正是因为在读提交隔离级别下，事务每次读数据时都重新创建 Read View，那么在事务期间的多次读取同一条数据，前后两次读的数据可能会出现不一致，因为可能这期间另外一个事务修改了该记录，并提交了事务。</p>
+<h2 id="可重复读是如何工作"><a href="#可重复读是如何工作" class="headerlink" title="可重复读是如何工作"></a>可重复读是如何工作</h2><p><img src="./imgs/RR.png"><br>事务 A 和 事务 B 的 Read View 具体内容如下:</p>
+<p>在事务 A的 Read View 中，它的事务 id 是 51，由于它是第一个启动的事务，所以此时活跃事务的事务 id 列表就只有 51，活跃事务的事务 id 列表中最小的事务 id 是事务 A 本身，下一个事务 id 则是52。</p>
+<p>在事务B的 Read view 中，它的事务id 是 52、由于事务A是活跃的，所以此时活跃事务的事务id 列。<br>表是 51 和 52，活跃的事务 id 中最小的事务 id 是事务 A，下一个事务 id 应该是 53。</p>
+<p>事务 B第一次读小林的账户余额记录，在找到记录后，它会先看这条记录的 trx_id，此时发现 trx id 为50，比事务B的 Read View 中的 min trx id 值(51)还小，这意味着修改这条记录的事务早就在事务B 启动前提交过了，所以该版本的记录对事务B可见的，也就是事务 B可以获取到这条记录。</p>
+<p>接着，事务 A 通过 update 语句将这条记录修改了(还未提交事务)，将小林的余额改成 200 万，这时MySQL 会记录相应的 undo log，并以链表的方式串联起来，形成版本链，如下图:</p>
+<p><img src="./imgs/RR2.png"><br>你可以在上图的「记录的字段」看到，由于事务A 修改了该记录，以前的记录就变成旧版本记录了，于是最新记录和旧版本记录通过链表的方式串起来，而且最新记录的 trx_id 是事务 A的事务 id(trx_id =51)。</p>
+<p>然后事务 B第二次去读取该记录，。发现这条记录的 trx id 值为 51，在事务 B的 Read View 的min trx id 和 max trx id 之间，则需要判断 trx id 值是否在 m ids 范围内，判断的结果是在的，那么说明这条记录是被还未提交的事务修改的，这时事务B并不会读取这个版本的记录。而是沿着 undo log链条往下找旧版本的记录，直到找到 trx id 「小于」事务 B的 Read View 中的 min trx id 值的第一条记录，所以事务B能读取到的是 trx id 为 50 的记录，也就是小林余额是 100 万的这条记录。</p>
+<p>最后，当事物 A提交事务后，由于隔离级别时「可重复读」，所以事务 B再次读取记录时，还是基于启动事务时创建的 Read view 来判断当前版本的记录是否可见。所以，即使事物 A将小林余额修改为 200 万并提交了事务， 事务 B第三次读取记录时，读到的记录都是小林余额是 100 万的这条记录<br>就是通过这样的方式实现了，「可重复读」隔离级别下在事务期间读到的记录都是事务启动前的记录</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>在可重复读隔离级别中，普通的 select 语句就是基于 MVCC 实现的快照读，也就是不会加锁的。select..for update 语句就不是快照读了，而是当前读了，也就是每次读都是拿到最新版本的数据，但是它会对读到的记录加上 next-key lock 锁。</p>
+
         
 <script src="/js/qrious.min.js"></script>
 
@@ -256,14 +304,14 @@
             <p>
                 <span>专题: </span>
                 
-                <a href="/series/#Mysql索引">
-                    <code key="Mysql索引" class="post-label">Mysql索引</code>
+                <a href="/series/#Mysql事务">
+                    <code key="Mysql事务" class="post-label">Mysql事务</code>
                 </a>
                 
             </p>
             
             <p>
-                <span>本文发表于 2023-02-15，最后修改于 2024-09-07。</span>
+                <span>本文发表于 2024-01-15，最后修改于 2024-09-21。</span>
             </p>
             <!-- 文章末尾的提示 start -->
             
@@ -274,10 +322,10 @@
         <hr />
         <p name="pagination" style="font-size: 1.2em">
     
-    <a class="float-left" href="/post/mysql-advance.html">上一篇 « Mysql经验进阶</a>
+    <a class="float-left" href="/post/mysql-transaction.html">上一篇 « Mysql事务</a>
     
     
-    <a class="float-right" href="/post/mysql-base-store.html">下一篇 » Mysql的Innodb是如何存储数据</a>
+    <a class="float-right" href="/post/mysql-index-btree.html">下一篇 » Mysql为什么选择B树做索引</a>
     
 </p>
     </article>
@@ -439,20 +487,20 @@
                 
                 <span>/</span>
                 
-                <a class="text-gray" href="/tags/#Mysql"
-                    title="Mysql">Mysql</a>
+                <a class="text-gray" href="/tags/#PHP"
+                    title="PHP">PHP</a>
                 <span>/</span>
                 
                 
             </div>
-            <a href="/post/mysql-log.html" class="title">
-                Mysql日志系列
+            <a href="/post/php-base-version8.4.html" class="title">
+                php8.4新特性
             </a>
             <p class="text-gray">
                 <small>
-                    <span>发表于2023-02-02，</span>
-                    <span class="hidden-xs">全文177字，</span>
-                    <span>阅读约1分钟</span>
+                    <span>发表于2024-08-01，</span>
+                    <span class="hidden-xs">全文979字，</span>
+                    <span>阅读约4分钟</span>
                 </small>
             </p>
         </div>
@@ -503,14 +551,14 @@
                 
                 
             </div>
-            <a href="/post/mysql-advance-parameter.html" class="title">
-                Mysql 参数调优
+            <a href="/post/mysql-advance-order.html" class="title">
+                order by id limit 1导致的故障
             </a>
             <p class="text-gray">
                 <small>
                     <span>发表于2021-08-14，</span>
-                    <span class="hidden-xs">全文1191字，</span>
-                    <span>阅读约4分钟</span>
+                    <span class="hidden-xs">全文877字，</span>
+                    <span>阅读约3分钟</span>
                 </small>
             </p>
         </div>
@@ -740,37 +788,19 @@
         
         
         <section class="gkt-sidebar-content box-shadow">
-            <strong>Mysql索引</strong>
+            <strong>Mysql事务</strong>
             <ul>
                 
                 <li>
-                    <a href="/post/mysql-index-explain.html"
-                        class="">Mysql索引</a>
-                    
-                </li>
-                
-                <li>
-                    <a href="/post/mysql-index-qa.html"
-                        class="">Mysql索引基础问答</a>
-                    
-                </li>
-                
-                <li>
-                    <a href="/post/mysql-index-invalid.html"
-                        class="">Mysql索引失效</a>
-                    
-                </li>
-                
-                <li>
-                    <a href="/post/mysql-index.html"
-                        class="gkt-sidebar-active">Mysql索引</a>
+                    <a href="/post/mysql-transaction-types.html"
+                        class="gkt-sidebar-active">Mysql事务隔离级别</a>
                     
                     <!-- Table of Contents -->
 <div id="sidebar-toc">
   <!-- TOC  -->
   
   
-  <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Mysql%E7%B4%A2%E5%BC%95%E7%B3%BB%E5%88%97"><span class="toc-nav-text">Mysql索引系列</span></a></li></ol>
+  <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E4%BA%8B%E5%8A%A1%E7%9A%84%E7%89%B9%E6%80%A7"><span class="toc-nav-text">事务的特性</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%B9%B6%E5%8F%91%E4%BA%8B%E5%8A%A1%E5%B8%A6%E6%9D%A5%E7%9A%84%E9%97%AE%E9%A2%98"><span class="toc-nav-text">并发事务带来的问题</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E4%BA%8B%E5%8A%A1%E9%9A%94%E7%A6%BB%E7%BA%A7%E5%88%AB"><span class="toc-nav-text">事务隔离级别</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Read-View%E6%98%AF%E5%A6%82%E4%BD%95%E5%B7%A5%E4%BD%9C"><span class="toc-nav-text">Read View是如何工作</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E8%AF%BB%E5%B7%B2%E6%8F%90%E4%BA%A4%E6%98%AF%E5%A6%82%E4%BD%95%E5%B7%A5%E4%BD%9C"><span class="toc-nav-text">读已提交是如何工作</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%8F%AF%E9%87%8D%E5%A4%8D%E8%AF%BB%E6%98%AF%E5%A6%82%E4%BD%95%E5%B7%A5%E4%BD%9C"><span class="toc-nav-text">可重复读是如何工作</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-nav-text">总结</span></a></li></ol>
   
 </div>
 
@@ -813,8 +843,8 @@
                 </li>
                 
                 <li>
-                    <a href="/post/mysql-index-btree.html"
-                        class="">Mysql为什么选择B树做索引</a>
+                    <a href="/post/mysql-transaction.html"
+                        class="">Mysql事务</a>
                     
                 </li>
                 

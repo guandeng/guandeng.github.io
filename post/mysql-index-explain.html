@@ -104,6 +104,12 @@
                         <li class="gkt-sub-cate-name "><a class="float-left"
                                 href="/post/mysql-log-all.html">Mysql日志</a></li>
                         
+                        <li class="gkt-sub-cate-name "><a class="float-left"
+                                href="/post/mysql-transaction-types.html">Mysql事务</a></li>
+                        
+                        <li class="gkt-sub-cate-name "><a class="float-left"
+                                href="/post/mysql-transaction-phantom.html">Mysql的幻读</a></li>
+                        
                     </ul>
                     
                 </li>
@@ -195,7 +201,7 @@
 <div class="float-left post-container box-shadow">
     <div class="u-arrow-wrapper hidden-xs">
         
-        <a class="float-left" href="/post/mysql-index-invalid.html"><i class="u-arrow-left"></i></a>
+        <a class="float-left" href="/post/mysql-index-qa.html"><i class="u-arrow-left"></i></a>
         
         
         <a class="float-right" href="/post/php-base.html"><i class="u-arrow-right"></i></a>
@@ -215,18 +221,23 @@
                 </li>
                 
                 <li>
-                    <a href="/post/mysql-index-invalid.html">Mysql索引失效</a>
+                    <a href="/post/mysql-index-qa.html">Mysql索引基础问答</a>
                     <span class="post-item-date">(Aug 15, 2022)</span>
                 </li>
                 
                 <li>
-                    <a href="/post/mysql-index-qa.html">Mysql索引基础问答</a>
+                    <a href="/post/mysql-index-invalid.html">Mysql索引失效</a>
                     <span class="post-item-date">(Aug 15, 2022)</span>
                 </li>
                 
                 <li>
                     <a href="/post/mysql-index.html">Mysql索引</a>
                     <span class="post-item-date">(Feb 15, 2023)</span>
+                </li>
+                
+                <li>
+                    <a href="/post/mysql-index-btree.html">Mysql为什么选择B树做索引</a>
+                    <span class="post-item-date">(Jan 15, 2024)</span>
                 </li>
                 
             </ul>
@@ -247,7 +258,7 @@
 <p>using index &amp; using where：查找使用了索引，但是需要的数据都在索引列中能找到，所以不需要回表查询数据</p>
 <p>==Backward index scan== ：order by查询，使用反向扫描</p>
 <h3 id="show-profiles"><a href="#show-profiles" class="headerlink" title="show profiles"></a>show profiles</h3><p>查看执行情况</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">- 1 show profile</span><br><span class="line">mysql&gt; show profiles;</span><br><span class="line"></span><br><span class="line">+----------+------------+---------------------------------------------------------------------------------------------------------+</span><br><span class="line">| Query_ID | Duration   | Query                                                                                                   |</span><br><span class="line">+----------+------------+---------------------------------------------------------------------------------------------------------+</span><br><span class="line">|        1 | 10.62811400 | SELECT id,titile,published_at from spider_record where is_analyze&#x3D;0 ORDER BY create_time desc LIMIT  10 |</span><br><span class="line">|        2 | 10.78871825 | SELECT id,titile,published_at from spider_record where is_analyze&#x3D;0 ORDER BY create_time desc LIMIT  10 |</span><br><span class="line">|        3 | 0.05494200 | SHOW FULL TABLES WHERE Table_type !&#x3D; &#39;VIEW&#39;                                                             |</span><br><span class="line">|        4 | 0.01013250 | SHOW TABLE STATUS                                                                                       |</span><br><span class="line">|        5 | 0.00034200 | SET profiling &#x3D; 1                                                                                       |</span><br><span class="line">|        6 | 10.65613175 | SELECT id,titile,published_at from spider_record where is_analyze&#x3D;0 ORDER BY create_time desc LIMIT  10 |</span><br><span class="line">+----------+------------+---------------------------------------------------------------------------------------------------------+</span><br><span class="line">6 rows in set (0.07 sec)</span><br><span class="line"></span><br><span class="line">- 2 show profile for query 6</span><br><span class="line">+----------------------+----------+</span><br><span class="line">| Status               | Duration |</span><br><span class="line">+----------------------+----------+</span><br><span class="line">| starting             | 0.000215 |</span><br><span class="line">| checking permissions | 0.000017 |</span><br><span class="line">| Opening tables       | 0.000085 |</span><br><span class="line">| init                 | 0.000013 |</span><br><span class="line">| System lock          | 0.000020 |</span><br><span class="line">| optimizing           | 0.000020 |</span><br><span class="line">| statistics           | 0.000049 |</span><br><span class="line">| preparing            | 0.000034 |</span><br><span class="line">| Sorting result       | 0.000010 |</span><br><span class="line">| executing            | 0.000007 |</span><br><span class="line">| Sending data         | 10.655393 |</span><br><span class="line">| end                  | 0.000036 |</span><br><span class="line">| query end            | 0.000030 |</span><br><span class="line">| closing tables       | 0.000023 |</span><br><span class="line">| freeing items        | 0.000151 |</span><br><span class="line">| cleaning up          | 0.000033 |</span><br><span class="line">+----------------------+----------+</span><br><span class="line">16 rows in set (0.07 sec)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">- 1 show profile</span><br><span class="line">mysql&gt; show profiles;</span><br><span class="line"></span><br><span class="line">+----------+------------+---------------------------------------------------------------------------------------------------------+</span><br><span class="line">| Query_ID | Duration   | Query                                                                                                   |</span><br><span class="line">+----------+------------+---------------------------------------------------------------------------------------------------------+</span><br><span class="line">|        1 | 10.62811400 | SELECT id,titile,published_at from spider_record where is_analyze&#x3D;0 ORDER BY create_time desc LIMIT  10 |</span><br><span class="line">|        2 | 10.78871825 | SELECT id,titile,published_at from spider_record where is_analyze&#x3D;0 ORDER BY create_time desc LIMIT  10 |</span><br><span class="line">|        3 | 0.05494200 | SHOW FULL TABLES WHERE Table_type !&#x3D; &#39;VIEW&#39;                                                             |</span><br><span class="line">|        4 | 0.01013250 | SHOW TABLE STATUS                                                                                       |</span><br><span class="line">|        5 | 0.00034200 | SET profiling &#x3D; 1                                                                                       |</span><br><span class="line">|        6 | 10.65613175 | SELECT id,titile,published_at from spider_record where is_analyze&#x3D;0 ORDER BY create_time desc LIMIT  10 |</span><br><span class="line">+----------+------------+---------------------------------------------------------------------------------------------------------+</span><br><span class="line">6 rows in set (0.07 sec)</span><br><span class="line"></span><br><span class="line">- 2 show profile for query 6</span><br><span class="line">+----------------------+----------+</span><br><span class="line">| Status               | Duration |</span><br><span class="line">+----------------------+----------+</span><br><span class="line">| starting             | 0.000215 |</span><br><span class="line">| checking permissions | 0.000017 |</span><br><span class="line">| Opening tables       | 0.000085 |</span><br><span class="line">| init                 | 0.000013 |</span><br><span class="line">| System lock          | 0.000020 |</span><br><span class="line">| optimizing           | 0.000020 |</span><br><span class="line">| statistics           | 0.000049 |</span><br><span class="line">| preparing            | 0.000034 |</span><br><span class="line">| Sorting result       | 0.000010 |</span><br><span class="line">| executing            | 0.000007 |</span><br><span class="line">| Sending data         | 10.655393 |</span><br><span class="line">| end                  | 0.000036 |</span><br><span class="line">| query end            | 0.000030 |</span><br><span class="line">| closing tables       | 0.000023 |</span><br><span class="line">| freeing items        | 0.000151 |</span><br><span class="line">| cleaning up          | 0.000033 |</span><br><span class="line">+----------------------+----------+</span><br><span class="line">16 rows in set (0.07 sec)</span><br></pre></td></tr></table></figure>
 <p>分析原因：  Sending data 耗时</p>
 <ul>
 <li>order by desc慢排查 <a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903874839445517">https://juejin.cn/post/6844903874839445517</a></li>
@@ -270,7 +281,7 @@
             </p>
             
             <p>
-                <span>本文发表于 2022-08-15，最后修改于 2024-09-07。</span>
+                <span>本文发表于 2022-08-15，最后修改于 2024-09-18。</span>
             </p>
             <!-- 文章末尾的提示 start -->
             
@@ -281,7 +292,7 @@
         <hr />
         <p name="pagination" style="font-size: 1.2em">
     
-    <a class="float-left" href="/post/mysql-index-invalid.html">上一篇 « Mysql索引失效</a>
+    <a class="float-left" href="/post/mysql-index-qa.html">上一篇 « Mysql索引基础问答</a>
     
     
     <a class="float-right" href="/post/php-base.html">下一篇 » PHP基础系列</a>
@@ -446,19 +457,19 @@
                 
                 <span>/</span>
                 
-                <a class="text-gray" href="/tags/#Ai系列"
-                    title="Ai系列">Ai系列</a>
+                <a class="text-gray" href="/tags/#Mysql"
+                    title="Mysql">Mysql</a>
                 <span>/</span>
                 
                 
             </div>
-            <a href="/post/advance.html" class="title">
-                AI进阶系列
+            <a href="/post/mysql-advance-delete.html" class="title">
+                Mysql DELETE同一行记录也会造成死锁
             </a>
             <p class="text-gray">
                 <small>
-                    <span>发表于2024-08-31，</span>
-                    <span class="hidden-xs">全文171字，</span>
+                    <span>发表于2024-07-20，</span>
+                    <span class="hidden-xs">全文182字，</span>
                     <span>阅读约1分钟</span>
                 </small>
             </p>
@@ -475,20 +486,20 @@
                 
                 <span>/</span>
                 
-                <a class="text-gray" href="/tags/#Redis"
-                    title="Redis">Redis</a>
+                <a class="text-gray" href="/tags/#PHP"
+                    title="PHP">PHP</a>
                 <span>/</span>
                 
                 
             </div>
-            <a href="/post/redis-base.html" class="title">
-                Redis基础系列
+            <a href="/post/php-base-object.html" class="title">
+                对象赋值是否属于引用
             </a>
             <p class="text-gray">
                 <small>
-                    <span>发表于2023-02-02，</span>
-                    <span class="hidden-xs">全文170字，</span>
-                    <span>阅读约1分钟</span>
+                    <span>发表于2023-12-02，</span>
+                    <span class="hidden-xs">全文1040字，</span>
+                    <span>阅读约4分钟</span>
                 </small>
             </p>
         </div>
@@ -496,7 +507,7 @@
 </div>
         
         <div class="post-preview">
-    <div class="post-img" style="background-image: url('/post/imgs/mysql查询流程.png')"></div>
+    <div class="post-img" style="background-image: url('/post/design/colorhunt.jpg')"></div>
     <div class="post-info">
         <div class="post-info-center">
             <div class="hidden-xs">
@@ -510,14 +521,14 @@
                 
                 
             </div>
-            <a href="/post/mysql-base-command.html" class="title">
-                Mysql常用命令
+            <a href="/post/mysql-base.html" class="title">
+                Mysql基础系列
             </a>
             <p class="text-gray">
                 <small>
-                    <span>发表于2022-06-14，</span>
-                    <span class="hidden-xs">全文1226字，</span>
-                    <span>阅读约5分钟</span>
+                    <span>发表于2023-02-02，</span>
+                    <span class="hidden-xs">全文177字，</span>
+                    <span>阅读约1分钟</span>
                 </small>
             </p>
         </div>
@@ -547,17 +558,26 @@
 </style>
 <div id="featured-tag">
     
-    <a class="post-tag-item" href="/tags/#Go工厂模式" title="Go工厂模式"
-        rel="2">#Go工厂模式 (2) </a>
-    
     <a class="post-tag-item" href="/tags/#Ai系列" title="Ai系列"
         rel="2">#Ai系列 (2) </a>
+    
+    <a class="post-tag-item" href="/tags/#Go工厂模式" title="Go工厂模式"
+        rel="2">#Go工厂模式 (2) </a>
     
     <a class="post-tag-item" href="/tags/#Go单例模式" title="Go单例模式"
         rel="1">#Go单例模式 (1) </a>
     
     <a class="post-tag-item" href="/tags/#Mysql" title="Mysql"
-        rel="18">#Mysql (18) </a>
+        rel="20">#Mysql (20) </a>
+    
+    <a class="post-tag-item" href="/tags/#Mysql的幻读" title="Mysql的幻读"
+        rel="1">#Mysql的幻读 (1) </a>
+    
+    <a class="post-tag-item" href="/tags/#Mysql事务" title="Mysql事务"
+        rel="1">#Mysql事务 (1) </a>
+    
+    <a class="post-tag-item" href="/tags/#Mysql隔离级别" title="Mysql隔离级别"
+        rel="1">#Mysql隔离级别 (1) </a>
     
     <a class="post-tag-item" href="/tags/#PHP" title="PHP"
         rel="6">#PHP (6) </a>
@@ -569,7 +589,7 @@
         rel="1">#思考系列 (1) </a>
     
     <a class="post-tag-item" href="/tags/#Redis" title="Redis"
-        rel="2">#Redis (2) </a>
+        rel="3">#Redis (3) </a>
     
 </div>
     </div>
@@ -717,13 +737,13 @@
 <div class="gkt-summary">
     <nav>
         <a href="/" class="col-xs-4">
-            <span class="number">33</span><span>文章</span>
+            <span class="number">38</span><span>文章</span>
         </a>
         <a href="/series" class="col-xs-4 middle">
-            <span class="number">12</span><span>专题</span>
+            <span class="number">14</span><span>专题</span>
         </a>
         <a href="/tags" class="col-xs-4">
-            <span class="number">8</span><span>标签</span>
+            <span class="number">11</span><span>标签</span>
         </a>
     </nav>
 
@@ -793,20 +813,26 @@
                 </li>
                 
                 <li>
-                    <a href="/post/mysql-index-invalid.html"
-                        class="">Mysql索引失效</a>
-                    
-                </li>
-                
-                <li>
                     <a href="/post/mysql-index-qa.html"
                         class="">Mysql索引基础问答</a>
                     
                 </li>
                 
                 <li>
+                    <a href="/post/mysql-index-invalid.html"
+                        class="">Mysql索引失效</a>
+                    
+                </li>
+                
+                <li>
                     <a href="/post/mysql-index.html"
                         class="">Mysql索引</a>
+                    
+                </li>
+                
+                <li>
+                    <a href="/post/mysql-index-btree.html"
+                        class="">Mysql为什么选择B树做索引</a>
                     
                 </li>
                 

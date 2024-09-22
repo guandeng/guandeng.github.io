@@ -104,6 +104,12 @@
                         <li class="gkt-sub-cate-name "><a class="float-left"
                                 href="/post/mysql-log-all.html">Mysql日志</a></li>
                         
+                        <li class="gkt-sub-cate-name "><a class="float-left"
+                                href="/post/mysql-transaction-types.html">Mysql事务</a></li>
+                        
+                        <li class="gkt-sub-cate-name "><a class="float-left"
+                                href="/post/mysql-transaction-phantom.html">Mysql的幻读</a></li>
+                        
                     </ul>
                     
                 </li>
@@ -195,10 +201,10 @@
 <div class="float-left post-container box-shadow">
     <div class="u-arrow-wrapper hidden-xs">
         
-        <a class="float-left" href="/post/mysql-base-command.html"><i class="u-arrow-left"></i></a>
+        <a class="float-left" href="/post/mysql-index-invalid.html"><i class="u-arrow-left"></i></a>
         
         
-        <a class="float-right" href="/post/mysql-index-invalid.html"><i class="u-arrow-right"></i></a>
+        <a class="float-right" href="/post/mysql-index-explain.html"><i class="u-arrow-right"></i></a>
         
     </div>
     <article class="col-xs-12">
@@ -215,18 +221,23 @@
                 </li>
                 
                 <li>
-                    <a href="/post/mysql-index-invalid.html">Mysql索引失效</a>
+                    <a href="/post/mysql-index-qa.html">Mysql索引基础问答</a>
                     <span class="post-item-date">(Aug 15, 2022)</span>
                 </li>
                 
                 <li>
-                    <a href="/post/mysql-index-qa.html">Mysql索引基础问答</a>
+                    <a href="/post/mysql-index-invalid.html">Mysql索引失效</a>
                     <span class="post-item-date">(Aug 15, 2022)</span>
                 </li>
                 
                 <li>
                     <a href="/post/mysql-index.html">Mysql索引</a>
                     <span class="post-item-date">(Feb 15, 2023)</span>
+                </li>
+                
+                <li>
+                    <a href="/post/mysql-index-btree.html">Mysql为什么选择B树做索引</a>
+                    <span class="post-item-date">(Jan 15, 2024)</span>
                 </li>
                 
             </ul>
@@ -239,6 +250,10 @@
 <li>索引本身也是很大，内存不够存储，以文件形式存储在磁盘上</li>
 <li>索引也是一张表：保存索引和主键字段，并执行实体表积累了，也需要占用内存</li>
 <li>索引可以提高查询效率，但是insert、update、delete速度就没用那么理想，要调整更新带来的键值前后变化索引信息</li>
+</ul>
+<h4 id="索引的优缺点"><a href="#索引的优缺点" class="headerlink" title="索引的优缺点"></a>索引的优缺点</h4><ul>
+<li>优点<br>  1、提高查询效率，降低磁盘IO<br>  2、降低数据排序的成本，降低CPU的消耗，索引之所以查的快，因为先将数据排序好</li>
+<li>缺点<br>  1、索引本身是表，需要占用内存和硬盘空间<br>  2、对表进行insert、delete操作时，需要同时更新索引，否则指向物理数据可能不对</li>
 </ul>
 <h4 id="为什么mysql用B-tree索引，不用b-tree"><a href="#为什么mysql用B-tree索引，不用b-tree" class="headerlink" title="为什么mysql用B+tree索引，不用b-tree"></a>为什么mysql用B+tree索引，不用b-tree</h4><p>b+tree和b-tree不同之处</p>
 <ul>
@@ -273,6 +288,11 @@
 <li>覆盖索引</li>
 </ul>
 <h4 id="mysql-组合索引结构是什么"><a href="#mysql-组合索引结构是什么" class="headerlink" title="mysql 组合索引结构是什么"></a>mysql 组合索引结构是什么</h4><p>为什么要用B+树：<a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s?__biz=MzIxMzk3Mjg5MQ==&amp;mid=2247483916&amp;idx=1&amp;sn=bfc33b53f8176e6f4d7e64c087ad36a4&amp;chksm=97afe0f8a0d869eeaa14d8b26eca9d6fa09f9fda4557b40cb22ebe75851aa4dfb67d822233d9&amp;scene=0&amp;subscene=90&amp;sessionid=1539434820&amp;ascene=7&amp;devicetype=andro">https://mp.weixin.qq.com/s?__biz=MzIxMzk3Mjg5MQ==&amp;mid=2247483916&amp;idx=1&amp;sn=bfc33b53f8176e6f4d7e64c087ad36a4&amp;chksm=97afe0f8a0d869eeaa14d8b26eca9d6fa09f9fda4557b40cb22ebe75851aa4dfb67d822233d9&amp;scene=0&amp;subscene=90&amp;sessionid=1539434820&amp;ascene=7&amp;devicetype=andro</a></p>
+<h4 id="什么时候不用索引"><a href="#什么时候不用索引" class="headerlink" title="什么时候不用索引"></a>什么时候不用索引</h4><ul>
+<li>频繁更新的字段不用建索引</li>
+<li>大量重复字段的不用建索引</li>
+<li>数据量很少的不用建索引</li>
+</ul>
 
         
 <script src="/js/qrious.min.js"></script>
@@ -291,7 +311,7 @@
             </p>
             
             <p>
-                <span>本文发表于 2022-08-15，最后修改于 2024-09-07。</span>
+                <span>本文发表于 2022-08-15，最后修改于 2024-09-19。</span>
             </p>
             <!-- 文章末尾的提示 start -->
             
@@ -302,10 +322,10 @@
         <hr />
         <p name="pagination" style="font-size: 1.2em">
     
-    <a class="float-left" href="/post/mysql-base-command.html">上一篇 « Mysql常用命令</a>
+    <a class="float-left" href="/post/mysql-index-invalid.html">上一篇 « Mysql索引失效</a>
     
     
-    <a class="float-right" href="/post/mysql-index-invalid.html">下一篇 » Mysql索引失效</a>
+    <a class="float-right" href="/post/mysql-index-explain.html">下一篇 » Mysql索引</a>
     
 </p>
     </article>
@@ -467,20 +487,20 @@
                 
                 <span>/</span>
                 
-                <a class="text-gray" href="/tags/#Ai系列"
-                    title="Ai系列">Ai系列</a>
+                <a class="text-gray" href="/tags/#Mysql"
+                    title="Mysql">Mysql</a>
                 <span>/</span>
                 
                 
             </div>
-            <a href="/post/prompt.html" class="title">
-                提示词工程
+            <a href="/post/mysql-transaction.html" class="title">
+                Mysql事务
             </a>
             <p class="text-gray">
                 <small>
-                    <span>发表于2024-08-01，</span>
-                    <span class="hidden-xs">全文321952字，</span>
-                    <span>阅读约1074分钟</span>
+                    <span>发表于2024-01-15，</span>
+                    <span class="hidden-xs">全文184字，</span>
+                    <span>阅读约1分钟</span>
                 </small>
             </p>
         </div>
@@ -502,14 +522,14 @@
                 
                 
             </div>
-            <a href="/post/mysql-advance.html" class="title">
-                Mysql经验进阶
+            <a href="/post/mysql-index-invalid.html" class="title">
+                Mysql索引失效
             </a>
             <p class="text-gray">
                 <small>
-                    <span>发表于2023-02-02，</span>
-                    <span class="hidden-xs">全文168字，</span>
-                    <span>阅读约1分钟</span>
+                    <span>发表于2022-08-15，</span>
+                    <span class="hidden-xs">全文694字，</span>
+                    <span>阅读约3分钟</span>
                 </small>
             </p>
         </div>
@@ -517,7 +537,7 @@
 </div>
         
         <div class="post-preview">
-    <div class="post-img" style="background-image: url('/post/imgs/mysql查询流程.png')"></div>
+    <div class="post-img" style="background-image: url('/post/design/colorhunt.jpg')"></div>
     <div class="post-info">
         <div class="post-info-center">
             <div class="hidden-xs">
@@ -531,14 +551,14 @@
                 
                 
             </div>
-            <a href="/post/mysql-base-command.html" class="title">
-                Mysql常用命令
+            <a href="/post/mysql-index-qa.html" class="title">
+                Mysql索引基础问答
             </a>
             <p class="text-gray">
                 <small>
-                    <span>发表于2022-06-14，</span>
-                    <span class="hidden-xs">全文1226字，</span>
-                    <span>阅读约5分钟</span>
+                    <span>发表于2022-08-15，</span>
+                    <span class="hidden-xs">全文1909字，</span>
+                    <span>阅读约7分钟</span>
                 </small>
             </p>
         </div>
@@ -568,17 +588,26 @@
 </style>
 <div id="featured-tag">
     
-    <a class="post-tag-item" href="/tags/#Go工厂模式" title="Go工厂模式"
-        rel="2">#Go工厂模式 (2) </a>
-    
     <a class="post-tag-item" href="/tags/#Ai系列" title="Ai系列"
         rel="2">#Ai系列 (2) </a>
+    
+    <a class="post-tag-item" href="/tags/#Go工厂模式" title="Go工厂模式"
+        rel="2">#Go工厂模式 (2) </a>
     
     <a class="post-tag-item" href="/tags/#Go单例模式" title="Go单例模式"
         rel="1">#Go单例模式 (1) </a>
     
     <a class="post-tag-item" href="/tags/#Mysql" title="Mysql"
-        rel="18">#Mysql (18) </a>
+        rel="20">#Mysql (20) </a>
+    
+    <a class="post-tag-item" href="/tags/#Mysql的幻读" title="Mysql的幻读"
+        rel="1">#Mysql的幻读 (1) </a>
+    
+    <a class="post-tag-item" href="/tags/#Mysql事务" title="Mysql事务"
+        rel="1">#Mysql事务 (1) </a>
+    
+    <a class="post-tag-item" href="/tags/#Mysql隔离级别" title="Mysql隔离级别"
+        rel="1">#Mysql隔离级别 (1) </a>
     
     <a class="post-tag-item" href="/tags/#PHP" title="PHP"
         rel="6">#PHP (6) </a>
@@ -590,7 +619,7 @@
         rel="1">#思考系列 (1) </a>
     
     <a class="post-tag-item" href="/tags/#Redis" title="Redis"
-        rel="2">#Redis (2) </a>
+        rel="3">#Redis (3) </a>
     
 </div>
     </div>
@@ -738,13 +767,13 @@
 <div class="gkt-summary">
     <nav>
         <a href="/" class="col-xs-4">
-            <span class="number">33</span><span>文章</span>
+            <span class="number">38</span><span>文章</span>
         </a>
         <a href="/series" class="col-xs-4 middle">
-            <span class="number">12</span><span>专题</span>
+            <span class="number">14</span><span>专题</span>
         </a>
         <a href="/tags" class="col-xs-4">
-            <span class="number">8</span><span>标签</span>
+            <span class="number">11</span><span>标签</span>
         </a>
     </nav>
 
@@ -765,12 +794,6 @@
                 <li>
                     <a href="/post/mysql-index-explain.html"
                         class="">Mysql索引</a>
-                    
-                </li>
-                
-                <li>
-                    <a href="/post/mysql-index-invalid.html"
-                        class="">Mysql索引失效</a>
                     
                 </li>
                 
@@ -826,8 +849,20 @@
                 </li>
                 
                 <li>
+                    <a href="/post/mysql-index-invalid.html"
+                        class="">Mysql索引失效</a>
+                    
+                </li>
+                
+                <li>
                     <a href="/post/mysql-index.html"
                         class="">Mysql索引</a>
+                    
+                </li>
+                
+                <li>
+                    <a href="/post/mysql-index-btree.html"
+                        class="">Mysql为什么选择B树做索引</a>
                     
                 </li>
                 

@@ -104,6 +104,12 @@
                         <li class="gkt-sub-cate-name "><a class="float-left"
                                 href="/post/mysql-log-all.html">Mysql日志</a></li>
                         
+                        <li class="gkt-sub-cate-name "><a class="float-left"
+                                href="/post/mysql-transaction-types.html">Mysql事务</a></li>
+                        
+                        <li class="gkt-sub-cate-name "><a class="float-left"
+                                href="/post/mysql-transaction-phantom.html">Mysql的幻读</a></li>
+                        
                     </ul>
                     
                 </li>
@@ -195,10 +201,10 @@
 <div class="float-left post-container box-shadow">
     <div class="u-arrow-wrapper hidden-xs">
         
-        <a class="float-left" href="/post/mysql-base-connect.html"><i class="u-arrow-left"></i></a>
+        <a class="float-left" href="/post/redis-base-type.html"><i class="u-arrow-left"></i></a>
         
         
-        <a class="float-right" href="/post/redis-base-type.html"><i class="u-arrow-right"></i></a>
+        <a class="float-right" href="/post/mysql-base-command.html"><i class="u-arrow-right"></i></a>
         
     </div>
     <article class="col-xs-12">
@@ -271,7 +277,7 @@
 
 <p>查看主服务器状态</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">show master status;</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; show master status;</span><br><span class="line">+---------------+----------+--------------+------------------+ </span><br><span class="line">| File | Position | Binlog_Do_DB | Binlog_Ignore_DB | </span><br><span class="line">+---------------+----------+--------------+------------------+ </span><br><span class="line">| binlog.000001 | 1304 | db1 | | </span><br><span class="line">+---------------+----------+--------------+------------------+ </span><br><span class="line">1 row in set (0.00 sec)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; show master status;</span><br><span class="line">+---------------+----------+--------------+------------------+ </span><br><span class="line">| File | Position | Binlog_Do_DB | Binlog_Ignore_DB | </span><br><span class="line">+---------------+----------+--------------+------------------+ </span><br><span class="line">| binlog.000001 | 1304 | db1 | | </span><br><span class="line">+---------------+----------+--------------+------------------+ </span><br><span class="line">1 row in set (0.00 sec)</span><br></pre></td></tr></table></figure>
 
 <p>从机配置与启动</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql_install_db</span><br></pre></td></tr></table></figure>
@@ -288,8 +294,8 @@
 <blockquote>
 <p>./mysqld_multi –defaults-extra-file=/etc/cluster.conf –user=mysql start 3307</p>
 </blockquote>
-<p> 验证是否成功</p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mysqld_multi --defaults-extra-file&#x3D;&#x2F;etc&#x2F;cluster.conf report</span><br><span class="line"> </span><br><span class="line">  mysqld --defaults-file&#x3D;&#x2F;etc&#x2F;my.conf --initialize  --basedir&#x3D;&#x2F;usr&#x2F;local&#x2F;var&#x2F;www&#x2F;mysql  --datadir&#x3D;&#x2F;usr&#x2F;local&#x2F;var&#x2F;www&#x2F;mysql&#x2F;3307&#x2F;data</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p> 验证是否成功<br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mysqld_multi --defaults-extra-file&#x3D;&#x2F;etc&#x2F;cluster.conf report</span><br><span class="line"> </span><br><span class="line">mysqld --defaults-file&#x3D;&#x2F;etc&#x2F;my.conf --initialize  --basedir&#x3D;&#x2F;usr&#x2F;local&#x2F;var&#x2F;www&#x2F;mysql  --datadir&#x3D;&#x2F;usr&#x2F;local&#x2F;var&#x2F;www&#x2F;mysql&#x2F;3307&#x2F;data</span><br></pre></td></tr></table></figure></p>
+
         
 <script src="/js/qrious.min.js"></script>
 
@@ -307,7 +313,7 @@
             </p>
             
             <p>
-                <span>本文发表于 2022-05-10，最后修改于 2024-09-10。</span>
+                <span>本文发表于 2022-05-10，最后修改于 2024-09-17。</span>
             </p>
             <!-- 文章末尾的提示 start -->
             
@@ -318,10 +324,10 @@
         <hr />
         <p name="pagination" style="font-size: 1.2em">
     
-    <a class="float-left" href="/post/mysql-base-connect.html">上一篇 « Mysql连接池工作原理</a>
+    <a class="float-left" href="/post/redis-base-type.html">上一篇 « 缓存系统Redis入门详解</a>
     
     
-    <a class="float-right" href="/post/redis-base-type.html">下一篇 » 缓存系统Redis入门详解</a>
+    <a class="float-right" href="/post/mysql-base-command.html">下一篇 » Mysql常用命令</a>
     
 </p>
     </article>
@@ -483,19 +489,48 @@
                 
                 <span>/</span>
                 
-                <a class="text-gray" href="/tags/#PHP"
-                    title="PHP">PHP</a>
+                <a class="text-gray" href="/tags/#Go工厂模式"
+                    title="Go工厂模式">Go工厂模式</a>
                 <span>/</span>
                 
                 
             </div>
-            <a href="/post/php-advanced.html" class="title">
-                PHP进阶
+            <a href="/post/go-base.html" class="title">
+                Go工厂模式-工厂模式
             </a>
             <p class="text-gray">
                 <small>
-                    <span>发表于2023-12-02，</span>
-                    <span class="hidden-xs">全文186字，</span>
+                    <span>发表于2024-01-02，</span>
+                    <span class="hidden-xs">全文193字，</span>
+                    <span>阅读约1分钟</span>
+                </small>
+            </p>
+        </div>
+    </div>
+</div>
+        
+        <div class="post-preview">
+    <div class="post-img" style="background-image: url('/post/design/colorhunt.jpg')"></div>
+    <div class="post-info">
+        <div class="post-info-center">
+            <div class="hidden-xs">
+                
+                
+                <span>/</span>
+                
+                <a class="text-gray" href="/tags/#Mysql"
+                    title="Mysql">Mysql</a>
+                <span>/</span>
+                
+                
+            </div>
+            <a href="/post/mysql-base.html" class="title">
+                Mysql基础系列
+            </a>
+            <p class="text-gray">
+                <small>
+                    <span>发表于2023-02-02，</span>
+                    <span class="hidden-xs">全文177字，</span>
                     <span>阅读约1分钟</span>
                 </small>
             </p>
@@ -532,35 +567,6 @@
     </div>
 </div>
         
-        <div class="post-preview">
-    <div class="post-img" style="background-image: url('/post/imgs/mysql查询流程.png')"></div>
-    <div class="post-info">
-        <div class="post-info-center">
-            <div class="hidden-xs">
-                
-                
-                <span>/</span>
-                
-                <a class="text-gray" href="/tags/#Mysql"
-                    title="Mysql">Mysql</a>
-                <span>/</span>
-                
-                
-            </div>
-            <a href="/post/mysql-base-type.html" class="title">
-                Mysql数据类型
-            </a>
-            <p class="text-gray">
-                <small>
-                    <span>发表于2022-02-14，</span>
-                    <span class="hidden-xs">全文940字，</span>
-                    <span>阅读约4分钟</span>
-                </small>
-            </p>
-        </div>
-    </div>
-</div>
-        
     </div>
     <div class="col-xs-12">
         <!-- 标签列表 -->
@@ -584,17 +590,26 @@
 </style>
 <div id="featured-tag">
     
-    <a class="post-tag-item" href="/tags/#Go工厂模式" title="Go工厂模式"
-        rel="2">#Go工厂模式 (2) </a>
-    
     <a class="post-tag-item" href="/tags/#Ai系列" title="Ai系列"
         rel="2">#Ai系列 (2) </a>
+    
+    <a class="post-tag-item" href="/tags/#Go工厂模式" title="Go工厂模式"
+        rel="2">#Go工厂模式 (2) </a>
     
     <a class="post-tag-item" href="/tags/#Go单例模式" title="Go单例模式"
         rel="1">#Go单例模式 (1) </a>
     
     <a class="post-tag-item" href="/tags/#Mysql" title="Mysql"
-        rel="18">#Mysql (18) </a>
+        rel="20">#Mysql (20) </a>
+    
+    <a class="post-tag-item" href="/tags/#Mysql的幻读" title="Mysql的幻读"
+        rel="1">#Mysql的幻读 (1) </a>
+    
+    <a class="post-tag-item" href="/tags/#Mysql事务" title="Mysql事务"
+        rel="1">#Mysql事务 (1) </a>
+    
+    <a class="post-tag-item" href="/tags/#Mysql隔离级别" title="Mysql隔离级别"
+        rel="1">#Mysql隔离级别 (1) </a>
     
     <a class="post-tag-item" href="/tags/#PHP" title="PHP"
         rel="6">#PHP (6) </a>
@@ -606,7 +621,7 @@
         rel="1">#思考系列 (1) </a>
     
     <a class="post-tag-item" href="/tags/#Redis" title="Redis"
-        rel="2">#Redis (2) </a>
+        rel="3">#Redis (3) </a>
     
 </div>
     </div>
@@ -754,13 +769,13 @@
 <div class="gkt-summary">
     <nav>
         <a href="/" class="col-xs-4">
-            <span class="number">33</span><span>文章</span>
+            <span class="number">38</span><span>文章</span>
         </a>
         <a href="/series" class="col-xs-4 middle">
-            <span class="number">12</span><span>专题</span>
+            <span class="number">14</span><span>专题</span>
         </a>
         <a href="/tags" class="col-xs-4">
-            <span class="number">8</span><span>标签</span>
+            <span class="number">11</span><span>标签</span>
         </a>
     </nav>
 
